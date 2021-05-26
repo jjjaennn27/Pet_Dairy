@@ -99,6 +99,5 @@ public class Family_Register extends AppCompatActivity  {
                 }
             });
 
-
         }
     }

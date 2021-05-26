@@ -2,10 +2,12 @@ package com.example.pet_dairy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -20,6 +22,7 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
     TextView txtmsg;
     Spinner spinner1, spinner2;
     ImageButton btn_finish;
+    Button btn_mate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
         spinner2 = findViewById(R.id.spinner2);
         place = findViewById(R.id.txtplace);
         txtmsg = findViewById(R.id.txtmsg);
+        btn_mate = findViewById(R.id.btn_mate);
+        btn_mate.setOnClickListener(this);
 
         // 이름 스피너
         ArrayAdapter name = ArrayAdapter.createFromResource(this, R.array.name, android.R.layout.simple_spinner_dropdown_item);
@@ -61,21 +66,33 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+
+
     public void onClick(View v) {
-        txtmsg.setText(" 오늘의 산책정보 등록 완료! ");
+        switch (v.getId()) {
+            case R.id.btn_finish:
+                txtmsg.setText(" 오늘의 산책정보 등록 완료! ");
 
-        //산책 정보 저장
-        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
-        DatabaseReference rootRef= firebaseDatabase.getReference();
+                //산책 정보 저장
+                FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
+                DatabaseReference rootRef= firebaseDatabase.getReference();
 
-        String Person = spinner1.getSelectedItem().toString(); //사람
-        String Time = spinner2.getSelectedItem().toString(); //시간
-        String Place = place.getText().toString(); //장소
+                String Person = spinner1.getSelectedItem().toString(); //사람
+                String Time = spinner2.getSelectedItem().toString(); //시간
+                String Place = place.getText().toString(); //장소
 
-        Walk walk = new Walk(Person, Time, Place);
+                Walk walk = new Walk(Person, Time, Place);
 
-        DatabaseReference walkRef = rootRef.child("walk");
-        walkRef.push().setValue(walk);
+                DatabaseReference walkRef = rootRef.child("walk");
+                walkRef.push().setValue(walk);
+                break;
+
+            case R.id.btn_mate:
+                Intent intent = new Intent(getApplicationContext(), WalkingMate.class);
+                startActivity(intent);
+                break;
+            default: break;
+        }
 
     }
 }

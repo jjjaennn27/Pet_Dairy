@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Pet_Dairy</string>
+    <string name="app_name"> 부탁해, 집사 </string>
+    <string name="title_activity_walking_mate_map">Map</string>
 </resources>
