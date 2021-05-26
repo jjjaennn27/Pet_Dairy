@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Pet_Main">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/esamanru_medium"
+        android:text="반려 동물"
+        android:textColor="#E19861"
+        android:textSize="30dp"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgView1"
+        android:layout_width="233dp"
+        android:layout_height="214dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginEnd="51dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/dog" />
+
+    <ImageButton
+        android:id="@+id/imgBtn1"
+        android:layout_width="117dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="14dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/imgBtn3"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtn2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgBtn2"
+        app:srcCompat="@drawable/paw1" />
+
+    <ImageButton
+        android:id="@+id/imgBtn2"
+        android:layout_width="117dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="124dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgBtn1"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/paw2"
+        />
+
+    <ImageButton
+        android:id="@+id/imgBtn3"
+        android:layout_width="117dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@drawable/paw3"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgBtn1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgBtn4"
+        android:layout_width="117dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="4dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgBtn3"
+        app:layout_constraintStart_toStartOf="@+id/imgBtn2"
+        app:srcCompat="@drawable/paw4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

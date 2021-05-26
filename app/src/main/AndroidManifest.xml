@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pet_dairy">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet_Dairy">
-        <activity android:name=".Family_Register"></activity>
-        <activity android:name=".Pet_Register" />
+        <activity android:name=".Register_Health"></activity>
+        <activity android:name=".Register_Run" />
+        <activity android:name=".Register_Snack" />
+        <activity android:name=".Register_Food" />
+        <activity android:name=".Pet_Main" />
+        <activity android:name=".Pet_Register2" />
+        <activity android:name=".Family_Register" />
+        <activity android:name=".Pet_Register1" />
         <activity android:name=".Register" />
         <activity android:name=".Login">
             <intent-filter>
