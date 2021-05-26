@@ -9,6 +9,6 @@ public class Register_Health extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register__health);
+        setContentView(R.layout.register__health);
     }
 }

@@ -27,7 +27,7 @@ public class Family_Register extends AppCompatActivity  {
     EditText Name;
     EditText age;
     EditText NickName;
-    Button btn_pet;
+    Button btn_pet, btn_pet2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +39,20 @@ public class Family_Register extends AppCompatActivity  {
         age = findViewById(R.id.age);
         NickName = findViewById(R.id.NickName);
         btn_pet = findViewById(R.id.btn_pet);
+        btn_pet2 = findViewById(R.id.btn_pet2);
 
         btn_pet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Pet_Register1.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_pet2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Pet_Main.class);
                 startActivity(intent);
             }
         });

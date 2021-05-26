@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="name">
+        <item>알쏭이 엄마</item>
+        <item>알쏭이 언니</item>
+        <item>하늘이 언니</item>
+        <item>짱아 언니</item>
+    </string-array>
+
+    <string-array name="time">
+        <item>30분 미만</item>
+        <item>1시간 미만</item>
+        <item>2시간 미만</item>
+        <item>2시간 이상</item>
+    </string-array>
+
+    <string-array name="종류">
+        <item>수제 간식</item>
+        <item>뼈다귀</item>
+        <item>고구마</item>
+        <item>참치</item>
+    </string-array>
+
+    <string-array name = "spinner_do">
+        <item>건식 사료</item>
+        <item>습식 사료</item>
+    </string-array>
+
+    <string-array name = "spinner_do_g">
+        <item>절반</item>
+        <item>가득</item>
+    </string-array>
+
+    <string-array name = "spinner_do_s">
+        <item>한 캔</item>
+        <item>두 캔</item>
+        <item>세 캔</item>
+
+    </string-array>
+
+
+
+
+</resources>
