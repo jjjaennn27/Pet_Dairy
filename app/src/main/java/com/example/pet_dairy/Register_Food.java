@@ -16,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Register_Food extends AppCompatActivity {
 
     ImageButton register;
@@ -24,7 +27,11 @@ public class Register_Food extends AppCompatActivity {
     String choice_do="";
     String choice_se="";
     TextView txtmsg, txtNow;
-    Button btnRec;
+    Button btnRec, btnnow;
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,7 @@ public class Register_Food extends AppCompatActivity {
         register = findViewById(R.id.btn_finish);
         btnRec = findViewById(R.id.btnRec);
         txtNow = findViewById(R.id.txtNow);
+        btnnow = findViewById(R.id.btnnow);
 
         final Spinner spnper = (Spinner)findViewById(R.id.spnPer);
         final Spinner spnfood = (Spinner)findViewById(R.id.spnFood);
@@ -102,6 +110,15 @@ public class Register_Food extends AppCompatActivity {
                 builder.create().show();
             }
         });
+
+        btnnow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtNow.setText(getTime());
+            }
+        });
+
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,17 +129,21 @@ public class Register_Food extends AppCompatActivity {
                 DatabaseReference rootRef= firebaseDatabase.getReference();
 
                 String person = spnper.getSelectedItem().toString(); //사람
-                String txtnow = txtNow.getText().toString(); //시간
+                String now = txtNow.getText().toString(); //시간
                 String food1 = spnfood.getSelectedItem().toString();//식사량1
                 String food2 = spnfood2.getSelectedItem().toString();//식사량2
 
-                Food food = new Food(person, txtnow, food1, food2);
+                Food food = new Food(person, now, food1, food2);
 
                 DatabaseReference foodRef = rootRef.child("food");
                 foodRef.push().setValue(food);
             }
         });
+    }
 
-
+    private String  getTime() {
+        long mNow = System.currentTimeMillis();
+        Date mDate = new Date(mNow);
+        return mFormat.format(mDate);
     }
 }

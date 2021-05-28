@@ -70,13 +70,16 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="312dp"
+        android:layout_marginEnd="23dp"
         android:fontFamily="@font/esamanru_medium"
         android:text="준 시간 : "
         android:textColor="#E19861"
         android:textSize="30sp"
         android:textStyle="normal|bold"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/txtNow"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -84,9 +87,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
+        android:fontFamily="@font/esamanru_medium"
         android:text="밥 정보를 등록해주세요!"
         android:textColor="#E19861"
-        android:fontFamily="@font/esamanru_medium"
         android:textSize="30sp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,21 +124,26 @@
 
     <TextView
         android:id="@+id/txtNow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="27dp"
         android:hint="Now"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        tools:layout_editor_absoluteX="153dp" />
+        app:layout_constraintEnd_toStartOf="@+id/btnnow"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <Button
         android:id="@+id/btnnow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="27dp"
         android:text="Now"
-        tools:layout_editor_absoluteX="296dp"
-        tools:layout_editor_absoluteY="296dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtNow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtNow"
+        app:layout_constraintTop_toTopOf="@+id/txtNow" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

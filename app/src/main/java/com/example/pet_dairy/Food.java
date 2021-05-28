@@ -2,11 +2,11 @@ package com.example.pet_dairy;
 
 public class Food {
 
-    String person, time, food1, food2;
+    String person, now, food1, food2;
 
-    public Food(String person, String time, String food1, String food2) {
+    public Food(String person, String now, String food1, String food2) {
         this.person = person;
-        this.time = time;
+        this.now = now;
         this.food1 = food1;
         this.food2 = food2;
     }
@@ -14,8 +14,8 @@ public class Food {
     public String getperson() { return person; }
     public void setperson(String person) { this.person = person; }
 
-    public String gettime() { return time; }
-    public void settime(String time) { this.time = time; }
+    public String getnow() { return now; }
+    public void setnow(String now) { this.now = now; }
 
     public String getfood1() { return food1; }
     public void setfood1(String food1) { this.food1 = food1; }
