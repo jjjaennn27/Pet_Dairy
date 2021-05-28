@@ -2,6 +2,7 @@ package com.example.pet_dairy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,18 +17,26 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class Register_Run extends AppCompatActivity implements View.OnClickListener {
     EditText place;
-    TextView txtmsg;
+    TextView txtmsg, txtNow;
     Spinner spinner1, spinner2;
     ImageButton btn_finish;
-    Button btn_mate;
+    Button btn_mate, btnnow;
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register__run);
+
 
         btn_finish= findViewById(R.id.btn_finish);
         btn_finish.setOnClickListener(this);
@@ -37,6 +46,9 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
         txtmsg = findViewById(R.id.txtmsg);
         btn_mate = findViewById(R.id.btn_mate);
         btn_mate.setOnClickListener(this);
+        txtNow = findViewById(R.id.txtNow);
+        btnnow = findViewById(R.id.btnnow);
+        btnnow.setOnClickListener(this);
 
         // 이름 스피너
         ArrayAdapter name = ArrayAdapter.createFromResource(this, R.array.name, android.R.layout.simple_spinner_dropdown_item);
@@ -63,11 +75,11 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
         });
+
     }
 
+
     @Override
-
-
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_finish:
@@ -91,8 +103,19 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(getApplicationContext(), WalkingMate.class);
                 startActivity(intent);
                 break;
-            default: break;
-        }
 
+
+            case R.id.btnnow:
+                txtNow.setText(getTime());
+                break;
+            default:
+                break;
+        }
+    }
+
+    private String  getTime() {
+        long mNow = System.currentTimeMillis();
+        Date mDate = new Date(mNow);
+        return mFormat.format(mDate);
     }
 }

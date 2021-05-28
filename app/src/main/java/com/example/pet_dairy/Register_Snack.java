@@ -20,6 +20,7 @@ public class Register_Snack extends AppCompatActivity {
     Spinner spnGive, spnType;
     TextView txtmsg;
     EditText txttime ,txtmany;
+    Button btnnow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +28,12 @@ public class Register_Snack extends AppCompatActivity {
         setContentView(R.layout.register__snack);
 
         txtmany = findViewById(R.id.txtMany);
-        txttime = findViewById(R.id.txtTime);
+        txttime = findViewById(R.id.txtNow);
         txtmsg = findViewById(R.id.textView6);
         register = findViewById(R.id.btn_finish);
         spnGive = findViewById(R.id.spnGive);
         spnType = findViewById(R.id.spnType);
+        btnnow = findViewById(R.id.btnnow);
 
         ArrayAdapter GiveAdapter = ArrayAdapter.createFromResource(this,
                 R.array.name, android.R.layout.simple_spinner_item);
