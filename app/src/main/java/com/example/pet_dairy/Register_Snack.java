@@ -29,7 +29,7 @@ public class Register_Snack extends AppCompatActivity {
         txtmany = findViewById(R.id.txtMany);
         txttime = findViewById(R.id.txtTime);
         txtmsg = findViewById(R.id.textView6);
-        register = findViewById(R.id.imageButton);
+        register = findViewById(R.id.btn_finish);
         spnGive = findViewById(R.id.spnGive);
         spnType = findViewById(R.id.spnType);
 
@@ -43,7 +43,7 @@ public class Register_Snack extends AppCompatActivity {
         TypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnType.setAdapter(TypeAdapter);
 
-        findViewById(R.id.imageButton).setOnClickListener(
+        findViewById(R.id.btn_finish).setOnClickListener(
                 new Button.OnClickListener() {
 
                     @Override

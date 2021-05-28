@@ -34,7 +34,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView2" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spnFood"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
@@ -43,12 +43,12 @@
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spnFood2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner"
-        app:layout_constraintStart_toEndOf="@+id/spinner"
-        app:layout_constraintTop_toTopOf="@+id/spinner" />
+        app:layout_constraintBottom_toBottomOf="@+id/spnFood"
+        app:layout_constraintStart_toEndOf="@+id/spnFood"
+        app:layout_constraintTop_toTopOf="@+id/spnFood" />
 
     <TextView
         android:id="@+id/textView3"
@@ -79,14 +79,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine2"
+        android:id="@+id/edittxt_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/esamanru_medium"
         android:gravity="start|top"
+        android:hint="ex) 오후 2시"
         android:inputType="textMultiLine"
-        android:text="ex) 오후 2시"
         android:textColor="#E19861"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -106,7 +106,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btn_finish"
         android:layout_width="192dp"
         android:layout_height="131dp"
         android:layout_marginBottom="4dp"

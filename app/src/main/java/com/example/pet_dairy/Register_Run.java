@@ -32,7 +32,7 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
         btn_finish= findViewById(R.id.btn_finish);
         btn_finish.setOnClickListener(this);
         spinner1 = findViewById(R.id.spinner1);
-        spinner2 = findViewById(R.id.spinner2);
+        spinner2 = findViewById(R.id.spnFood2);
         place = findViewById(R.id.txtplace);
         txtmsg = findViewById(R.id.txtmsg);
         btn_mate = findViewById(R.id.btn_mate);

@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spnFood2"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:fontFamily="@font/esamanru_medium"
