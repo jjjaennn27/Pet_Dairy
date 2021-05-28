@@ -2,12 +2,13 @@ package com.example.pet_dairy;
 
 public class Walk {
 
-    String Person, Time, Place;
+    String Person, Time, Place, Now;
 
-    public Walk(String Person, String Time, String Place) {
+    public Walk(String Person, String Time, String Place, String Now) {
         this.Person = Person;
         this.Time = Time;
         this.Place = Place;
+        this.Now = Now;
     }
 
     public String getPerson() { return Person; }
@@ -18,5 +19,8 @@ public class Walk {
 
     public String getPlace() { return Place; }
     public void setPlace(String Place) { this.Place = Place; }
+
+    public String getNow() { return Now; }
+    public void setNow(String txtNow) { this.Now = Now; }
 
 }

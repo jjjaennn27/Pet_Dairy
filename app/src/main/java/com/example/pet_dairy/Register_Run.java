@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -90,24 +92,24 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
                 FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
                 DatabaseReference rootRef= firebaseDatabase.getReference();
 
+                String Now = txtNow.getText().toString();  //현재 날짜, 시간
                 String Person = spinner1.getSelectedItem().toString(); //사람
                 String Time = spinner2.getSelectedItem().toString(); //시간
                 String Place = place.getText().toString(); //장소
 
-                Walk walk = new Walk(Person, Time, Place);
+                Walk walk = new Walk(Person, Time, Place, Now);
 
                 DatabaseReference walkRef = rootRef.child("walk");
                 walkRef.push().setValue(walk);
                 break;
 
+            case R.id.btnnow:
+                txtNow.setText(getTime());
+               break;
+
             case R.id.btn_mate:
                 Intent intent = new Intent(getApplicationContext(), WalkingMate.class);
                 startActivity(intent);
-                break;
-
-
-            case R.id.btnnow:
-                txtNow.setText(getTime());
                 break;
             default:
                 break;

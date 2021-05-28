@@ -156,7 +156,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:hint="Now"
-        android:textSize="14sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/textView7"
