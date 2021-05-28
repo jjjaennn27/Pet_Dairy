@@ -22,6 +22,7 @@ import java.util.Date;
 
 
 public class Register_Run extends AppCompatActivity implements View.OnClickListener {
+
     EditText place;
     TextView txtmsg, txtNow;
     Spinner spinner1, spinner2;
