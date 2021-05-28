@@ -23,9 +23,8 @@ public class Register_Food extends AppCompatActivity {
     ArrayAdapter<CharSequence> adspin0, adspin1, adspin2, adspin3;
     String choice_do="";
     String choice_se="";
-    TextView txtmsg;
+    TextView txtmsg, txtNow;
     Button btnRec;
-    EditText edittxt_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class Register_Food extends AppCompatActivity {
         txtmsg = findViewById(R.id.textView);
         register = findViewById(R.id.btn_finish);
         btnRec = findViewById(R.id.btnRec);
-        edittxt_time = findViewById(R.id.edittxt_time);
+        txtNow = findViewById(R.id.txtNow);
 
         final Spinner spnper = (Spinner)findViewById(R.id.spnPer);
         final Spinner spnfood = (Spinner)findViewById(R.id.spnFood);
@@ -113,11 +112,11 @@ public class Register_Food extends AppCompatActivity {
                 DatabaseReference rootRef= firebaseDatabase.getReference();
 
                 String person = spnper.getSelectedItem().toString(); //사람
-                String time = edittxt_time.getText().toString(); //시간
+                String txtnow = txtNow.getText().toString(); //시간
                 String food1 = spnfood.getSelectedItem().toString();//식사량1
                 String food2 = spnfood2.getSelectedItem().toString();//식사량2
 
-                Food food = new Food(person, time, food1, food2);
+                Food food = new Food(person, txtnow, food1, food2);
 
                 DatabaseReference foodRef = rootRef.child("food");
                 foodRef.push().setValue(food);

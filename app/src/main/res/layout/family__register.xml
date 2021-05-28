@@ -1,105 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    tools:context=".Family_Register" >
+    tools:context=".Family_Register">
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="15dp"
         android:fontFamily="@font/esamanru_medium"
-        android:layout_marginTop="65dp"
-        android:layout_marginRight="18dp"
         android:onClick="clickSave"
-        android:text="save" />
+        android:text="save"
+        app:layout_constraintBottom_toBottomOf="@+id/age"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/NickName"
+        app:layout_constraintTop_toTopOf="@+id/Name" />
 
     <EditText
         android:id="@+id/Name"
         android:layout_width="291dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="47dp"
         android:fontFamily="@font/esamanru_medium"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/btn_save"
         android:gravity="center"
         android:hint="이름"
-        android:inputType="text" />
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/NickName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/NickName"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/age"
-        android:layout_width="286dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:fontFamily="@font/esamanru_medium"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_toStartOf="@+id/btn_save"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="5dp"
         android:ems="10"
+        android:fontFamily="@font/esamanru_medium"
         android:gravity="center"
         android:hint="나이"
-        android:inputType="number" />
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NickName" />
 
     <EditText
         android:id="@+id/NickName"
-        android:layout_width="286dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/esamanru_medium"
-        android:layout_marginRight="10dp"
-        android:layout_toStartOf="@+id/btn_save"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="17dp"
         android:ems="10"
+        android:fontFamily="@font/esamanru_medium"
         android:gravity="center_horizontal"
         android:hint="별명"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/age"
+        app:layout_constraintEnd_toStartOf="@+id/btn_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
 
     <TextView
         android:id="@+id/tv"
-        android:layout_width="401dp"
-        android:layout_height="440dp"
-        android:layout_below="@+id/NickName"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="381dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
         android:fontFamily="@font/esamanru_medium"
         android:hint="가족구성원"
         android:padding="8dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age"
+        app:layout_constraintVertical_bias="0.054" />
 
     <Button
         android:id="@+id/btn_pet"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="230dp"
-        android:layout_marginBottom="30dp"
-        android:text="동물 등록" />
+        android:layout_height="54dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="103dp"
+        android:text="동물 등록"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv" />
 
     <Button
         android:id="@+id/btn_pet2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btn_pet"
-        android:layout_alignBottom="@+id/btn_pet"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="217dp"
-        android:layout_marginTop="-4dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="2dp"
-        android:text="메인" />
+        android:layout_marginEnd="34dp"
+        android:text="메인"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_pet"
+        app:layout_constraintEnd_toStartOf="@+id/btn_pet"
+        app:layout_constraintTop_toTopOf="@+id/btn_pet" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
