@@ -35,9 +35,11 @@ public class Register_Food extends AppCompatActivity {
         register = findViewById(R.id.btn_finish);
         btnRec = findViewById(R.id.btnRec);
         edittxt_time = findViewById(R.id.edittxt_time);
-        final Spinner spnper = (Spinner)findViewById(R.id.spnPer); //0
-        final Spinner spnfood = (Spinner)findViewById(R.id.spnFood); //1
-        final Spinner spnfood2 = (Spinner)findViewById(R.id.spnFood2); //2
+
+        final Spinner spnper = (Spinner)findViewById(R.id.spnPer);
+        final Spinner spnfood = (Spinner)findViewById(R.id.spnFood);
+        final Spinner spnfood2 = (Spinner)findViewById(R.id.spnFood2);
+
         adspin0 = ArrayAdapter.createFromResource(this, R.array.name, android.R.layout.simple_spinner_dropdown_item);
         adspin1 = ArrayAdapter.createFromResource(this, R.array.spinner_do, android.R.layout.simple_spinner_dropdown_item);
         adspin1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -88,9 +90,9 @@ public class Register_Food extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
+
         btnRec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +116,6 @@ public class Register_Food extends AppCompatActivity {
                 String time = edittxt_time.getText().toString(); //시간
                 String food1 = spnfood.getSelectedItem().toString();//식사량1
                 String food2 = spnfood2.getSelectedItem().toString();//식사량2
-
 
                 Food food = new Food(person, time, food1, food2);
 
