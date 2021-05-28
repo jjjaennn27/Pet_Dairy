@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="137dp"
-        android:layout_height="51dp"
+        android:layout_width="121dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="25dp"
         android:fontFamily="@font/esamanru_medium"
         android:text="준 사람 : "
@@ -113,13 +113,14 @@
         android:id="@+id/spnGive"
         android:layout_width="150dp"
         android:layout_height="30dp"
+        android:layout_marginEnd="4dp"
         android:entries="@array/name"
         android:fontFamily="@font/esamanru_medium"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="@+id/spnType"
         app:layout_constraintTop_toTopOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.476" />
 
     <Spinner
         android:id="@+id/spnType"
@@ -138,13 +139,13 @@
         android:layout_width="103dp"
         android:layout_height="45dp"
         android:layout_marginBottom="332dp"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:hint="Now" />
 
     <Button
         android:id="@+id/btndate"
