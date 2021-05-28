@@ -1,16 +1,18 @@
 package com.example.pet_dairy;
 
+
 public class Snack {
     String Give;
     String Type;
     String Time;
     String Many;
+    String Date;
 
-    public Snack(String Give, String Type, String Time, String Many) {
+    public Snack(String Give, String Type, String Many, String Date) {
         this.Give = Give;
         this.Type = Type;
-        this.Time = Time;
         this.Many = Many;
+        this.Date = Date;
     }
 
     public String getGive() {
@@ -27,17 +29,19 @@ public class Snack {
         this.Type = Type;
     }
 
-    public String getTime() {
-        return Time;
-    }
-    public void setTime(String time) {
-        Time = time;
-    }
-
     public String getMany() {
         return Many;
     }
-    public void setMany(String many) {
-        Many = many;
+    public void setMany(String Many) {
+        Many = Many;
     }
+
+    public String getDate() {
+        return Date;
+    }
+    public void setDate(String Date) {
+        Date = Date;
+    }
+
+
 }
