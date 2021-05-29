@@ -1,6 +1,5 @@
 package com.example.pet_dairy;
 
-import android.widget.EditText;
 
 public class Person {
 
@@ -13,9 +12,8 @@ public class Person {
         this.age = Age;
         this.NickName = Nickname;
     }
-    public Person(){
 
-    }
+    public Person(){}
 
     public String getName() {
         return name;
@@ -25,6 +23,7 @@ public class Person {
         this.name = name;
     }
 
+
     public String getAge() {
         return age;
     }
@@ -32,6 +31,7 @@ public class Person {
     public void setAge(String Age) {
         this.age = Age;
     }
+
 
     public  String getNickName() {
         return NickName;
