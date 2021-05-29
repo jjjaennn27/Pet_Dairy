@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Animal_profile">
+    tools:context=".Pet_Register2">
 
     <EditText
         android:id="@+id/editTextTextPersonName5"
         android:layout_width="184dp"
         android:layout_height="40dp"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="112dp"
         android:ems="10"
+        android:hint="품종을 입력하세요"
         android:inputType="textPersonName"
-        android:text="품종을 입력하세요"
         android:textColor="#E19861"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <ImageView
@@ -27,36 +26,71 @@
         android:layout_width="247dp"
         android:layout_height="180dp"
         android:layout_marginStart="74dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="74dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="184dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="125dp"
+        android:layout_width="177dp"
+        android:layout_height="51dp"
         android:layout_marginEnd="112dp"
-        android:layout_marginBottom="200dp"
-        android:ems="10"
 
+        android:layout_marginBottom="183dp"
+        android:ems="10"
+        android:hint="이름을 입력하세요"
         android:inputType="textPersonName"
-        android:text="이름을 입력하세요"
         android:textColor="#E19861"
         android:textColorHighlight="#FFCCBC"
         android:textColorHint="#FFCCBC"
         android:textColorLink="#FFCCBC"
         android:textCursorDrawable="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/btnCamera"
+        app:layout_constraintVertical_bias="0.943" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+
+        android:text="등록하기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.324" />
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="사진찍기"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="@+id/Animal_img"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="@+id/Animal_img" />
+
+    <Button
+        android:id="@+id/btnGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="갤러리"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCamera"
+        app:layout_constraintEnd_toEndOf="@+id/Animal_img"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toEndOf="@+id/btnCamera"
+        app:layout_constraintTop_toTopOf="@+id/btnCamera"
+        app:layout_constraintVertical_bias="0.0" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -67,87 +101,46 @@
         android:layout_marginBottom="276dp"
 
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btn_register"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Animal_img">
+        app:layout_constraintTop_toBottomOf="@+id/Animal_img"
+        app:layout_constraintVertical_bias="1.0">
 
         <RadioButton
             android:id="@+id/radioButton4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="143dp"
+            android:layout_width="87dp"
+            android:layout_height="65dp"
 
-            android:layout_marginRight="143dp"
             android:layout_weight="1"
             android:text="암컷"
-            android:textColor="#E19861"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/radioButton3" />
+            android:textColor="#E19861" />
 
         <RadioButton
             android:id="@+id/radioButton3"
-            android:layout_width="0dp"
+            android:layout_width="94dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="110dp"
 
-            android:layout_marginLeft="110dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginRight="42dp"
             android:layout_weight="1"
             android:text="수컷"
-            android:textColor="#E19861"
-            app:layout_constraintBaseline_toBaselineOf="@+id/radioButton4"
-            app:layout_constraintEnd_toStartOf="@+id/radioButton4"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textColor="#E19861" />
     </RadioGroup>
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="184dp"
         android:layout_height="40dp"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="504dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="112dp"
         android:ems="10"
 
+        android:hint="생년월일을 입력하세요"
         android:inputType="textPersonName"
-        android:text="생년월일을 입력하세요"
         android:textColor="#E19861"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName5"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
-
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="36dp"
-
-        android:text="등록하기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2" />
-
-    <Button
-        android:id="@+id/btnCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnGallery" />
-
-    <Button
-        android:id="@+id/btnGallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="96dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Animal_img" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

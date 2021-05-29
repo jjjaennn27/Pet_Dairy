@@ -59,7 +59,7 @@ public class Family_Register extends AppCompatActivity  {
     }
 
 
-        public void clickSave (View v){
+        public void clickSave (View v) {
 
 
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -100,4 +100,5 @@ public class Family_Register extends AppCompatActivity  {
             });
 
         }
+
     }
