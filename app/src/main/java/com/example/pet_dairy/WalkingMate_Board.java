@@ -123,7 +123,7 @@ public class WalkingMate_Board extends AppCompatActivity {
                             }
                         });
                         dialog.dismiss();
-                        Toast.makeText(getApplicationContext(),"저장되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"저장되었습니다. ", Toast.LENGTH_SHORT).show();
                     }
                 });
 
