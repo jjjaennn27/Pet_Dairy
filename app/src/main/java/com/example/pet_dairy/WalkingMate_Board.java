@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 public class WalkingMate_Board extends AppCompatActivity {
+
     private final ArrayList<Board> listBundle = new ArrayList<>();
     private  RecyclerView recyclerView;
     private WalkingMate_Board_RecyclerAdapter adapter;
@@ -54,6 +55,7 @@ public class WalkingMate_Board extends AppCompatActivity {
         adapter = new WalkingMate_Board_RecyclerAdapter(listBundle);
 
         recyclerView.setAdapter(adapter);
+
 
         FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
         DatabaseReference rootRef = firebaseDatabase.getReference();

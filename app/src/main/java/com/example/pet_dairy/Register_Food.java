@@ -126,7 +126,7 @@ public class Register_Food extends AppCompatActivity {
 
                 //밥 정보 저장
                 FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
-                DatabaseReference rootRef= firebaseDatabase.getReference();
+                DatabaseReference rootRef= firebaseDatabase.getReference("Family Pet");
 
                 String person = spnper.getSelectedItem().toString(); //사람
                 String now = txtNow.getText().toString(); //시간

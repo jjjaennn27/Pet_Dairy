@@ -64,7 +64,8 @@ public class Register_Snack extends AppCompatActivity implements View.OnClickLis
                 txtmsg.setText("오늘의 간식정보 등록 완료!");
 
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference rootRef = firebaseDatabase.getReference();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+
                 String Give = spnGive.getSelectedItem().toString();
                 String Type = spnType.getSelectedItem().toString();
                 String Many = txtmany.getText().toString();

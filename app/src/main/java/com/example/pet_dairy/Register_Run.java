@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -87,7 +88,7 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
 
                 //산책 정보 저장
                 FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
-                DatabaseReference rootRef= firebaseDatabase.getReference();
+                DatabaseReference rootRef= firebaseDatabase.getReference("Family Pet");
 
                 String Now = txtNow.getText().toString();  //현재 날짜, 시간
                 String Person = spinner1.getSelectedItem().toString(); //사람
@@ -95,6 +96,7 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
                 String Place = place.getText().toString(); //장소
 
                 Walk walk = new Walk(Person, Time, Place, Now);
+
 
                 DatabaseReference walkRef = rootRef.child("walk");
                 walkRef.push().setValue(walk);

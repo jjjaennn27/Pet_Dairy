@@ -63,8 +63,7 @@ public class Family_Register extends AppCompatActivity  {
 
 
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-
-            DatabaseReference rootRef = firebaseDatabase.getReference();
+            DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
 
             String name = Name.getText().toString();
             String Age = age.getText().toString();

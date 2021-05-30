@@ -18,8 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
-    private FirebaseAuth mFirebaseAuth; //파이어 베이스 인증
-    private DatabaseReference mDatabaseRef; //실시간 데이터 베이스
+    private FirebaseAuth mFirebaseAuth;
+    private DatabaseReference mDatabaseRef;
     private EditText mEtEmail,mEtpwd;
     private Button mBtnRegister;
 
@@ -54,7 +54,7 @@ public class Register extends AppCompatActivity {
                             account.setIdToken(firebaseUser.getUid());
                             account.setEmailId(firebaseUser.getEmail());
                             account.setPassword(strPwd);
-                            //serValue : database에 삽입 행위
+
                             mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
 
                             Toast.makeText(Register.this,"회원가입에 성공하셨습니다.",Toast.LENGTH_SHORT).show();
