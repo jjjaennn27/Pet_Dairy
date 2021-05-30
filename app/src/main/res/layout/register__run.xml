@@ -8,7 +8,6 @@
     android:backgroundTint="#FFFFFC"
     tools:context=".Register_Run">
 
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -164,14 +163,14 @@
 
     <Button
         android:id="@+id/btnnow"
-        android:layout_width="69dp"
-        android:layout_height="49dp"
+        android:layout_width="89dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         android:text="now"
         app:layout_constraintBottom_toBottomOf="@+id/txtNow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtNow"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintVertical_bias="0.55" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

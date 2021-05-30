@@ -1,9 +1,12 @@
 package com.example.pet_dairy;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,14 +17,26 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 
 public class Register_Run extends AppCompatActivity implements View.OnClickListener {
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+
+
 
     EditText place;
     TextView txtmsg, txtNow;
@@ -50,6 +65,9 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
         txtNow = findViewById(R.id.txtNow);
         btnnow = findViewById(R.id.btnnow);
         btnnow.setOnClickListener(this);
+
+
+
 
         // 이름 스피너
         ArrayAdapter name = ArrayAdapter.createFromResource(this, R.array.name, android.R.layout.simple_spinner_dropdown_item);
