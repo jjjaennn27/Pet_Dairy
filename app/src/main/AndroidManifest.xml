@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet_Dairy">
         <activity android:name=".WalkingMate_Board_Writing"></activity>
-        <activity android:name=".RecyclerAdapter" />
+        <activity android:name=".WalkingMate_Board_RecyclerAdapter" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

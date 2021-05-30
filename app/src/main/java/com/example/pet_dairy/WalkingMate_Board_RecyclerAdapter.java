@@ -1,25 +1,22 @@
 package com.example.pet_dairy;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.function.BiPredicate;
 
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class WalkingMate_Board_RecyclerAdapter extends RecyclerView.Adapter<WalkingMate_Board_RecyclerAdapter.ViewHolder> {
     ArrayList<Board> listBundle = new ArrayList<>();
     Context mContext;
 
-    public RecyclerAdapter(ArrayList<Board> bundle){
+    public WalkingMate_Board_RecyclerAdapter(ArrayList<Board> bundle){
         this.listBundle = bundle;
     }
 
@@ -29,7 +26,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context mContext  = parent.getContext();
         LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.list_item, parent, false);
+        View view = inflater.inflate(R.layout.walingmate_board_list_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
 
         return holder;
