@@ -11,6 +11,8 @@ public class Walk {
         this.Now = Now;
     }
 
+    public Walk(){}
+
     public String getPerson() { return Person; }
     public void setPerson(String Person) { this.Person = Person; }
 

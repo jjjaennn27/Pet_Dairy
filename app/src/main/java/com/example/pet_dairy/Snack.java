@@ -4,7 +4,6 @@ package com.example.pet_dairy;
 public class Snack {
     String Give;
     String Type;
-    String Time;
     String Many;
     String Date;
 
@@ -14,6 +13,8 @@ public class Snack {
         this.Many = Many;
         this.Date = Date;
     }
+
+    public Snack(){}
 
     public String getGive() {
         return Give;
