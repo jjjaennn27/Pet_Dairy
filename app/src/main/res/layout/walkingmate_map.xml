@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/layout_main"
     android:orientation="vertical"
-    tools:context=".WalkingMate_Map" >
+    tools:context=".WalkingMate_map" >
 
     <fragment
         android:layout_width="match_parent"
