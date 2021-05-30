@@ -2,7 +2,6 @@ package com.example.pet_dairy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -105,7 +104,7 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnnow:
                 txtNow.setText(getTime());
-               break;
+                break;
 
             case R.id.btn_mate:
                 Intent intent = new Intent(getApplicationContext(), WalkingMate.class);
