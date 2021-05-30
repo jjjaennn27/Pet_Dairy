@@ -38,14 +38,6 @@
         <item>세 캔</item>
     </string-array>
 
-    <string-array name="timee">
-        <item>30분 미만</item>
-        <item>1시간 미만</item>
-        <item>2시간 미만</item>
-        <item>2시간 이상</item>
-
-    </string-array>
-
 
 
 

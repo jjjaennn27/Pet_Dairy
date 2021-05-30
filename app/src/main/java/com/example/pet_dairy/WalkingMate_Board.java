@@ -57,7 +57,7 @@ public class WalkingMate_Board extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
         DatabaseReference rootRef = firebaseDatabase.getReference();
-        DatabaseReference BoardRef = rootRef.child("Bosrds");
+        DatabaseReference BoardRef = rootRef.child("WalkingBoards");
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class WalkingMate_Board extends AppCompatActivity {
                 final EditText dog  =  view.findViewById(R.id.Dog_breedText);
                 final EditText id = view.findViewById(R.id.IDText1);
 
-                ArrayAdapter timee = ArrayAdapter.createFromResource(WalkingMate_Board.this, R.array.timee, android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter timee = ArrayAdapter.createFromResource(WalkingMate_Board.this, R.array.time, android.R.layout.simple_spinner_dropdown_item);
                 timee.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 Time.setAdapter(timee);
 
