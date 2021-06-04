@@ -67,8 +67,6 @@ public class Register_Run extends AppCompatActivity implements View.OnClickListe
         btnnow.setOnClickListener(this);
 
 
-
-
         // 이름 스피너
         ArrayAdapter name = ArrayAdapter.createFromResource(this, R.array.name, android.R.layout.simple_spinner_dropdown_item);
         name.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

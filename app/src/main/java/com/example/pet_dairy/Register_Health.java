@@ -16,7 +16,7 @@ public class Register_Health extends AppCompatActivity {
 
     DatePicker datePicker;
     EditText edtDiary;
-    Button btnSave,btndiary;
+    Button btnSave,btndiary, btnfind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class Register_Health extends AppCompatActivity {
         edtDiary = (EditText) findViewById(R.id.edtDiary);
         btnSave = (Button) findViewById(R.id.btnSave);
         btndiary = (Button) findViewById(R.id.btndiary);
+        btnfind = (Button) findViewById(R.id.btnfind);
 
 
         datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), (view, year, month, day) -> {
@@ -48,6 +49,15 @@ public class Register_Health extends AppCompatActivity {
             @Override
             public void onClick(View v2) {
                 Intent myIntent = new Intent(Register_Health.this, Diary.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+        btnfind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v2) {
+                Intent myIntent = new Intent(Register_Health.this, Register_Health_Find.class);
                 startActivity(myIntent);
                 finish();
             }

@@ -32,7 +32,7 @@ public class WalkingMate_Board extends AppCompatActivity {
 
     private final ArrayList<Board> listBundle = new ArrayList<>();
     private  RecyclerView recyclerView;
-    private WalkingMate_Board_RecyclerAdapter adapter;
+    private RecyclerAdapter adapter;
     private  RecyclerView.LayoutManager layoutManager;
 
     private FloatingActionButton add, look;
@@ -52,7 +52,7 @@ public class WalkingMate_Board extends AppCompatActivity {
         look = findViewById(R.id.floatingActionButton);
 
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new WalkingMate_Board_RecyclerAdapter(listBundle);
+        adapter = new RecyclerAdapter(listBundle);
 
         recyclerView.setAdapter(adapter);
 

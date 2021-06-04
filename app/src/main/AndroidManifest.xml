@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="false"
@@ -17,23 +18,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet_Dairy">
-        <activity android:name=".WalkingMate_Board_Writing"></activity>
-        <activity android:name=".WalkingMate_Board_RecyclerAdapter" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
+        <activity android:name=".Register_Health_Find"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".WalkingMate_map"
-            android:label="@string/title_activity_walking_mate_map" />
+        <activity android:name=".WalkingMate_Board_Writing" />
+        <activity android:name=".WalkingMate_map" />
         <activity android:name=".WalkingMate_Board" />
         <activity android:name=".WalkingMate" />
         <activity android:name=".Diary" />

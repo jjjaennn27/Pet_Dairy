@@ -56,18 +56,30 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginTop="35dp"
-            android:layout_marginRight="77dp"
-            android:text="입력하기"
+            android:layout_marginRight="178dp"
             android:backgroundTint="#FFE0B2"
-            />
+            android:text="입력하기" />
+
+        <Button
+            android:id="@+id/btnfind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="68dp"
+            android:backgroundTint="#FFE0B2"
+            android:text="병원 찾기" />
 
         <Button
             android:id="@+id/btndiary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btnSave"
+            android:layout_alignBottom="@+id/btnSave"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="242dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="288dp"
+            android:layout_marginBottom="0dp"
             android:backgroundTint="#FFE0B2"
             android:text="다이어리" />
 

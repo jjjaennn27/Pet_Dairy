@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 
-public class WalkingMate_Board_RecyclerAdapter extends RecyclerView.Adapter<WalkingMate_Board_RecyclerAdapter.ViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     ArrayList<Board> listBundle = new ArrayList<>();
     Context mContext;
 
-    public WalkingMate_Board_RecyclerAdapter(ArrayList<Board> bundle){
+    public RecyclerAdapter(ArrayList<Board> bundle){
         this.listBundle = bundle;
     }
 
