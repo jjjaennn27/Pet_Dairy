@@ -150,7 +150,7 @@ public class Register_Run extends AppCompatActivity {
                         String Time = spinner2.getSelectedItem().toString(); //시간
                         String Place = place.getText().toString(); //장소
 
-                        Walk walk = new Walk(Person, Time, Place, Now);
+                        Walk walk = new Walk(Now, Person, Time, Place);
                         if (Person.length() == 0) return;
 
                         walkRef.push().setValue(walk);
@@ -162,10 +162,10 @@ public class Register_Run extends AppCompatActivity {
                                 listRun.clear();
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                     Walk walk = snapshot.getValue(Walk.class);
+                                    String Now = walk.getNow();
                                     String Person = walk.getPerson();
                                     String Time = walk.getTime();
                                     String Place = walk.getPlace();
-                                    String Now = walk.getNow();
                                     buffer.append(listRun);
 
                                     listRun.add(walk);

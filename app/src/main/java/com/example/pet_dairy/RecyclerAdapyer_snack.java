@@ -60,5 +60,4 @@ public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_
             ManyView = View.findViewById(R.id.list_Many);
         }
     }
-
 }
