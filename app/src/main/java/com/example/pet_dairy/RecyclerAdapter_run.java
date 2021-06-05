@@ -37,7 +37,7 @@ public class RecyclerAdapter_run extends RecyclerView.Adapter<RecyclerAdapter_ru
         Walk walk = listRun.get(position);
 
         holder.NowView.setText(walk.getNow());
-        holder.PersonView.setText(walk.getTime());
+        holder.PersonView.setText(walk.getPerson());
         holder.TimeView.setText(walk.getTime());
         holder.PlaceView.setText(walk.getPlace());
     }
