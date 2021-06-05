@@ -166,6 +166,7 @@ public class Register_Run extends AppCompatActivity {
                                     String strPerson = walk.getPerson();
                                     String strTime = walk.getTime();
                                     String strPlace = walk.getPlace();
+
                                     buffer.append(listRun);
 
                                     listRun.add(walk);
