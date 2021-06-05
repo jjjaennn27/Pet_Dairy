@@ -137,7 +137,7 @@ public class Register_Snack extends AppCompatActivity {
                         String strDate = Date.getText().toString();
                         String strMany = Many.getText().toString();
 
-                        Snack snack = new Snack(strGive,strType, strDate,strMany);
+                        Snack snack = new Snack(strGive,strType, strMany, strDate);
                         if (strGive.length() == 0) return;
 
                         snackRef.push().setValue(snack);
@@ -189,8 +189,8 @@ public class Register_Snack extends AppCompatActivity {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Snack snack = snapshot.getValue(Snack.class);
                             String strGive = snack.getGive();
-                            String  strDate = snack.getDate();
                             String  strType = snack.getType();
+                            String  strDate= snack.getDate();
                             String strMany = snack.getMany();
                             buffer.append(listSnack);
 

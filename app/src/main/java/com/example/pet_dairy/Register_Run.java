@@ -203,10 +203,12 @@ public class Register_Run extends AppCompatActivity {
 
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                             Walk walk = snapshot.getValue(Walk.class);
+
+                            String Now = walk.getNow();
                             String Person = walk.getPerson();
                             String Time = walk.getTime();
                             String Place = walk.getPlace();
-                            String Now = walk.getNow();
+
                             buffer.append(listRun);
 
                             listRun.add(walk);
