@@ -143,7 +143,7 @@ public class Register_Run extends AppCompatActivity {
 
                         //산책 정보 저장
                         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                        DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                        DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
                         DatabaseReference walkRef = rootRef.child("walk");
 
                         String Now = txtNow.getText().toString();  //현재 날짜, 시간
@@ -191,7 +191,7 @@ public class Register_Run extends AppCompatActivity {
             public void onClick(View v) {
 
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
                 DatabaseReference walkRef = rootRef.child("walk");
 
                 walkRef.addValueEventListener(new ValueEventListener() {

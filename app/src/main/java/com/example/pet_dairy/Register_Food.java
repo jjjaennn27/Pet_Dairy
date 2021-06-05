@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,7 +86,7 @@ public class Register_Food extends AppCompatActivity {
                 final Button btnRec = view1.findViewById(R.id.button2);
                 final Button btnnow = view1.findViewById(R.id.btnnow);
 
-                final Button upload1 = view1.findViewById(R.id.up);
+                final ImageButton upload1 = view1.findViewById(R.id.up);
                 final Spinner Person = view1.findViewById(R.id.name);
                 final TextView now = view1.findViewById(R.id.txt);
                 final Spinner food1 = view1.findViewById(R.id.spnFood);
@@ -176,7 +177,7 @@ public class Register_Food extends AppCompatActivity {
                     public void onClick(View v) {
 
                         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                        DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                        DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
                         DatabaseReference foodRef = rootRef.child("food");
 
                         String strPerson = Person.getSelectedItem().toString();
@@ -224,7 +225,7 @@ public class Register_Food extends AppCompatActivity {
             public void onClick(View v) {
 
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
                 DatabaseReference foodRef = rootRef.child("food");
 
                 foodRef.addValueEventListener(new ValueEventListener() {

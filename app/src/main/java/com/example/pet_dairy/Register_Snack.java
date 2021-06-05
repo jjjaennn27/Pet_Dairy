@@ -129,7 +129,7 @@ public class Register_Snack extends AppCompatActivity {
                     public void onClick(View v) {
 
                         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                        DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                        DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
                         DatabaseReference snackRef = rootRef.child("snack");
 
                         String strGive = Give.getSelectedItem().toString();
@@ -177,7 +177,7 @@ public class Register_Snack extends AppCompatActivity {
             public void onClick(View v) {
 
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
                 DatabaseReference snackRef = rootRef.child("snack");
 
                 snackRef.addValueEventListener(new ValueEventListener() {
