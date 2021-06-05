@@ -10,9 +10,7 @@ public class Food {
         this.food1 = food1;
         this.food2 = food2;
     }
-
     public Food(){}
-
     public String getperson() { return person; }
     public void setperson(String person) { this.person = person; }
 

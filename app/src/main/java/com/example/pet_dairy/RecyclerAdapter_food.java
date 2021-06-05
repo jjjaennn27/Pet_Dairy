@@ -11,13 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    ArrayList<Board> listBundle = new ArrayList<>();
+public class RecyclerAdapter_food extends RecyclerView.Adapter<RecyclerAdapter_food.ViewHolder> {
+    ArrayList<Food> listFood = new ArrayList<>();
     Context mContext;
 
-    public RecyclerAdapter(ArrayList<Board> bundle){
-        this.listBundle = bundle;
+    public RecyclerAdapter_food(ArrayList<Food> bundle){
+        this.listFood = bundle;
     }
 
 
@@ -26,7 +25,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context mContext  = parent.getContext();
         LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.walingmate_board_list_item, parent, false);
+        View view = inflater.inflate(R.layout.list_item_food, parent, false);
         ViewHolder holder = new ViewHolder(view);
 
         return holder;
@@ -34,33 +33,31 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Board  board = listBundle.get(position);
+        Food food = listFood.get(position);
 
-        holder.PliceView.setText(board.getPlace());
-        holder.TimeView.setText(board.getTime());
-        holder.Dog_breedView.setText(board.getDog_breed());
-        holder.IDView.setText(board.getID());
+        holder.PersonView.setText(food.getperson());
+        holder.NowView.setText(food.getnow());
+        holder.Food1View.setText(food.getfood1());
+        holder.Food2View.setText(food.getfood2());
     }
 
     @Override
     public int getItemCount() {
-        return listBundle.size();
+        return listFood.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView PliceView;
-        TextView TimeView;
-        TextView Dog_breedView;
-        TextView IDView;
+        TextView PersonView;
+        TextView NowView;
+        TextView Food1View;
+        TextView Food2View;
 
         public ViewHolder(@NonNull View View) {
             super(View);
-            PliceView = View.findViewById(R.id.list_place);
-            TimeView = View.findViewById(R.id.list_time);
-            Dog_breedView = View.findViewById(R.id.list_Dog_breed);
-            IDView = View.findViewById(R.id.list_ID);
+            PersonView = View.findViewById(R.id.list_person);
+            NowView = View.findViewById(R.id.list_now);
+            Food1View = View.findViewById(R.id.list_food1);
+            Food2View = View.findViewById(R.id.list_food2);
         }
     }
-
-
 }

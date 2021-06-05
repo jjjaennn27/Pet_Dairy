@@ -25,17 +25,17 @@
 
                     <TextView
 
-                        android:id="@+id/place"
+                        android:id="@+id/person"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
-                        android:text="산책 장소 :"
+                        android:text="준 사람 :"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/list_place"
+                        android:id="@+id/list_person"
                         android:layout_width="37dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -46,17 +46,17 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/time"
+                        android:id="@+id/now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
-                        android:text="산책 예상 시간 :"
+                        android:text="준 시간 :"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/list_time"
+                        android:id="@+id/list_now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -67,17 +67,17 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/Dog_breed"
+                        android:id="@+id/food1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
-                        android:text="강아지 종 :"
+                        android:text="사료 종류"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/list_Dog_breed"
+                        android:id="@+id/list_food1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -88,17 +88,17 @@
                 <TableRow android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/ID"
+                        android:id="@+id/food2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
-                        android:text="카카오톡 ID :"
+                        android:text="사료 양 :"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/list_ID"
+                        android:id="@+id/list_food2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -108,3 +108,4 @@
             </TableLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView> </FrameLayout>
+

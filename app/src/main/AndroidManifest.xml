@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet_Dairy">
-        <activity android:name=".Register_Health_Find"></activity>
+        <activity android:name=".Register_Food_writing"></activity>
+        <activity android:name=".Register_Run_writing" />
+        <activity android:name=".Register_Health_Find" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
