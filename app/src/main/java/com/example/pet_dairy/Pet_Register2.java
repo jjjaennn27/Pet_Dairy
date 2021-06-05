@@ -1,5 +1,6 @@
 package com.example.pet_dairy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,18 +8,29 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
 public class Pet_Register2 extends AppCompatActivity {
-    Button btnCamera, btnGallery;
-    ImageView Animal_img;
+    private Button btnCamera, btnGallery, btnSave;
+    private ImageView animalImg;
+    private ProgressBar progressBar;
 
     final  int CAMERA_REQUEST_CODE = 1;
 
@@ -29,8 +41,9 @@ public class Pet_Register2 extends AppCompatActivity {
 
         btnCamera = (Button)findViewById(R.id.btnCamera);
         btnGallery = (Button)findViewById(R.id.btnGallery);
-        Animal_img = (ImageView)findViewById(R.id.Animal_img);
-
+        animalImg = (ImageView)findViewById(R.id.Animal_img);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        btnSave = (Button) findViewById(R.id.btn_save);
         btnCamera.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -48,10 +61,21 @@ public class Pet_Register2 extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, 1);
+                startActivityForResult(intent, 2);
             }
         });
 
+        btnSave.setOnClickListener(view -> {
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) animalImg.getDrawable();
+            if (bitmapDrawable == null) {
+                return;
+            }
+
+            Bitmap bitmap = bitmapDrawable.getBitmap();
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos) ;
+            uploadImage(bos.toByteArray());
+        });
     }
 
 
@@ -61,9 +85,8 @@ public class Pet_Register2 extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST_CODE) {
             Bundle bundle = data.getExtras();
             Bitmap bitmap = (Bitmap) bundle.get("data");
-            Animal_img.setImageBitmap(bitmap);
-        }
-        if (requestCode == 1) {
+            animalImg.setImageBitmap(bitmap);
+        } else if (requestCode == 2) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 try {
@@ -72,12 +95,27 @@ public class Pet_Register2 extends AppCompatActivity {
                     Bitmap img = BitmapFactory.decodeStream(in);
                     in.close();
                     // 이미지 표시
-                    Animal_img.setImageBitmap(img);
+                    animalImg.setImageBitmap(img);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    private void uploadImage(byte[] bytes) {
+        progressBar.setVisibility(View.VISIBLE);
+        Storage.uploadPetImage(bytes, onProgress -> {
+            double value = (100.0 * onProgress.getBytesTransferred()) / onProgress.getTotalByteCount();
+            int progress = (int) Math.round(value);
+            progressBar.setProgress(progress);
+        }, onSuccess -> {
+            Toast.makeText(this, "이미지 등록 성공", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+        }, onFailure -> {
+            Toast.makeText(this, "이미지 등록 실패", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+        });
     }
 
     public boolean IsCameraAvailable(){
