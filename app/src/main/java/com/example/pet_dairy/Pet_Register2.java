@@ -105,7 +105,7 @@ public class Pet_Register2 extends AppCompatActivity {
 
     private void uploadImage(byte[] bytes) {
         progressBar.setVisibility(View.VISIBLE);
-        Storage.uploadPetImage(bytes, onProgress -> {
+        PetStorage.uploadPetImage(bytes, onProgress -> {
             double value = (100.0 * onProgress.getBytesTransferred()) / onProgress.getTotalByteCount();
             int progress = (int) Math.round(value);
             progressBar.setProgress(progress);

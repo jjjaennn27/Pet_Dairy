@@ -46,8 +46,8 @@ public class Pet_Main extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void postPetImage() {
-        Storage.getPetImageUrl(uri -> {
-            // 외부 라이브러리 Glide를 사용해서 Firebase Storage의 이미지 로딩
+        PetStorage.getPetImageUrl(uri -> {
+            // 외부 라이브러리 Glide를 사용해서 Firebase PetStorage의 이미지 로딩
             Glide.with(this)
                     .load(uri)
                     .addListener(getRequestListener())

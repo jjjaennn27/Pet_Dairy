@@ -22,8 +22,8 @@ import java.util.Map;
 
 import androidx.annotation.Nullable;
 
-public class Storage {
-    private static final String TAG = "Storage";
+public class PetStorage {
+    private static final String TAG = "PetStorage";
 
     public static void uploadPetImage(byte[] data,
                                       OnProgressListener<UploadTask.TaskSnapshot> onProgressListener,
