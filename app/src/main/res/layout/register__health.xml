@@ -70,18 +70,5 @@
             android:backgroundTint="#FFE0B2"
             android:text="병원 찾기" />
 
-        <Button
-            android:id="@+id/btndiary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/btnSave"
-            android:layout_alignBottom="@+id/btnSave"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="288dp"
-            android:layout_marginBottom="0dp"
-            android:backgroundTint="#FFE0B2"
-            android:text="다이어리" />
-
     </RelativeLayout>
 </LinearLayout>

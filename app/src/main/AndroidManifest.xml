@@ -31,7 +31,6 @@
         <activity android:name=".WalkingMate_map" />
         <activity android:name=".WalkingMate_Board" />
         <activity android:name=".WalkingMate" />
-        <activity android:name=".Diary" />
         <activity android:name=".Record" />
         <activity android:name=".Register_Health" />
         <activity android:name=".Register_Run" />
