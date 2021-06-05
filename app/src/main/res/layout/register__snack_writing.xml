@@ -76,8 +76,10 @@
         android:textColor="#E19861"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView6"
@@ -119,29 +121,29 @@
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="@+id/spnType"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <Spinner
         android:id="@+id/spnType"
         android:layout_width="150dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="148dp"
+        android:layout_marginEnd="72dp"
         android:entries="@array/종류"
         android:fontFamily="@font/esamanru_medium"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtdate"
-        android:layout_width="103dp"
-        android:layout_height="45dp"
+        android:layout_width="97dp"
+        android:layout_height="36dp"
         android:layout_marginBottom="332dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.0"
