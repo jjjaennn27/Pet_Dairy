@@ -70,7 +70,7 @@ public class Register_Run extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
         DatabaseReference rootRef = firebaseDatabase.getReference();
-        DatabaseReference WalkRef = rootRef.child("walk");
+        //DatabaseReference walkRef = rootRef.child("walk");
 
         add2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +144,7 @@ public class Register_Run extends AppCompatActivity {
                         //산책 정보 저장
                         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                         DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                        DatabaseReference walkRef = rootRef.child("walk");
 
                         String Now = txtNow.getText().toString();  //현재 날짜, 시간
                         String Person = spinner1.getSelectedItem().toString(); //사람
@@ -153,9 +154,7 @@ public class Register_Run extends AppCompatActivity {
                         Walk walk = new Walk(Person, Time, Place, Now);
                         if (Person.length() == 0) return;
 
-                        DatabaseReference walkRef = rootRef.child("walk");
                         walkRef.push().setValue(walk);
-
                         walkRef.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -191,7 +190,11 @@ public class Register_Run extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WalkRef.addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                DatabaseReference walkRef = rootRef.child("walk");
+
+                walkRef.addValueEventListener(new ValueEventListener() {
 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -204,7 +207,6 @@ public class Register_Run extends AppCompatActivity {
                             String Time = walk.getTime();
                             String Place = walk.getPlace();
                             String Now = walk.getNow();
-
                             buffer.append(listRun);
 
                             listRun.add(walk);

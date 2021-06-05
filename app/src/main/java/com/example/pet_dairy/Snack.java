@@ -13,9 +13,7 @@ public class Snack {
         this.Many = Many;
         this.Date = Date;
     }
-
     public Snack(){}
-
     public String getGive() {
         return Give;
     }
@@ -34,14 +32,14 @@ public class Snack {
         return Many;
     }
     public void setMany(String Many) {
-        Many = Many;
+        this.Many = Many;
     }
 
     public String getDate() {
         return Date;
     }
     public void setDate(String Date) {
-        Date = Date;
+        this.Date = Date;
     }
 
 

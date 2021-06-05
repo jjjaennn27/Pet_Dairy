@@ -68,7 +68,6 @@ public class Register_Food extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
         DatabaseReference rootRef = firebaseDatabase.getReference();
-        DatabaseReference foodRef = rootRef.child("food");
 
 
         add1.setOnClickListener(new View.OnClickListener() {
@@ -175,6 +174,11 @@ public class Register_Food extends AppCompatActivity {
                 upload1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                        DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                        DatabaseReference foodRef = rootRef.child("food");
+
                         String strPerson = Person.getSelectedItem().toString();
                         String stnNow = now.getText().toString();
                         String strFood1 = food1.getSelectedItem().toString();
@@ -218,6 +222,10 @@ public class Register_Food extends AppCompatActivity {
         look1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+                DatabaseReference foodRef = rootRef.child("food");
 
                 foodRef.addValueEventListener(new ValueEventListener() {
 
