@@ -36,10 +36,10 @@ public class RecyclerAdapter_run extends RecyclerView.Adapter<RecyclerAdapter_ru
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Walk walk = listRun.get(position);
 
-        holder.NowView.setText(walk.getNow());
-        holder.PersonView.setText(walk.getPerson());
         holder.TimeView.setText(walk.getTime());
         holder.PlaceView.setText(walk.getPlace());
+        holder.PersonView.setText(walk.getPerson());
+        holder.NowView.setText(walk.getNow());
     }
 
     @Override
@@ -48,17 +48,17 @@ public class RecyclerAdapter_run extends RecyclerView.Adapter<RecyclerAdapter_ru
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView NowView;
-        TextView PersonView;
         TextView TimeView;
         TextView PlaceView;
+        TextView PersonView;
+        TextView NowView;
 
         public ViewHolder(@NonNull View View) {
             super(View);
-            NowView = View.findViewById(R.id.list_now);
-            PersonView = View.findViewById(R.id.list_person);
             TimeView = View.findViewById(R.id.list_time);
             PlaceView = View.findViewById(R.id.list_place);
+            PersonView = View.findViewById(R.id.list_person);
+            NowView = View.findViewById(R.id.list_now);
         }
     }
 }

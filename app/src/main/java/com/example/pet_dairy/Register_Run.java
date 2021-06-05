@@ -144,13 +144,13 @@ public class Register_Run extends AppCompatActivity {
                         DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
                         DatabaseReference walkRef = rootRef.child("walk");
 
-
-                        String strDate = Now.getText().toString();  //현재 날짜, 시간
-                        String strPerson = spinner1.getSelectedItem().toString(); //사람
                         String strTime = spinner2.getSelectedItem().toString(); //시간
                         String strPlace = Place.getText().toString(); //장소
+                        String strPerson = spinner1.getSelectedItem().toString(); //사람
+                        String strDate = Now.getText().toString();  //현재 날짜, 시간
 
-                        Walk walk = new Walk(strDate, strPerson, strTime, strPlace);
+
+                        Walk walk = new Walk(strTime, strPlace, strPerson, strDate);
                         if (strPerson.length() == 0) return;
 
                         walkRef.push().setValue(walk);
@@ -162,11 +162,10 @@ public class Register_Run extends AppCompatActivity {
                                 listRun.clear();
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                     Walk walk = snapshot.getValue(Walk.class);
-                                    String strDate = walk.getNow();
-                                    String strPerson = walk.getPerson();
                                     String strTime = walk.getTime();
                                     String strPlace = walk.getPlace();
-
+                                    String strPerson = walk.getPerson();
+                                    String strDate = walk.getNow();
                                     buffer.append(listRun);
 
                                     listRun.add(walk);
@@ -203,10 +202,12 @@ public class Register_Run extends AppCompatActivity {
                         listRun.clear();
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                             Walk walk = snapshot.getValue(Walk.class);
-                            String strDate = walk.getNow();
-                            String strPerson = walk.getPerson();
+
                             String strTime = walk.getTime();
                             String strPlace = walk.getPlace();
+                            String strPerson = walk.getPerson();
+                            String strDate = walk.getNow();
+
                             buffer.append(listRun);
 
                             listRun.add(walk);

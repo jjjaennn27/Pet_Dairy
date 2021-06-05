@@ -25,18 +25,39 @@
 
                     <TextView
 
-                        android:id="@+id/now"
+                        android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
-                        android:text="시킨 시간 :"
+                        android:text="산책 시간 :"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/list_now"
+                        android:id="@+id/list_time"
                         android:layout_width="37dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/place"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:text="시킨 장소 :"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/list_place"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textColor="@android:color/black"
@@ -64,41 +85,20 @@
                         android:textSize="20sp" />
                 </TableRow>
 
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="10dp"
-                        android:text="산책 시간 :"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/list_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp" />
-                </TableRow>
-
                 <TableRow android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/place"
+                        android:id="@+id/now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
-                        android:text="산책 장소 :"
+                        android:text="시킨 시간 :"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/list_place"
+                        android:id="@+id/list_now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
