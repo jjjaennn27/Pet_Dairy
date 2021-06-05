@@ -83,8 +83,8 @@ public class Register_Run extends AppCompatActivity {
 
                 final Button btnnow = view2.findViewById(R.id.btnnow);
                 final Button btn_mate = view2.findViewById(R.id.btn_mate);
-
                 final ImageButton upload2 = view2.findViewById(R.id.up);
+
                 final TextView txtmsg = view2.findViewById(R.id.txtmsg);
                 final TextView txtNow = view2.findViewById(R.id.txtNow);
                 final EditText place = view2.findViewById(R.id.txtplace);
@@ -139,7 +139,6 @@ public class Register_Run extends AppCompatActivity {
                 upload2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        txtmsg.setText(" 오늘의 산책정보 등록 완료! ");
 
                         //산책 정보 저장
                         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -155,6 +154,7 @@ public class Register_Run extends AppCompatActivity {
                         if (Person.length() == 0) return;
 
                         walkRef.push().setValue(walk);
+
                         walkRef.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -200,20 +200,16 @@ public class Register_Run extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         StringBuffer buffer = new StringBuffer();
                         listRun.clear();
-
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                             Walk walk = snapshot.getValue(Walk.class);
-
                             String Now = walk.getNow();
                             String Person = walk.getPerson();
                             String Time = walk.getTime();
                             String Place = walk.getPlace();
-
                             buffer.append(listRun);
 
                             listRun.add(walk);
                         }
-
                         adapter2.notifyDataSetChanged();
                     }
                     @Override

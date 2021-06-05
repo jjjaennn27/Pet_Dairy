@@ -79,7 +79,6 @@ public class Register_Snack extends AppCompatActivity {
                 builder2.setView(view2);
 
                 final Button btnDate = view2.findViewById(R.id.btndate);
-
                 final ImageButton upload2 = view2.findViewById(R.id.btnregister);
 
                 final Spinner Give = view2.findViewById(R.id.spnGive);
@@ -150,8 +149,8 @@ public class Register_Snack extends AppCompatActivity {
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                     Snack snack = snapshot.getValue(Snack.class);
                                     String strGive = snack.getGive();
-                                    String  strType = snack.getType();
-                                    String  strDate= snack.getDate();
+                                    String strType = snack.getType();
+                                    String strDate= snack.getDate();
                                     String strMany = snack.getMany();
                                     buffer.append(listSnack);
 
@@ -189,8 +188,8 @@ public class Register_Snack extends AppCompatActivity {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Snack snack = snapshot.getValue(Snack.class);
                             String strGive = snack.getGive();
-                            String  strType = snack.getType();
-                            String  strDate= snack.getDate();
+                            String strType = snack.getType();
+                            String strDate= snack.getDate();
                             String strMany = snack.getMany();
                             buffer.append(listSnack);
 
