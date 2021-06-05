@@ -85,9 +85,8 @@ public class Register_Run extends AppCompatActivity {
                 final Button btn_mate = view2.findViewById(R.id.btn_mate);
                 final ImageButton upload2 = view2.findViewById(R.id.up);
 
-                final TextView txtmsg = view2.findViewById(R.id.txtmsg);
-                final TextView txtNow = view2.findViewById(R.id.txtNow);
-                final EditText place = view2.findViewById(R.id.txtplace);
+                final TextView Now = view2.findViewById(R.id.txtNow);
+                final EditText Place = view2.findViewById(R.id.txtplace);
                 final Spinner spinner1 = view2.findViewById(R.id.spinner1);
                 final Spinner spinner2 = view2.findViewById(R.id.spinner2);
 
@@ -121,7 +120,7 @@ public class Register_Run extends AppCompatActivity {
                 btnnow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        txtNow.setText(getTime());
+                        Now.setText(getTime());
                     }
                 });
 
@@ -145,13 +144,14 @@ public class Register_Run extends AppCompatActivity {
                         DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
                         DatabaseReference walkRef = rootRef.child("walk");
 
-                        String Now = txtNow.getText().toString();  //현재 날짜, 시간
-                        String Person = spinner1.getSelectedItem().toString(); //사람
-                        String Time = spinner2.getSelectedItem().toString(); //시간
-                        String Place = place.getText().toString(); //장소
 
-                        Walk walk = new Walk(Now, Person, Time, Place);
-                        if (Person.length() == 0) return;
+                        String strDate = Now.getText().toString();  //현재 날짜, 시간
+                        String strPerson = spinner1.getSelectedItem().toString(); //사람
+                        String strTime = spinner2.getSelectedItem().toString(); //시간
+                        String strPlace = Place.getText().toString(); //장소
+
+                        Walk walk = new Walk(strDate, strPerson, strTime, strPlace);
+                        if (strPerson.length() == 0) return;
 
                         walkRef.push().setValue(walk);
 
@@ -162,10 +162,10 @@ public class Register_Run extends AppCompatActivity {
                                 listRun.clear();
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                     Walk walk = snapshot.getValue(Walk.class);
-                                    String Now = walk.getNow();
-                                    String Person = walk.getPerson();
-                                    String Time = walk.getTime();
-                                    String Place = walk.getPlace();
+                                    String strDate = walk.getNow();
+                                    String strPerson = walk.getPerson();
+                                    String strTime = walk.getTime();
+                                    String strPlace = walk.getPlace();
                                     buffer.append(listRun);
 
                                     listRun.add(walk);
@@ -202,10 +202,10 @@ public class Register_Run extends AppCompatActivity {
                         listRun.clear();
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                             Walk walk = snapshot.getValue(Walk.class);
-                            String Now = walk.getNow();
-                            String Person = walk.getPerson();
-                            String Time = walk.getTime();
-                            String Place = walk.getPlace();
+                            String strDate = walk.getNow();
+                            String strPerson = walk.getPerson();
+                            String strTime = walk.getTime();
+                            String strPlace = walk.getPlace();
                             buffer.append(listRun);
 
                             listRun.add(walk);
