@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="331dp"
         android:orientation="vertical">
 
         <TextView
@@ -53,6 +53,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="0dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -64,10 +67,10 @@
                 android:id="@+id/imgBtn1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="40dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
@@ -77,10 +80,10 @@
                 android:id="@+id/imgBtn3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="40dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
@@ -97,10 +100,10 @@
                 android:id="@+id/imgBtn2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="60dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
@@ -110,10 +113,10 @@
                 android:id="@+id/imgBtn4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="60dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
