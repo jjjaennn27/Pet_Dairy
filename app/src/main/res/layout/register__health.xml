@@ -36,39 +36,35 @@
         <EditText
             android:id="@+id/edtDiary"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="198dp"
             android:background="#DDDDDD"
             android:ems="10"
             android:gravity="start|center_vertical"
             android:inputType="text|textMultiLine|textCapSentences"
             android:padding="7sp"
             android:text="" />
-
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|right"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="178dp"
-            android:backgroundTint="#FFE0B2"
+            android:layout_weight="1"
             android:text="입력하기" />
 
         <Button
             android:id="@+id/btnfind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="68dp"
-            android:backgroundTint="#FFE0B2"
-            android:text="병원 찾기" />
+            android:layout_weight="1"
+            android:text="버튼찾기" />
+    </LinearLayout>
 
-    </RelativeLayout>
+
 </LinearLayout>

@@ -40,7 +40,6 @@
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginEnd="68dp"
-        android:entries="@array/name"
         android:fontFamily="@font/esamanru_medium"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"

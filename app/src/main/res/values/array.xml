@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="name">
-        <item>알쏭이 엄마</item>
-        <item>알쏭이 언니</item>
-        <item>하늘이 언니</item>
-        <item>짱아 언니</item>
-        <item>마리 아빠</item>
-    </string-array>
+<!--    <string-array name="name">-->
+<!--    </string-array>-->
 
     <string-array name="time">
         <item>30분 미만</item>
