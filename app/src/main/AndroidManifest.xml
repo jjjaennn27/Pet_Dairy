@@ -37,9 +37,8 @@
         <activity android:name=".Register_Snack" />
         <activity android:name=".Register_Food" />
         <activity android:name=".Pet_Main" />
-        <activity android:name=".Pet_Register2" />
+        <activity android:name=".Pet_Register" />
         <activity android:name=".Family_Register" />
-        <activity android:name=".Pet_Register1" />
         <activity android:name=".Register" />
         <activity android:name=".Login">
             <intent-filter>

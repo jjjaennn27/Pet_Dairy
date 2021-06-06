@@ -1,6 +1,5 @@
 package com.example.pet_dairy;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,17 +16,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.UploadTask;
-
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
-public class Pet_Register2 extends AppCompatActivity {
+public class Pet_Register extends AppCompatActivity {
     private Button btnCamera, btnGallery, btnSave;
     private ImageView animalImg;
     private ProgressBar progressBar;
@@ -37,7 +30,7 @@ public class Pet_Register2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pet__register2);
+        setContentView(R.layout.pet__register);
 
         btnCamera = (Button)findViewById(R.id.btnCamera);
         btnGallery = (Button)findViewById(R.id.btnGallery);
