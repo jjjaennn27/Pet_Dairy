@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class Register_Food extends AppCompatActivity {
@@ -92,19 +92,8 @@ public class Register_Food extends AppCompatActivity {
                 final Spinner food1 = view1.findViewById(R.id.spnFood);
                 final Spinner food2 = view1.findViewById(R.id.spnFood2);
 
-                ArrayAdapter name = ArrayAdapter.createFromResource(Register_Food.this, R.array.name, android.R.layout.simple_spinner_dropdown_item);
-                name.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                Person.setAdapter(name);
 
-                Person.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
+                setNameSpinner(Person);
                 adspin1 = ArrayAdapter.createFromResource(Register_Food.this, R.array.spinner_do, android.R.layout.simple_spinner_dropdown_item);
                 adspin1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 adspin2 = ArrayAdapter.createFromResource(com.example.pet_dairy.Register_Food.this, R.array.spinner_do_g, android.R.layout.simple_spinner_dropdown_item);
@@ -256,6 +245,24 @@ public class Register_Food extends AppCompatActivity {
         });
 
     }
+
+    private void setNameSpinner(Spinner nameSpinner) {
+        Pet_Database.getPersons(dataSnapshot -> {
+            List<String> persons = new ArrayList<>();
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Person person = snapshot.getValue(Person.class);
+                if (person != null) {
+                    persons.add(person.name);
+                }
+            }
+
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_dropdown_item, persons);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(spinnerArrayAdapter);
+        });
+    }
+
     private String  getTime() {
         long mNow = System.currentTimeMillis();
         Date mDate = new Date(mNow);

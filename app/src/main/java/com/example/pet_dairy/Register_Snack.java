@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class Register_Snack extends AppCompatActivity {
@@ -86,19 +87,7 @@ public class Register_Snack extends AppCompatActivity {
                 final TextView Date = view2.findViewById(R.id.txtdate);
                 final EditText Many  = view2.findViewById(R.id.txtMany);
 
-                ArrayAdapter give = ArrayAdapter.createFromResource(Register_Snack.this, R.array.name, android.R.layout.simple_spinner_dropdown_item);
-                give.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                Give.setAdapter(give);
-
-                Give.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
+                setNameSpinner(Give);
 
                 ArrayAdapter type = ArrayAdapter.createFromResource(Register_Snack.this, R.array.종류, android.R.layout.simple_spinner_dropdown_item);
                 type.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -205,6 +194,24 @@ public class Register_Snack extends AppCompatActivity {
         });
 
     }
+
+    private void setNameSpinner(Spinner nameSpinner) {
+        Pet_Database.getPersons(dataSnapshot -> {
+            List<String> persons = new ArrayList<>();
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Person person = snapshot.getValue(Person.class);
+                if (person != null) {
+                    persons.add(person.name);
+                }
+            }
+
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_dropdown_item, persons);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(spinnerArrayAdapter);
+        });
+    }
+
     private String  getTime() {
         long mNow = System.currentTimeMillis();
         Date mDate = new Date(mNow);

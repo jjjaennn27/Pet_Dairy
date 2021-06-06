@@ -33,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Register_Run extends AppCompatActivity {
 
@@ -92,17 +93,7 @@ public class Register_Run extends AppCompatActivity {
 
 
                 // 이름 스피너
-                ArrayAdapter name = ArrayAdapter.createFromResource(Register_Run.this, R.array.name, android.R.layout.simple_spinner_dropdown_item);
-                name.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner1.setAdapter(name);
-
-                spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    }
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) { }
-                });
+                setNameSpinner(spinner1);
 
                 // 산책 시간 스피너
                 ArrayAdapter time = ArrayAdapter.createFromResource(Register_Run.this, R.array.time, android.R.layout.simple_spinner_dropdown_item);
@@ -219,6 +210,23 @@ public class Register_Run extends AppCompatActivity {
                     }
                 });
             }
+        });
+    }
+
+    private void setNameSpinner(Spinner nameSpinner) {
+        Pet_Database.getPersons(dataSnapshot -> {
+            List<String> persons = new ArrayList<>();
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Person person = snapshot.getValue(Person.class);
+                if (person != null) {
+                    persons.add(person.name);
+                }
+            }
+
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_dropdown_item, persons);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(spinnerArrayAdapter);
         });
     }
 

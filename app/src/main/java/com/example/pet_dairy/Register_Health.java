@@ -28,7 +28,6 @@ public class Register_Health extends AppCompatActivity {
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         edtDiary = (EditText) findViewById(R.id.edtDiary);
         btnSave = (Button) findViewById(R.id.btnSave);
-        btndiary = (Button) findViewById(R.id.btndiary);
         btnfind = (Button) findViewById(R.id.btnfind);
 
 
@@ -40,15 +39,6 @@ public class Register_Health extends AppCompatActivity {
             @Override
             public void onClick(View v1) {
                 Intent myIntent = new Intent(Register_Health.this, Record.class);
-                startActivity(myIntent);
-                finish();
-            }
-        });
-
-        btndiary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-                Intent myIntent = new Intent(Register_Health.this, Diary.class);
                 startActivity(myIntent);
                 finish();
             }
