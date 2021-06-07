@@ -29,6 +29,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="40dp"
             android:text="밥"
+            android:fontFamily="@font/esamanru_medium"
             android:textColor="#ffffff"></Button>
 
         <LinearLayout
@@ -50,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="간식"
+            android:fontFamily="@font/esamanru_medium"
             android:textColor="#ffffff"
             android:id="@+id/Btn2"
             android:layout_marginTop="110dp"
@@ -75,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="건강"
+            android:fontFamily="@font/esamanru_medium"
             android:textColor="#ffffff"
             android:id="@+id/Btn3"
             android:layout_marginTop="180dp"
@@ -99,6 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="산책"
+            android:fontFamily="@font/esamanru_medium"
             android:textColor="#ffffff"
             android:id="@+id/Btn4"
             android:layout_marginTop="250dp"
@@ -116,6 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="메뉴 닫기"
+            android:fontFamily="@font/esamanru_medium"
             android:layout_marginTop="350dp"
             />
     </RelativeLayout>
