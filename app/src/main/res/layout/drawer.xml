@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="280dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:id="@+id/drawer"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_dehaze_24"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp">
+        </ImageView>
+
+        <Button
+            android:id="@+id/Btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:text="밥"
+            android:textColor="#ffffff"></Button>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="100dp">
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_dehaze_24"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="10dp">
+        </ImageView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="간식"
+            android:textColor="#ffffff"
+            android:id="@+id/Btn2"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="50dp">
+        </Button>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="170dp">
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_dehaze_24"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="10dp">
+        </ImageView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="건강"
+            android:textColor="#ffffff"
+            android:id="@+id/Btn3"
+            android:layout_marginTop="180dp"
+            android:layout_marginLeft="50dp">
+        </Button>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="240dp">
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_dehaze_24"
+            android:layout_marginTop="265dp"
+            android:layout_marginLeft="10dp">
+        </ImageView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="산책"
+            android:textColor="#ffffff"
+            android:id="@+id/Btn4"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="50dp">
+        </Button>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="310dp">
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="메뉴 닫기"
+            android:layout_marginTop="350dp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
