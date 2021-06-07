@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register_Snack">
+    tools:context=".Register_Snack_writing">
 
     <TextView
         android:id="@+id/textView4"
