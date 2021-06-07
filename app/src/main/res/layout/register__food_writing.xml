@@ -1,142 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register_Food_writing">
 
-    <ImageButton
-        android:id="@+id/up"
-        android:layout_width="100dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="276dp"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:fontFamily="@font/esamanru_medium"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:srcCompat="@drawable/paw_register" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="105dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="124dp"
-        android:fontFamily="@font/esamanru_medium"
-        android:text="준사람 : "
-        android:textColor="#E19861"
-        android:textSize="30sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="권장량"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Spinner
-        android:id="@+id/name"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="68dp"
-        android:fontFamily="@font/esamanru_medium"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
+        android:id="@+id/spnFood2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spnFood"
+        app:layout_constraintStart_toEndOf="@+id/spnFood"
+        app:layout_constraintTop_toTopOf="@+id/spnFood"
         app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/spnFood"
-        android:layout_width="147dp"
+        android:layout_width="128dp"
         android:layout_height="36dp"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
-    <Spinner
-        android:id="@+id/spnFood2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spnFood"
-        app:layout_constraintStart_toEndOf="@+id/spnFood"
-        app:layout_constraintTop_toTopOf="@+id/spnFood"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/esamanru_medium"
-        android:text="식사량 : "
-        android:textColor="#E19861"
-        android:textSize="30sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/esamanru_medium"
+        android:text="준 사람 : "
+        android:textColor="#E19861"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toStartOf="@+id/name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/esamanru_medium"
         android:text="준 시간 : "
         android:textColor="#E19861"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="normal|bold"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/esamanru_medium"
+        android:text="식사량 : "
+        android:textColor="#E19861"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/esamanru_medium"
-        android:text="밥 정보를 등록해주세요!"
+        android:gravity="center"
+        android:text="밥정보를 등록해주세요!"
         android:textColor="#E19861"
         android:textSize="30sp"
         android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
+    <Spinner
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
-        android:text="권장량"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <Button
-        android:id="@+id/btnnow"
-        android:layout_width="107dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="32dp"
-        android:text="Now"
-        app:layout_constraintBottom_toTopOf="@+id/spnFood2"
-        app:layout_constraintEnd_toEndOf="@+id/spnFood2" />
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/esamanru_medium"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txt"
-        android:layout_width="96dp"
-        android:layout_height="41dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/spnFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="332dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/btnnow"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:hint="Now" />
+
+    <Button
+        android:id="@+id/btnnow"
+        android:layout_width="72dp"
+        android:layout_height="50dp"
+        android:text="Now"
+        app:layout_constraintBottom_toBottomOf="@+id/txt"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/txt"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <ImageButton
+        android:id="@+id/up"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:srcCompat="@drawable/paw_register" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

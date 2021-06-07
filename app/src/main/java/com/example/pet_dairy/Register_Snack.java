@@ -80,7 +80,7 @@ public class Register_Snack extends AppCompatActivity {
                 builder2.setView(view2);
 
                 final Button btnDate = view2.findViewById(R.id.btndate);
-                final ImageButton upload2 = view2.findViewById(R.id.btnregister);
+                final ImageButton upload2 = view2.findViewById(R.id.up);
 
                 final Spinner Give = view2.findViewById(R.id.spnGive);
                 final Spinner Type = view2.findViewById(R.id.spnType);

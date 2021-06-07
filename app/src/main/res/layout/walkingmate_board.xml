@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="68dp"
+        android:fontFamily="@font/esamanru_medium"
+        android:textColor="#E19861"
         android:text="산책 메이트 찾기 게시판"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -16,7 +16,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/esamanru_medium"
         android:text="게시판 입력"
+        android:textColor="#E19861"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -91,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
         android:text="업로드"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
