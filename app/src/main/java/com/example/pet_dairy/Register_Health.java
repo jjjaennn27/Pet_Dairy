@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +15,7 @@ public class Register_Health extends AppCompatActivity {
 
     DatePicker datePicker;
     EditText edtDiary;
-    Button btnSave,btndiary, btnfind;
+    Button btnSave,btndiary, btnfind, btnAlarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +28,7 @@ public class Register_Health extends AppCompatActivity {
         edtDiary = (EditText) findViewById(R.id.edtDiary);
         btnSave = (Button) findViewById(R.id.btnSave);
         btnfind = (Button) findViewById(R.id.btnfind);
+        btnAlarm = (Button) findViewById(R.id.btnAlarm);
 
 
         datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), (view, year, month, day) -> {
@@ -52,5 +52,15 @@ public class Register_Health extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                Intent myIntent = new Intent(Register_Health.this, Alarm.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
     }
 }
