@@ -42,7 +42,8 @@ public class Register_Food extends AppCompatActivity {
     private RecyclerView recyclerView1;
     private RecyclerAdapter_food adapter1;
     private  RecyclerView.LayoutManager layoutManager1;
-
+    private DrawerLayout drawerLayout;
+    private View drawerView;
 
     private FloatingActionButton add1, look1;
 
@@ -58,6 +59,8 @@ public class Register_Food extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register__food);
 
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerView = (View)findViewById(R.id.drawer);
         recyclerView1 = (RecyclerView) findViewById(R.id.food_list);
         recyclerView1.setHasFixedSize(true);
         layoutManager1 = new LinearLayoutManager(this);
@@ -76,6 +79,54 @@ public class Register_Food extends AppCompatActivity {
         DatabaseReference rootRef = firebaseDatabase.getReference();
 
 
+        Button Btn1 = (Button)findViewById(R.id.Btn1);
+        Btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_f =new Intent(Register_Food.this,Register_Food.class);
+                startActivity(intent_f);
+            }
+        });
+        Button Btn2 = (Button)findViewById(R.id.Btn2);
+        Btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_s =new Intent(Register_Food.this,Register_Snack.class);
+                startActivity(intent_s);
+            }
+        });
+        Button Btn3 = (Button)findViewById(R.id.Btn3);
+        Btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_h =new Intent(Register_Food.this,Register_Health.class);
+                startActivity(intent_h);
+            }
+        });
+        Button Btn4 = (Button)findViewById(R.id.Btn4);
+        Btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_r =new Intent(Register_Food.this,Register_Run.class);
+                startActivity(intent_r);
+            }
+        });
+
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
         add1.setOnClickListener(new View.OnClickListener() {
             ArrayAdapter<CharSequence>adspin1, adspin2, adspin3;
             String choice_do="";
@@ -251,6 +302,21 @@ public class Register_Food extends AppCompatActivity {
         });
 
     }
+    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerStateChanged(int newState) {
+        }
+    };
 
     private void setNameSpinner(Spinner nameSpinner) {
         Pet_Database.getPersons(dataSnapshot -> {

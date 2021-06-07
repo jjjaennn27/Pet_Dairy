@@ -2,15 +2,18 @@ package com.example.pet_dairy;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,6 +45,8 @@ public class Register_Snack extends AppCompatActivity {
     private  RecyclerView.LayoutManager layoutManager2;
 
     private FloatingActionButton add2, look2;
+    private DrawerLayout drawerLayout;
+    private View drawerView;
 
 
     long mNow;
@@ -54,6 +59,8 @@ public class Register_Snack extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register__snack);
 
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerView = (View)findViewById(R.id.drawer);
         recyclerView2 = (RecyclerView) findViewById(R.id.snack_list);
         recyclerView2.setHasFixedSize(true);
         layoutManager2 = new LinearLayoutManager(this);
@@ -72,6 +79,54 @@ public class Register_Snack extends AppCompatActivity {
         DatabaseReference rootRef = firebaseDatabase.getReference();
 
 
+        Button Btn1 = (Button)findViewById(R.id.Btn1);
+        Btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_f =new Intent(Register_Snack.this,Register_Food.class);
+                startActivity(intent_f);
+            }
+        });
+        Button Btn2 = (Button)findViewById(R.id.Btn2);
+        Btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_s =new Intent(Register_Snack.this,Register_Snack.class);
+                startActivity(intent_s);
+            }
+        });
+        Button Btn3 = (Button)findViewById(R.id.Btn3);
+        Btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_h =new Intent(Register_Snack.this,Register_Health.class);
+                startActivity(intent_h);
+            }
+        });
+        Button Btn4 = (Button)findViewById(R.id.Btn4);
+        Btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_r =new Intent(Register_Snack.this,Register_Run.class);
+                startActivity(intent_r);
+            }
+        });
+
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
         add2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -195,6 +250,21 @@ public class Register_Snack extends AppCompatActivity {
         });
 
     }
+    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerStateChanged(int newState) {
+        }
+    };
 
     private void setNameSpinner(Spinner nameSpinner) {
         Pet_Database.getPersons(dataSnapshot -> {
