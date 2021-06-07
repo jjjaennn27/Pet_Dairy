@@ -32,6 +32,7 @@
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:text="준 사람 :"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
@@ -40,6 +41,7 @@
                         android:layout_width="37dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
                 </TableRow>
@@ -53,6 +55,7 @@
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:text="간식 종류:"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
@@ -61,6 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
                 </TableRow>
@@ -74,6 +78,7 @@
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:text="준 시간:"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
@@ -82,6 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
                 </TableRow>
@@ -93,6 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
+                        android:fontFamily="@font/esamanru_medium"
                         android:layout_marginLeft="10dp"
                         android:text="간식 수:"
                         android:textColor="@android:color/black"
@@ -103,6 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
                 </TableRow>

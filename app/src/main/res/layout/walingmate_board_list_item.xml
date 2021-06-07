@@ -31,11 +31,13 @@
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:text="산책 장소 :"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/list_place"
+                        android:fontFamily="@font/esamanru_medium"
                         android:layout_width="37dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -51,6 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/esamanru_medium"
                         android:text="산책 예상 시간 :"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
@@ -60,6 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
                 </TableRow>
@@ -71,6 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
+                        android:fontFamily="@font/esamanru_medium"
                         android:layout_marginLeft="10dp"
                         android:text="강아지 종 :"
                         android:textColor="@android:color/black"
@@ -81,6 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
                 </TableRow>
@@ -92,6 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
+                        android:fontFamily="@font/esamanru_medium"
                         android:layout_marginLeft="10dp"
                         android:text="카카오톡 ID :"
                         android:textColor="@android:color/black"
@@ -102,6 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/esamanru_medium"
                         android:textColor="@android:color/black"
                         android:textSize="20sp" />
                 </TableRow>

@@ -142,6 +142,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Now"
+        android:fontFamily="@font/esamanru_medium"
         app:layout_constraintBottom_toBottomOf="@+id/txtdate"
         app:layout_constraintEnd_toEndOf="@+id/txtmsg"
         app:layout_constraintTop_toTopOf="@+id/txtdate"

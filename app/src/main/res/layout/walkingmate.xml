@@ -14,6 +14,7 @@
         android:text="산책 메이트 찾기"
         app:layout_constraintBottom_toTopOf="@+id/btnMap"
         app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/esamanru_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -24,6 +25,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginBottom="127dp"
         android:text="근처 공원 보기"
+        android:fontFamily="@font/esamanru_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/btnWrite"
         app:layout_constraintTop_toBottomOf="@+id/btnWrite" />

@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15sp"
+            android:fontFamily="@font/esamanru_medium"
             android:headerBackground="#FFE0B2"
 
             />
@@ -38,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="198dp"
             android:background="#DDDDDD"
+            android:fontFamily="@font/esamanru_medium"
             android:ems="10"
             android:gravity="start|center_vertical"
             android:inputType="text|textMultiLine|textCapSentences"
@@ -49,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center|right"
+        android:fontFamily="@font/esamanru_medium"
         android:orientation="horizontal" >
 
         <Button
@@ -56,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/esamanru_medium"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:text="입력하기" />
@@ -65,14 +69,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/esamanru_medium"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:text="병원찾기" />
 
         <Button
             android:id="@+id/btnAlarm"
+            android:fontFamily="@font/esamanru_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:text="알람" />
     </LinearLayout>
