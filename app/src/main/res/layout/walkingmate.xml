@@ -10,21 +10,34 @@
         android:id="@+id/btnWrite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="364dp"
+        android:layout_marginBottom="35dp"
         android:text="산책 메이트 찾기"
+        app:layout_constraintBottom_toTopOf="@+id/btnMap"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/btnMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="127dp"
         android:text="근처 공원 보기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnWrite"
         app:layout_constraintTop_toBottomOf="@+id/btnWrite" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="339dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnWrite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/go" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

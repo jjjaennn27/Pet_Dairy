@@ -34,12 +34,5 @@
         <item>세 캔</item>
     </string-array>
 
-    <string-array name = "성별">
-        <item>여자</item>
-        <item>남자</item>
-    </string-array>
-
-
-
 
 </resources>
