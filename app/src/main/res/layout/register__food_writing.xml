@@ -120,6 +120,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="332dp"
         android:fontFamily="@font/esamanru_medium"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/btnnow"
         app:layout_constraintHorizontal_bias="0.473"
@@ -130,10 +131,10 @@
 
     <Button
         android:id="@+id/btnnow"
-        android:layout_width="72dp"
-        android:layout_height="50dp"
-        android:text="Now"
+        android:layout_width="74dp"
+        android:layout_height="40dp"
         android:fontFamily="@font/esamanru_medium"
+        android:text="Now"
         app:layout_constraintBottom_toBottomOf="@+id/txt"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/txt"
