@@ -1274,7 +1274,9 @@ RecyclerAdapter_snack.java
 ### 2-6-1 산책 정보 입력 팝업창
 산책을 시킨 사람, 시킨 시간, 산책시간, 산책장소를 입력할 수있는 팝업팡을 구현하였다. 또 스피너 기능을 통하여 산책 시킨 사람을 등록한 별명을 통해 선택 입력할 수 있도록 구현을 하였고 시킨 시간은 NOW버튼을 통해 실시간 시간과 날짜를 입력 받을 수 있도록 하였다.   
 
- Register_Run.java
+ 
+   
+    Register_Run.java
     public class Register_Run extends AppCompatActivity {
 
     private final ArrayList<Walk> listRun = new ArrayList<>();
@@ -1554,7 +1556,7 @@ RecyclerAdapter_snack.java
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- walk에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
  
- RecyclerAdapter
+    RecyclerAdapter
     public class RecyclerAdapter_run extends RecyclerView.Adapter<RecyclerAdapter_run.ViewHolder> {
     ArrayList<Walk> listRun = new ArrayList<>();
     Context mContext;
@@ -1607,6 +1609,8 @@ RecyclerAdapter_snack.java
         }
     }
 }
+   
+   
 ***
 ### 2-6-3 산책 메이트
 산책 메이트 찾기 버튼을 누르면 산책 메이트 찾기 게시판이 뜨게 된다. 다른 사람이 등록한 정보를 보고 직접 메이트를 찾을 수 있으며 사용자가 게시판에 입력함으로써 메이트를 구할 수있다.
