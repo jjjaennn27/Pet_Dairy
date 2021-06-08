@@ -877,7 +877,7 @@ Register_Food.java
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- food에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.   
 RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
-
+  
     public class RecyclerAdapter_food extends RecyclerView.Adapter<RecyclerAdapter_food.ViewHolder> {
     ArrayList<Food> listFood = new ArrayList<>();
     Context mContext;
@@ -936,16 +936,610 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 ### 2-5-1 간식 정보 입력 팝업창
 준 사람, 준 시간, 간식 종류, 간식 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
 준 사람, 간식 종류은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록된 가족구성원을 선택 할 수 있다.
+
+public class Register_Snack extends AppCompatActivity {
+
+    private final ArrayList<Snack> listSnack = new ArrayList<>();
+    private RecyclerView recyclerView2;
+    private RecyclerAdapyer_snack adapter2;
+    private  RecyclerView.LayoutManager layoutManager2;
+
+    private FloatingActionButton add2, look2;
+    private DrawerLayout drawerLayout;
+    private View drawerView;
+
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.register__snack);
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerView = (View)findViewById(R.id.drawer);
+        recyclerView2 = (RecyclerView) findViewById(R.id.snack_list);
+        recyclerView2.setHasFixedSize(true);
+        layoutManager2 = new LinearLayoutManager(this);
+        ((LinearLayoutManager) layoutManager2).setReverseLayout(true);
+        ((LinearLayoutManager) layoutManager2).setStackFromEnd(true);
+
+        add2 = findViewById(R.id.snackButton2);
+        look2 = findViewById(R.id.snackButton);
+
+        recyclerView2.setLayoutManager(layoutManager2);
+        adapter2 = new RecyclerAdapyer_snack(listSnack);
+
+        recyclerView2.setAdapter(adapter2);
+
+        //파이어베이스 연결
+        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
+        DatabaseReference rootRef = firebaseDatabase.getReference();
+
+        //네비게이션 연결
+        Button Btn1 = (Button)findViewById(R.id.Btn1);
+        Btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_f =new Intent(Register_Snack.this,Register_Food.class);
+                startActivity(intent_f);
+            }
+        });
+        Button Btn2 = (Button)findViewById(R.id.Btn2);
+        Btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_s =new Intent(Register_Snack.this,Register_Snack.class);
+                startActivity(intent_s);
+            }
+        });
+        Button Btn3 = (Button)findViewById(R.id.Btn3);
+        Btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_h =new Intent(Register_Snack.this,Register_Health.class);
+                startActivity(intent_h);
+            }
+        });
+        Button Btn4 = (Button)findViewById(R.id.Btn4);
+        Btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_r =new Intent(Register_Snack.this,Register_Run.class);
+                startActivity(intent_r);
+            }
+        });
+
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        
+        // + 버튼 클릭 시 입력 팝업 창 생성
+        add2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(Register_Snack.this);
+                View view2 = LayoutInflater.from(Register_Snack.this).inflate(R.layout.register__snack_writing, null, false);
+                builder2.setView(view2);
+
+                final Button btnDate = view2.findViewById(R.id.btndate);
+                final ImageButton upload2 = view2.findViewById(R.id.up);
+
+                final Spinner Give = view2.findViewById(R.id.spnGive);
+                final Spinner Type = view2.findViewById(R.id.spnType);
+                final TextView Date = view2.findViewById(R.id.txtdate);
+                final EditText Many  = view2.findViewById(R.id.txtMany);
+
+                // 팝업창에 나타낼 스피너 연결
+                setNameSpinner(Give);
+                ArrayAdapter type = ArrayAdapter.createFromResource(Register_Snack.this, R.array.종류, android.R.layout.simple_spinner_dropdown_item);
+                type.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                Type.setAdapter(type);
+
+                Type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+
+                btnDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Date.setText(getTime());
+                    }
+                });
+
+                // 위에 내용들을 가진 팝업 창 생성
+                final AlertDialog dialog2 = builder2.create();
+                
+                // 저장 버튼 클릭 시 파이어베이스에 데이터 저장
+                upload2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                        DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
+                        DatabaseReference snackRef = rootRef.child("snack");
+
+                        String strGive = Give.getSelectedItem().toString();
+                        String strType = Type.getSelectedItem().toString();
+                        String strDate = Date.getText().toString();
+                        String strMany = Many.getText().toString();
+
+                        Snack snack = new Snack(strGive,strType, strMany, strDate);
+                        if (strGive.length() == 0) return;
+
+                        snackRef.push().setValue(snack);
+
+                        snackRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                StringBuffer buffer = new StringBuffer();
+                                listSnack.clear();
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    Snack snack = snapshot.getValue(Snack.class);
+                                    String strGive = snack.getGive();
+                                    String strType = snack.getType();
+                                    String strDate= snack.getDate();
+                                    String strMany = snack.getMany();
+                                    buffer.append(listSnack);
+
+                                    listSnack.add(snack);
+                                }
+                                adapter2.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                        dialog2.dismiss(); // 팝업 창 닫기
+                        Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog2.show(); // 팝업 창 띄우기
+            }
+        });
+
+        // 눈 버튼 클릭시 파이어베이스에 저장된 정보들 보여주기
+        look2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
+                DatabaseReference snackRef = rootRef.child("snack");
+
+                snackRef.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        StringBuffer buffer = new StringBuffer();
+                        listSnack.clear();
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Snack snack = snapshot.getValue(Snack.class);
+                            String strGive = snack.getGive();
+                            String strType = snack.getType();
+                            String strDate= snack.getDate();
+                            String strMany = snack.getMany();
+                            buffer.append(listSnack);
+
+                            listSnack.add(snack);
+                        }
+                        adapter2.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+            }
+        });
+
+    }
+    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerStateChanged(int newState) {
+        }
+    };
+
+    private void setNameSpinner(Spinner nameSpinner) {
+        Pet_Database.getPersons(dataSnapshot -> {
+            List<String> persons = new ArrayList<>();
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Person person = snapshot.getValue(Person.class);
+                if (person != null) {
+                    persons.add(person.name);
+                }
+            }
+
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_dropdown_item, persons);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(spinnerArrayAdapter);
+        });
+    }
+
+    // 현재 시간을 가져오기 위함 함수
+    private String  getTime() {
+        long mNow = System.currentTimeMillis();
+        Date mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void sampleMethod() {
+    }
+}
 ***
 ### 2-5-2 간식 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care-snack에저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
+public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_snack.ViewHolder> {
+    ArrayList<Snack> listSnack = new ArrayList<>();
+    Context mContext;
+
+    public RecyclerAdapyer_snack(ArrayList<Snack> bundle){
+        this.listSnack = bundle;
+    }
 
 
-앞서 저장한 가족정보를 스피너로 띄워 간식제공한사람을 입력하고, 간식준 시간을 입력할수있으며 (now 버튼을 클릭하여 현재시간을 입력받을수 있는 기능도 넣었다.)
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // 리스트 출력 레이아웃 연결
+        Context mContext  = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.list_item_snack, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // 연결된 레이아웃에 저장된 밥 정보 holder에 연결
+        Snack snack = listSnack.get(position);
+
+        holder.GiveView.setText(snack.getGive());
+        holder.TypeView.setText(snack.getType());
+        holder.DateView.setText(snack.getDate());
+        holder.ManyView.setText(snack.getMany());
+    }
+
+    @Override
+    public int getItemCount() {
+        return listSnack.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView GiveView;
+        TextView TypeView;
+        TextView DateView;
+        TextView ManyView;
+
+        public ViewHolder(@NonNull View View) {
+            // 리스트를 출력하기 위해 레이아웃에 연결
+            super(View);
+            GiveView = View.findViewById(R.id.list_Give);
+            TypeView = View.findViewById(R.id.list_Type);
+            DateView = View.findViewById(R.id.list_Date);
+            ManyView = View.findViewById(R.id.list_Many);
+        }
+    }
+}
+
+ ![image](https://user-images.githubusercontent.com/79950103/121155748-0e3bc080-c883-11eb-9ad0-23c730a256ab.png)
+ 
+앞서 저장한 가족정보를 스피너로 띄워 간식제공한사람을 입력하고, 간식준 시간을 입력할수있으며   
+(now 버튼을 클릭하여 현재시간을 입력받을수 있는 기능도 넣었다.)
+ 
 ## 2-6 기능 3 - 산책
 ### 2-6-1 산책 정보 입력 팝업창
-산책을 시킨 사람, 시킨 시간, 산책시간, 산책장소를 입력할 수있는 팝업팡을 구현하였다. 또 스피너 기능을 통하여 산책 시킨 사람을 등록한 별명을 통해 선택 입력할 수 있도록 구현을 하였고 시킨 시간은 NOW버튼을 통해 실시간 시간과 날짜를 입력 받을 수 있도록 하였다.
+산책을 시킨 사람, 시킨 시간, 산책시간, 산책장소를 입력할 수있는 팝업팡을 구현하였다. 또 스피너 기능을 통하여 산책 시킨 사람을 등록한 별명을 통해 선택 입력할 수 있도록 구현을 하였고 시킨 시간은 NOW버튼을 통해 실시간 시간과 날짜를 입력 받을 수 있도록 하였다.   
+   public class Register_Run extends AppCompatActivity {
+
+    private final ArrayList<Walk> listRun = new ArrayList<>();
+    private  RecyclerView recyclerView2;
+    private RecyclerAdapter_run adapter2;
+    private  RecyclerView.LayoutManager layoutManager2;
+    private DrawerLayout drawerLayout;
+    private View drawerView;
+    private FloatingActionButton add2, look2;
+
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.register__run);
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerView = (View)findViewById(R.id.drawer);
+        recyclerView2 = (RecyclerView) findViewById(R.id.run_list);
+        recyclerView2.setHasFixedSize(true);
+        layoutManager2 = new LinearLayoutManager(this);
+        ((LinearLayoutManager) layoutManager2).setReverseLayout(true);
+        ((LinearLayoutManager) layoutManager2).setStackFromEnd(true);
+
+        add2 = findViewById(R.id.runButton2);
+        look2 = findViewById(R.id.runButton);
+
+        recyclerView2.setLayoutManager(layoutManager2);
+        adapter2 = new RecyclerAdapter_run(listRun);
+
+        recyclerView2.setAdapter(adapter2);
+
+        //파이어베이스 견결
+        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
+        DatabaseReference rootRef = firebaseDatabase.getReference();
+        
+        //네비게이션 연결
+        Button Btn1 = (Button)findViewById(R.id.Btn1);
+        Btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_f =new Intent(Register_Run.this,Register_Food.class);
+                startActivity(intent_f);
+            }
+        });
+        Button Btn2 = (Button)findViewById(R.id.Btn2);
+        Btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_s =new Intent(Register_Run.this,Register_Snack.class);
+                startActivity(intent_s);
+            }
+        });
+        Button Btn3 = (Button)findViewById(R.id.Btn3);
+        Btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_h =new Intent(Register_Run.this,Register_Health.class);
+                startActivity(intent_h);
+            }
+        });
+        Button Btn4 = (Button)findViewById(R.id.Btn4);
+        Btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_r =new Intent(Register_Run.this,Register_Run.class);
+                startActivity(intent_r);
+            }
+        });
+
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        //DatabaseReference walkRef = rootRef.child("walk");
+
+        // + 버튼 클릭 시 입력 팝업 창 생성
+        add2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(Register_Run.this);
+                View view2 = LayoutInflater.from(Register_Run.this).inflate(R.layout.register__run_writing, null, false);
+                builder2.setView(view2);
+                
+                final Button btnnow = view2.findViewById(R.id.btnnow);
+                final Button btn_mate = view2.findViewById(R.id.btn_mate);
+                final ImageButton upload2 = view2.findViewById(R.id.up);
+
+                final TextView Now = view2.findViewById(R.id.txtNow);
+                final EditText Place = view2.findViewById(R.id.txtplace);
+                final Spinner spinner1 = view2.findViewById(R.id.spinner1);
+                final Spinner spinner2 = view2.findViewById(R.id.spinner2);
+                
+                // 팝업창에 나타낼 스피너 연결
+                setNameSpinner(spinner1);
+                
+                ArrayAdapter time = ArrayAdapter.createFromResource(Register_Run.this, R.array.time, android.R.layout.simple_spinner_dropdown_item);
+                time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner2.setAdapter(time);
+
+                spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) { }
+                });
+
+                btnnow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Now.setText(getTime());
+                    }
+                });
+
+                btn_mate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), WalkingMate.class);
+                        startActivity(intent);
+                    }
+                });
+
+                //위에 내용들을 가진 팝업 창 생성
+                final AlertDialog dialog2 = builder2.create();
+
+                //저장 버튼 클릭 시 파이어베이스에 데이터 저장
+                upload2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        //산책 정보 저장
+                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                        DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
+                        DatabaseReference walkRef = rootRef.child("walk");
+
+                        String strTime = spinner2.getSelectedItem().toString(); //시간
+                        String strPlace = Place.getText().toString(); //장소
+                        String strPerson = spinner1.getSelectedItem().toString(); //사람
+                        String strDate = Now.getText().toString();  //현재 날짜, 시간
+
+
+                        Walk walk = new Walk(strTime, strPlace, strPerson, strDate);
+                        if (strPerson.length() == 0) return;
+
+                        walkRef.push().setValue(walk);
+
+                        walkRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                StringBuffer buffer = new StringBuffer();
+                                listRun.clear();
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    Walk walk = snapshot.getValue(Walk.class);
+                                    String strTime = walk.getTime();
+                                    String strPlace = walk.getPlace();
+                                    String strPerson = walk.getPerson();
+                                    String strDate = walk.getNow();
+                                    buffer.append(listRun);
+
+                                    listRun.add(walk);
+                                }
+                                adapter2.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                        dialog2.dismiss(); //팝업 창 닫기
+                        Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog2.show(); //팝업 창 띄우기
+            }
+        });
+
+        //눈 버튼 클릭시 파이어베이스에 저장된 저보들 보여주기 
+        look2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
+                DatabaseReference walkRef = rootRef.child("walk");
+
+                walkRef.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        StringBuffer buffer = new StringBuffer();
+                        listRun.clear();
+                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            Walk walk = snapshot.getValue(Walk.class);
+
+                            String strTime = walk.getTime();
+                            String strPlace = walk.getPlace();
+                            String strPerson = walk.getPerson();
+                            String strDate = walk.getNow();
+
+                            buffer.append(listRun);
+
+                            listRun.add(walk);
+                        }
+                        adapter2.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+            }
+        });
+    }
+    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerStateChanged(int newState) {
+        }
+    };
+
+    private void setNameSpinner(Spinner nameSpinner) {
+        Pet_Database.getPersons(dataSnapshot -> {
+            List<String> persons = new ArrayList<>();
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Person person = snapshot.getValue(Person.class);
+                if (person != null) {
+                    persons.add(person.name);
+                }
+            }
+
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_dropdown_item, persons);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(spinnerArrayAdapter);
+        });
+    }
+
+    // 현재 시간을 가져오기 위함 함수
+    private String  getTime() {
+        long mNow = System.currentTimeMillis();
+        Date mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void sampleMethod() {
+    }
+}
 ***
 ### 2-6-2 산책 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- walk에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
