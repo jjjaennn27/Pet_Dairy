@@ -125,7 +125,7 @@ Register.java 생성
         this.password = password;
     }
     }
-![image](https://user-images.githubusercontent.com/79950380/121204823-237c1380-c8b2-11eb-951b-b0dd350a4ad9.png)
+![image](https://user-images.githubusercontent.com/79950380/121208194-d9e0f800-c8b4-11eb-8dac-a9cd04eda8e3.png)
 
 #### 2-1-3 로그인
  회원가입을 완료 되었다면 로그인을 할 수 있다. 파이어베이스에 있는 정보와 입력된 정보를 비교하여 등록되어있다면 로그인 성공 메시지가 뜨고 메인화면으로들어간다. 아이디나 비밀번호가 일치하지 않거나 등록되지 않은 아이디라면 로그인 실패 메시지가 뜨면서 화면이 넘어가지 않는다.   
@@ -182,7 +182,9 @@ Register.java 생성
         });
     }
     }
-    
+![image](https://user-images.githubusercontent.com/79950380/121208285-e9f8d780-c8b4-11eb-9f9d-5083d2a5cc73.png)
+
+
 ***
 ## 2-2 가족 연동
 ### 2-2-1 가족 구성원 프로필 입력 및 출력
