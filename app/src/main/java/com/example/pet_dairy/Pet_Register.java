@@ -11,10 +11,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -49,7 +52,8 @@ public class Pet_Register extends AppCompatActivity {
     private Button btnCamera, btnGallery, btnSave;
     private ImageView animalImg;
     private ProgressBar progressBar;
-    private EditText Name , Kind,birthday;
+    private EditText Name , Kind, birthday;
+    private Spinner spinnergender;
 
 
     final  int CAMERA_REQUEST_CODE = 1;
@@ -62,6 +66,21 @@ public class Pet_Register extends AppCompatActivity {
         Name = findViewById(R.id.editTextTextPersonName);
         Kind = findViewById(R.id.editTextTextPersonName5);
         birthday = findViewById(R.id.editTextTextPersonName2);
+        spinnergender = findViewById(R.id.spinnergender);
+
+
+        // 성별 스피너
+        ArrayAdapter time = ArrayAdapter.createFromResource(Pet_Register.this, R.array.gender, android.R.layout.simple_spinner_dropdown_item);
+        time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnergender.setAdapter(time);
+
+        spinnergender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
 
 
         btnCamera = (Button)findViewById(R.id.btnCamera);
@@ -97,8 +116,9 @@ public class Pet_Register extends AppCompatActivity {
             String name = Name.getText().toString();
             String kind = Kind.getText().toString();
             String Birthday = birthday.getText().toString();
+            String Spinnergender = spinnergender.getSelectedItem().toString();
 
-            Pet pet = new Pet(name, kind,Birthday);
+            Pet pet = new Pet(name, kind, Birthday, Spinnergender);
 
             DatabaseReference PetRef = rootRef.child("pet");
             PetRef.push().setValue(pet);

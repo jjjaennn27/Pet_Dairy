@@ -5,13 +5,13 @@ public class Pet {
     String name;
     String kind;
     String Birthday;
-    String Genderboy;
-    String Gendergirl;
+    String Spinnergender;
 
-    public Pet(String name, String kind, String birthday) {
+    public Pet(String name, String kind, String birthday, String spinnergender) {
         this.name = name;
         this.kind = kind;
         this.Birthday = birthday;
+        this.Spinnergender = spinnergender;
 
 
     }
@@ -27,6 +27,7 @@ public class Pet {
         this.name = name;
     }
 
+
     public String getkind() {
         return kind;
     }
@@ -35,12 +36,22 @@ public class Pet {
         this.kind = kind;
     }
 
+
     public  String getbirthday() {
         return Birthday;
     }
 
     public  void setbirthday(String birthday) {
         this.Birthday = birthday;
+    }
+
+
+    public String getSpinnergender() {
+        return Spinnergender;
+    }
+
+    public void setSpinnergender(String spinnergender) {
+        this.Spinnergender = spinnergender;
     }
 
 

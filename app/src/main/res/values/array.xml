@@ -34,5 +34,10 @@
         <item>세 캔</item>
     </string-array>
 
+    <string-array name = "gender">
+        <item>남</item>
+        <item>여</item>
+    </string-array>
+
 
 </resources>

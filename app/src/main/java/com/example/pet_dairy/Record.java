@@ -74,7 +74,7 @@ public class Record extends AppCompatActivity {
                             String IdText5 = record_h.getIdText5();
 
                             buffer.append("몸무게 : " + IdText1 + "\n" + "배변/구토 : " + IdText2 + "\n" + "투약기록 : " +
-                                    IdText3 + "\n +" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
+                                    IdText3 + "\n" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
                         }
                         tv2.setText(buffer);
                     }
