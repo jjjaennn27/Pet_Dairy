@@ -327,6 +327,25 @@ Pet_Database.java
     }
     }
  
+Register_Food.java,  Register_Run.java, Register_Snack
+    private void setNameSpinner(Spinner nameSpinner) { //
+        Pet_Database.getPersons(dataSnapshot -> {
+            List<String> persons = new ArrayList<>();
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Person person = snapshot.getValue(Person.class);
+                if (person != null) {
+                    persons.add(person.name);
+                }
+            }
+
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_dropdown_item, persons);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(spinnerArrayAdapter);
+        });
+    }
+    
+    setNameSpinner(Person);
 
 
 
