@@ -1276,7 +1276,8 @@ RecyclerAdapter_snack.java
 
  
    
-    Register_Run.java
+   Register_Run.java
+    
     public class Register_Run extends AppCompatActivity {
 
     private final ArrayList<Walk> listRun = new ArrayList<>();
@@ -1556,7 +1557,8 @@ RecyclerAdapter_snack.java
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- walk에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
  
-    RecyclerAdapter
+   RecyclerAdapter
+    
     public class RecyclerAdapter_run extends RecyclerView.Adapter<RecyclerAdapter_run.ViewHolder> {
     ArrayList<Walk> listRun = new ArrayList<>();
     Context mContext;
