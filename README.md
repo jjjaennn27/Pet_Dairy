@@ -327,8 +327,9 @@ Pet_Database.java
     }
     }
  
-Register_Food.java,  Register_Run.java, Register_Snack
-    private void setNameSpinner(Spinner nameSpinner) { //
+Register_Food.java,  Register_Run.java, Register_Snack.java 파일에 넣어준다.
+
+    private void setNameSpinner(Spinner nameSpinner) { //파이어베이스에 저장된 가족이름이 있다면 불러옴.
         Pet_Database.getPersons(dataSnapshot -> {
             List<String> persons = new ArrayList<>();
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -338,16 +339,14 @@ Register_Food.java,  Register_Run.java, Register_Snack
                 }
             }
 
-            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>( // 불러온 데이터를 스피너 값에 넣어줌.
                     this, android.R.layout.simple_spinner_dropdown_item, persons);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             nameSpinner.setAdapter(spinnerArrayAdapter);
         });
     }
     
-    setNameSpinner(Person);
-
-
+    setNameSpinner(Person); //스피너에 저장된 스피너값 연결
 
 ## 2-3 동물 등록 
 ### 2-3-1 동물 사진 등록 및 메인 화면에 불러오기
