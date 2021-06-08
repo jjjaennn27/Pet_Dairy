@@ -49,7 +49,7 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
         setContentView(R.layout.register);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Family login");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Family login"); //파이어베이스에 회원가입 정보 저장
 
         mEtEmail = findViewById(R.id.et_email);
         mEtpwd = findViewById(R.id.et_pwd);
@@ -78,17 +78,21 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
                             mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
 
                             Toast.makeText(Register.this,"회원가입에 성공하셨습니다.",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Register.this,Login.class);
+                            Intent intent = new Intent(Register.this,Login.class); //회원가입 성공시 로그인 화면 전환 
                             startActivity(intent);
                         }
                         else{
                             Toast.makeText(Register.this,"회원가입에 실패하셨습니다.",Toast.LENGTH_SHORT).show();
+                            //회원가입 실패시 토스트 메시지 출력
                         }
                     }
                 });
             }
         });
     }
-}  
+    }
+
+![image](https://user-images.githubusercontent.com/51051548/121134546-79c76300-c86e-11eb-8771-622d1352e113.png)
+
 
 
