@@ -930,6 +930,7 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
         }
     }
     }
+![image](https://user-images.githubusercontent.com/51051548/121146422-de88ba80-c87a-11eb-88fe-07e1bc571b62.png)
 
 ## 2-5 기능 2 - 간식
 ### 2-5-1 간식 정보 입력 팝업창
