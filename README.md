@@ -937,7 +937,8 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 준 사람, 준 시간, 간식 종류, 간식 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
 준 사람, 간식 종류은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록된 가족구성원을 선택 할 수 있다.
 
-public class Register_Snack extends AppCompatActivity {
+  
+    public class Register_Snack extends AppCompatActivity {
 
     private final ArrayList<Snack> listSnack = new ArrayList<>();
     private RecyclerView recyclerView2;
@@ -1204,7 +1205,10 @@ public class Register_Snack extends AppCompatActivity {
 ### 2-5-2 간식 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care-snack에저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
-public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_snack.ViewHolder> {
+
+
+   
+    public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_snack.ViewHolder> {
     ArrayList<Snack> listSnack = new ArrayList<>();
     Context mContext;
 
