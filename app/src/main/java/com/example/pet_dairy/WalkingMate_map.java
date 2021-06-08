@@ -572,7 +572,7 @@ public class WalkingMate_map extends AppCompatActivity
 
         new NRPlaces.Builder()
                 .listener(WalkingMate_map.this)
-                .key("AIzaSyDgXkkVZxZ2u8nOAhtGNjVGFlFkX46zs4M")
+                .key("AIzaSyCRa8QSMhoE9PkQFir0A4CMnUgNob2t5W8")
                 .latlng(location.latitude, location.longitude)//현재 위치
                 .radius(2000) //2000 미터 내에서 검색
                 .type(PlaceType.PARK) //공원
