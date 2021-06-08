@@ -875,7 +875,7 @@ Register_Food.java
 ***
 ### 2-4-2 밥 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- food에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
-눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
+눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.   
 RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 
     public class RecyclerAdapter_food extends RecyclerView.Adapter<RecyclerAdapter_food.ViewHolder> {
