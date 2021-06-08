@@ -1,7 +1,7 @@
 # 반려동물 앱 "부탁해, 집사 !" 🐕 🐈
 ## 1.소개
 ### 1-1 개발배경
-간식으로 인한 비만 또는 산책을 안함으로써 생기는 배변 장애 등 반려동물에게 흔히 나타나는 건강문제이다. 이를 해결하기 위해서는 가족의 의사소통과 무한한 관심이 중요하다. 그러나, 반려동물을 키우는 입장에서 혼자가 아닌 가족 구성원과 함께 관심을 가지고 모두가 케어해야 한다고 생각한다. 이러한 문제점을 토대로 기존 어플을 조사해보니 반려동물에 대한 어플 중 아직까지 가족들과 함께 공유할 수 있는 앱이 존재하지 않은 것을 확인하였다. 그 후 반려동물에 관한 앱을 개발함으로써 많은 집사들에게 활용적이게 사용할 수 있는 앱이 될 것 같아 주제를 선정하였다.
+간식으로 인한 비만 또는 산책을 안함으로써 생기는 배변 장애는 반려동물에게 흔히 나타나는 건강문제이다. 이를 해결하기 위해서는 가족의 의사소통과 무한한 관심이 중요하다. 그러나, 반려동물을 키우는 입장에서 혼자가 아닌 가족 구성원과 함께 관심을 가지고 모두가 케어해야 한다고 생각한다. 이러한 문제점을 토대로 기존 어플을 조사해보니 반려동물에 대한 어플 중 아직까지 가족들과 함께 공유할 수 있는 앱이 존재하지 않은 것을 확인하였다. 그 후 반려동물에 관한 앱을 개발함으로써 많은 집사들에게 활용적이게 사용할 수 있는 앱이 될 것 같아 주제를 선정하였다.
 ***
 ### 1-2 사용한 기능
 부탁해 집사! 서비스 애플리케이션은 모든 가족 구성원끼리 반려동물을 케어 할 수 있게 가족연동을 통하여 반려동물들의 밥, 간식, 건강, 산책 등의 정보를 실시간으로 공유할 수 있다. 또한 google맵과 연동을 통하여 내 주변에 공원 위치와 병원 위치를 알 수 있게 함으로서 모든 집사들이 책임감을 가지고 반려동물을 편리하게 서비스를 제공 하는 것을 목표로 구성하였다.
@@ -351,7 +351,199 @@ Register_Food.java,  Register_Run.java, Register_Snack.java 파일에 넣어준�
 ## 2-3 동물 등록 
 ### 2-3-1 동물 사진 등록 및 메인 화면에 불러오기
 동물의 사진을 갤러리를 통해 직접 가져오거나 사진 촬영을 통해 등록할 수 있다.
-그밖의 성별과 이름, 품종, 생년월일을 입력하여 등록을 완성한다. 저장이 완료 되었다면 등록된 사진이 메인화면에 출력된다.
+그밖의 성별과 이름, 품종, 생년월일을 입력하여 등록을 완성한다. 저장이 완료 되었다면 등록된 사진이 메인화면에 출력된다.   
+Pet_Register.java 
+
+    public class Pet_Register extends AppCompatActivity {
+    private Button btnCamera, btnGallery, btnSave;
+    private ImageView animalImg;
+    private ProgressBar progressBar;
+    private EditText Name , Kind,birthday;
+
+    final  int CAMERA_REQUEST_CODE = 1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.pet__register);
+        Name = findViewById(R.id.editTextTextPersonName);
+        Kind = findViewById(R.id.editTextTextPersonName5);
+        birthday = findViewById(R.id.editTextTextPersonName2);
+
+
+        btnCamera = (Button)findViewById(R.id.btnCamera);
+        btnGallery = (Button)findViewById(R.id.btnGallery);
+        animalImg = (ImageView)findViewById(R.id.Animal_img);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        btnSave = (Button) findViewById(R.id.btn_save);
+        btnCamera.setOnClickListener(new View.OnClickListener(){
+            // 카메라 연결
+            @Override
+            public void onClick(View v) {
+                if(IsCameraAvailable()){
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                    startActivityForResult(intent, CAMERA_REQUEST_CODE);
+                }
+            }
+        });
+
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            //갤러리 연결
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, 2);
+            }
+        });
+
+        btnSave.setOnClickListener(view -> {
+            //파이어베이스에 동물 정보 저장
+            FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
+            DatabaseReference rootRef= firebaseDatabase.getReference("Family Pet");
+            String name = Name.getText().toString();
+            String kind = Kind.getText().toString();
+            String Birthday = birthday.getText().toString();
+
+            Pet pet = new Pet(name, kind,Birthday);
+
+            DatabaseReference PetRef = rootRef.child("pet");
+            PetRef.push().setValue(pet);
+
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) animalImg.getDrawable();
+            if (bitmapDrawable == null) {
+                return;
+            }
+
+            Bitmap bitmap = bitmapDrawable.getBitmap();
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos) ;
+            uploadImage(bos.toByteArray());
+
+        });
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST_CODE) {
+            Bundle bundle = data.getExtras();
+            Bitmap bitmap = (Bitmap) bundle.get("data");
+            animalImg.setImageBitmap(bitmap);
+        } else if (requestCode == 2) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                try {
+                    // 선택한 이미지에서 비트맵 생성
+                    InputStream in = getContentResolver().openInputStream(data.getData());
+                    Bitmap img = BitmapFactory.decodeStream(in);
+                    in.close();
+                    // 이미지 표시
+                    animalImg.setImageBitmap(img);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void uploadImage(byte[] bytes) {
+        //카메라와 갤러리에서 가져오기 성공 시 이미지뷰에 넣기
+        progressBar.setVisibility(View.VISIBLE);
+        PetStorage.uploadPetImage(bytes, onProgress -> {
+            double value = (100.0 * onProgress.getBytesTransferred()) / onProgress.getTotalByteCount();
+            int progress = (int) Math.round(value);
+            progressBar.setProgress(progress);
+        }, onSuccess -> {
+            Toast.makeText(this, "이미지 등록 성공", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+        }, onFailure -> {
+            Toast.makeText(this, "이미지 등록 실패", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+        });
+    }
+
+PetStorage 함수 - 동물 사진 파이어베이스 저장
+
+    public class PetStorage {
+    //파이어베이스 스토리지에 이미지 저장
+    private static final String TAG = "PetStorage";
+
+    public static void uploadPetImage(byte[] data,
+                                      OnProgressListener<UploadTask.TaskSnapshot> onProgressListener,
+                                      OnSuccessListener<UploadTask.TaskSnapshot> onSuccessListener,
+                                      OnFailureListener onFailureListener) {
+        String uid = getCurrentUserUid();
+        if (uid == null) {
+            return;
+        }
+
+        StorageReference petImage = getStorageReference(uid);
+
+        // async 비동기적으로
+        UploadTask uploadTask = petImage.putBytes(data);
+        uploadTask.addOnProgressListener(onProgressListener)
+                .addOnSuccessListener(onSuccessListener)
+                .addOnFailureListener(onFailureListener);
+    }
+
+    public static void getPetImageUrl(OnSuccessListener<Uri> onSuccessListener, OnFailureListener onFailureListener) {
+        //이미지 가져오기 성공 시 파이에베이스 스토리지에 올리기, 실패시 기본 이미지
+        String uid = getCurrentUserUid();
+        if (uid == null) {
+            return;
+        }
+
+        StorageReference petImage = getStorageReference(uid);
+        // async 비동기
+        petImage.getDownloadUrl()
+                .addOnSuccessListener(onSuccessListener)
+                .addOnFailureListener(onFailureListener);
+    }
+
+    private static StorageReference getStorageReference(String uid) {
+        //가져온 이미지 url로 바꿔줌.
+        final FirebaseStorage storage = FirebaseStorage.getInstance();
+        //storageRef -> gs://project-pet-ba709.appspot.com/
+        final StorageReference storageRef = storage.getReference();
+
+        // userFolder -> gs://project-pet-ba709.appspot.com/uid/
+        StorageReference userFolder = storageRef.child(uid);
+
+        // return -> gs://project-pet-ba709.appspot.com/uid/petImage
+        return userFolder.child("petImage");
+    }
+
+    @Nullable
+    private static String getCurrentUserUid() {
+        //파이어베이스에서 사용자 id 아이디 가져오기
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            return null;
+        }
+
+        return user.getUid();
+    }
+    }
+    
+ Pet_Main.java 에 이미지 불러오기
+ 
+      private void postPetImage() {
+        //성공시 저장된 이미지 불러오기
+        PetStorage.getPetImageUrl(uri -> {
+            // 외부 라이브러리 Glide를 사용해서 Firebase PetStorage의 이미지 로딩
+            Glide.with(this)
+                    .load(uri)
+                    .addListener(getRequestListener())
+                    .into(petImage);
+        }, exception -> {
+            petImage.setImageDrawable(ResourcesCompat.getDrawable(this.getResources(), R.drawable.dog, this.getTheme()));
+            progressBar.setVisibility(View.GONE);
+        });
+    }
 ### 2-3-2 동물 정보 저장
 동물 정보 저장 완료후 메인으로 왔을때 등록한 동물의 이미지가 뜬다면 동물 등록에 성공하였다. 동물의 이미지와 함께 아래에는 동물의 건강, 밥, 산책, 간식의 정보를 등록할 수 있는 튼이 뜨고 이를 통해 정보를 작성할 수 있는 페이지로 이동할 수 있다.
 
