@@ -937,7 +937,10 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 준 사람, 준 시간, 간식 종류, 간식 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
 준 사람, 간식 종류은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록된 가족구성원을 선택 할 수 있다.
 
-public class Register_Snack extends AppCompatActivity {
+Register_Snack.java
+
+
+    public class Register_Snack extends AppCompatActivity {
 
     private final ArrayList<Snack> listSnack = new ArrayList<>();
     private RecyclerView recyclerView2;
@@ -1204,7 +1207,11 @@ public class Register_Snack extends AppCompatActivity {
 ### 2-5-2 간식 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care-snack에저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
-public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_snack.ViewHolder> {
+
+RecyclerAdapter_snack.java
+
+
+    public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_snack.ViewHolder> {
     ArrayList<Snack> listSnack = new ArrayList<>();
     Context mContext;
 
@@ -1266,7 +1273,9 @@ public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_
 ## 2-6 기능 3 - 산책
 ### 2-6-1 산책 정보 입력 팝업창
 산책을 시킨 사람, 시킨 시간, 산책시간, 산책장소를 입력할 수있는 팝업팡을 구현하였다. 또 스피너 기능을 통하여 산책 시킨 사람을 등록한 별명을 통해 선택 입력할 수 있도록 구현을 하였고 시킨 시간은 NOW버튼을 통해 실시간 시간과 날짜를 입력 받을 수 있도록 하였다.   
-   public class Register_Run extends AppCompatActivity {
+
+ Register_Run.java
+    public class Register_Run extends AppCompatActivity {
 
     private final ArrayList<Walk> listRun = new ArrayList<>();
     private  RecyclerView recyclerView2;
@@ -1544,8 +1553,8 @@ public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_
 ### 2-6-2 산책 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- walk에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
-
  
+ RecyclerAdapter
     public class RecyclerAdapter_run extends RecyclerView.Adapter<RecyclerAdapter_run.ViewHolder> {
     ArrayList<Walk> listRun = new ArrayList<>();
     Context mContext;
@@ -1553,7 +1562,6 @@ public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_
     public RecyclerAdapter_run(ArrayList<Walk> bundle){
         this.listRun = bundle;
     } // 산책 정보 어댑터에 연결
-
 
     @NonNull
     @Override
@@ -1606,6 +1614,8 @@ public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_
 #### #2-6-3-1 산책 메이트 정보 입력 팝업창
 산책장소, 예상시간, 강아지종, 카카오톡ID를 + 버튼 을 통해 입력하는 팝업창을 구현하였다. 예상 시간은 스피너 통해 선택 할 수 있다. 
    
+ WalingMate_Board.java
+ 
     public class WalkingMate_Board extends AppCompatActivity {
 
     private final ArrayList<Board> listBundle = new ArrayList<>();
@@ -1754,7 +1764,9 @@ public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_
 ***
 ##### 2-6-3-2 산책 메이트 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 WalkingBoards에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
-눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
+눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.   
+ 
+ RecyclerAdapter_run.java 
  
     public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     ArrayList<Board> listBundle = new ArrayList<>();
