@@ -35,7 +35,7 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
 
 #### 2-1-2 회원가입
 이메일로 회원가입을 진행할 수 있도록 하였다. 사용자의 이메일, 비밀번호를 입력하여 저장하여, 파이어베이스에 정보가 올라갈 수 있고도록 만들었다.
-
+Register.java 생성
 
     public class Register extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
@@ -92,7 +92,96 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
     }
     }
 
+ UserAccount.java - 회원가입 정보을 저장해둘 class 생성
+  
+    public class UserAccount{
+    private String idToken; // Firebase Uid( 고유토큰정보)
+    private String emailId;
+    private String password;
+    public UserAccount() {    }
+
+    public String getIdToken() {
+        return idToken;
+    }
+
+    public void setIdToken(String idToken) {
+        this.idToken = idToken;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+ }
 ![image](https://user-images.githubusercontent.com/51051548/121134546-79c76300-c86e-11eb-8771-622d1352e113.png)
+#### 2-1-3 로그인
+ 회원가입을 완료 되었다면 로그인을 할 수 있다. 파이어베이스에 있는 정보와 입력된 정보를 비교하여 등록되어있다면 로그인 성공 메시지가 뜨고 메인화면으로들어간다. 아이디나 비밀번호가 일치하지 않거나 등록되지 않은 아이디라면 로그인 실패 메시지가 뜨면서 화면이 넘어가지 않는다.
+Login.java
+
+    public class Login extends AppCompatActivity{
+    private FirebaseAuth mFirebaseAuth; //파이어 베이스 인증
+    private DatabaseReference mDatabaseRef; //실시간 데이터 베이스
+    private EditText mEtEmail,mEtpwd;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Family login");
+
+        mEtEmail = findViewById(R.id.et_email);
+        mEtpwd = findViewById(R.id.et_pwd);
+
+        Button btn_login = findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //로그인요청
+                String strEmail = mEtEmail.getText().toString();
+                String strPwd = mEtpwd.getText().toString();
+                //파이어베이스 등록된 아이디 & 비밀번호 확인
+                mFirebaseAuth.signInWithEmailAndPassword(strEmail,strPwd).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            //로그인 성공
+                            Intent intent = new Intent(Login.this,Family_Register.class);
+                            startActivity(intent);
+                            finish(); //현 엑티비티 파괴
+                        }else{
+                            Toast.makeText(Login.this,"로그인 실패",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+        Button btn_register = findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //회원가입화면으로 이동
+                Intent intent = new Intent(Login.this,Register.class);
+                startActivity(intent);
+            }
+        });
+    }
+    }
+![image](https://user-images.githubusercontent.com/51051548/121136481-abd9c480-c870-11eb-9ae8-8f7c9949f719.png)
+
 
 
 
