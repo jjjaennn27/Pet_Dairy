@@ -551,13 +551,386 @@ PetStorage 함수 - 동물 사진 파이어베이스 저장
  
 ## 2-4 기능 1 -  밥
 ### 2-4-1 밥 정보 입력 팝업창
+
 준 사람, 준 시간, 사료 종류, 사료 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
 준 사람, 사료 종류, 사료 양은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록 된 가족구성원을 선택 할 수 있다.
-권장량 버튼을 클릭 시 알맞은 사료의 양을 볼 수 있다.
+권장량 버튼을 클릭 시 알맞은 사료의 양을 볼 수 있다.   
+
+Register_Food.java
+
+    public class Register_Food extends AppCompatActivity {
+
+    private final ArrayList<Food> listFood = new ArrayList<>();
+    private RecyclerView recyclerView1;
+    private RecyclerAdapter_food adapter1;
+    private  RecyclerView.LayoutManager layoutManager1;
+    private DrawerLayout drawerLayout;
+    private View drawerView;
+
+    private FloatingActionButton add1, look1;
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.register__food);
+
+        
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerView = (View)findViewById(R.id.drawer);
+        recyclerView1 = (RecyclerView) findViewById(R.id.food_list);
+        recyclerView1.setHasFixedSize(true);
+        layoutManager1 = new LinearLayoutManager(this);
+        ((LinearLayoutManager) layoutManager1).setReverseLayout(true);
+        ((LinearLayoutManager) layoutManager1).setStackFromEnd(true);
+
+        add1 = findViewById(R.id.foodButton2);
+        look1 = findViewById(R.id.foodButton);
+
+        recyclerView1.setLayoutManager(layoutManager1);
+        adapter1 = new RecyclerAdapter_food(listFood);
+
+        recyclerView1.setAdapter(adapter1);
+
+        //파이어베이스 연결
+        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
+        DatabaseReference rootRef = firebaseDatabase.getReference();
+
+        //네비게이션 연결
+        Button Btn1 = (Button)findViewById(R.id.Btn1);
+        Btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_f =new Intent(Register_Food.this,Register_Food.class);
+                startActivity(intent_f);
+            }
+        });
+        Button Btn2 = (Button)findViewById(R.id.Btn2);
+        Btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_s =new Intent(Register_Food.this,Register_Snack.class);
+                startActivity(intent_s);
+            }
+        });
+        Button Btn3 = (Button)findViewById(R.id.Btn3);
+        Btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_h =new Intent(Register_Food.this,Register_Health.class);
+                startActivity(intent_h);
+            }
+        });
+        Button Btn4 = (Button)findViewById(R.id.Btn4);
+        Btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_r =new Intent(Register_Food.this,Register_Run.class);
+                startActivity(intent_r);
+            }
+        });
+
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        // + 버튼 클릭 시 입력 팝업 창 생성
+        add1.setOnClickListener(new View.OnClickListener() {
+            ArrayAdapter<CharSequence>adspin1, adspin2, adspin3;
+            String choice_do="";
+            String choice_se="";
+
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(Register_Food.this);
+                View view1 = LayoutInflater.from(Register_Food.this).inflate(R.layout.register__food_writing, null, false);
+                builder1.setView(view1);
+
+                final Button btnRec = view1.findViewById(R.id.button2);
+                final Button btnnow = view1.findViewById(R.id.btnnow);
+
+                final ImageButton upload1 = view1.findViewById(R.id.up);
+                final Spinner Person = view1.findViewById(R.id.name);
+                final TextView now = view1.findViewById(R.id.txt);
+                final Spinner food1 = view1.findViewById(R.id.spnFood);
+                final Spinner food2 = view1.findViewById(R.id.spnFood2);
+
+
+                //팝업창에 나타낼 스피너 연결
+                setNameSpinner(Person);
+                adspin1 = ArrayAdapter.createFromResource(Register_Food.this, R.array.spinner_do, android.R.layout.simple_spinner_dropdown_item);
+                adspin1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                adspin2 = ArrayAdapter.createFromResource(com.example.pet_dairy.Register_Food.this, R.array.spinner_do_g, android.R.layout.simple_spinner_dropdown_item);
+                adspin3 = ArrayAdapter.createFromResource(com.example.pet_dairy.Register_Food.this,R.array.spinner_do_s, android.R.layout.simple_spinner_dropdown_item);
+                food1.setAdapter(adspin1);
+
+                food1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        if (adspin1.getItem(i).equals("건식 사료")) {
+                            choice_do = "건식 사료";
+                            adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            food2.setAdapter(adspin2);
+                            food2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                    choice_se = adspin2.getItem(i).toString();
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> adapterView) {
+                                }
+                            });
+                        } else if (adspin1.getItem(i).equals("습식 사료")) {
+                            choice_do = "습식 사료";
+                            adspin3 = ArrayAdapter.createFromResource(com.example.pet_dairy.Register_Food.this, R.array.spinner_do_s, android.R.layout.simple_spinner_dropdown_item);
+                            adspin3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            food2.setAdapter(adspin3);
+                            food2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                    choice_se = adspin3.getItem(i).toString();
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> adapterView) {
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                });
+
+                btnnow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        now.setText(getTime());
+                    }
+                });
+                // 버튼 클릭시 권장 사료량 팝업 창 알림
+                btnRec.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(com.example.pet_dairy.Register_Food.this);
+                        builder.setTitle("권장 사료량");
+                        builder.setMessage("생후~3개월 : 몸무게의 7% \n 3개월~6개월 : 몸무게의 5~7% \n 6개월~12개월 : 몸무게의 4~5% \n 12개월 이상 : 몸무게의 2~3%");
+                        builder.setNeutralButton("닫기",null);
+                        builder.create().show();
+                    }
+                });
+
+                //위에 내용들을 가진 팝업 창 생성
+                final AlertDialog dialog1 = builder1.create();
+                //저장 버튼 클릭 시 파이어베이스에 데이터 저장
+                upload1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                        DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
+                        DatabaseReference foodRef = rootRef.child("food");
+
+                        String strPerson = Person.getSelectedItem().toString();
+                        String stnNow = now.getText().toString();
+                        String strFood1 = food1.getSelectedItem().toString();
+                        String strFood2 = food2.getSelectedItem().toString();
+
+                        Food food = new Food(strPerson, stnNow, strFood1, strFood2);
+                        if (strPerson.length() == 0) return;
+
+                        foodRef.push().setValue(food);
+
+                        foodRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                StringBuffer buffer = new StringBuffer();
+                                listFood.clear();
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    Food food = snapshot.getValue(Food.class);
+                                    String strPerson = food.getperson();
+                                    String stnNow = food.getnow();
+                                    String strFood1 = food.getfood1();
+                                    String strFood2 = food.getfood2();
+                                    buffer.append(listFood);
+
+                                    listFood.add(food);
+                                }
+                                adapter1.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                        dialog1.dismiss(); //팝업 창 닫기
+                        Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog1.show(); //팝업 창 띄우기
+            }
+        });
+        // 눈 버튼 클릭시 파이어베이스에 저장된 정보들 보여주기
+        look1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Pet Care");
+                DatabaseReference foodRef = rootRef.child("food");
+
+                foodRef.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        StringBuffer buffer = new StringBuffer();
+                        listFood.clear();
+
+                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            Food food = snapshot.getValue(Food.class);
+                            String  strPerson= food.getperson();
+                            String  stnNow = food.getnow();
+                            String  strFood1 = food.getfood1();
+                            String  strFood2= food.getfood2();
+                            buffer.append(listFood);
+
+                            listFood.add(food);
+                        }
+
+                        adapter1.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+            }
+        });
+
+    }
+    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerStateChanged(int newState) {
+        }
+    };
+
+    private void setNameSpinner(Spinner nameSpinner) { //
+        Pet_Database.getPersons(dataSnapshot -> {
+            List<String> persons = new ArrayList<>();
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Person person = snapshot.getValue(Person.class);
+                if (person != null) {
+                    persons.add(person.name);
+                }
+            }
+
+            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_dropdown_item, persons);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(spinnerArrayAdapter);
+        });
+    }
+    // 현재 시간을 가져오기 위함 함수
+    private String  getTime() {
+        long mNow = System.currentTimeMillis();
+        Date mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void sampleMethod() {
+    }
+
+
+}
 ***
 ### 2-4-2 밥 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- food에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
+RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
+
+    public class RecyclerAdapter_food extends RecyclerView.Adapter<RecyclerAdapter_food.ViewHolder> {
+    ArrayList<Food> listFood = new ArrayList<>();
+    Context mContext;
+
+    public RecyclerAdapter_food(ArrayList<Food> bundle){
+        this.listFood = bundle;
+    } //밥 정보 어댑터에 연결
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //리스트 출력 레이아웃 연결
+        Context mContext  = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.list_item_food, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //연결된 레이아웃에 저장된 밥 정보 holder에 연결
+        Food food = listFood.get(position);
+
+        holder.PersonView.setText(food.getperson());
+        holder.NowView.setText(food.getnow());
+        holder.Food1View.setText(food.getfood1());
+        holder.Food2View.setText(food.getfood2());
+    }
+
+    @Override
+    public int getItemCount() {
+        return listFood.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView PersonView;
+        TextView NowView;
+        TextView Food1View;
+        TextView Food2View;
+
+        public ViewHolder(@NonNull View View) {
+            //리스트을 출력하기 위하 레이아웃에 연결
+            super(View);
+            PersonView = View.findViewById(R.id.list_person);
+            NowView = View.findViewById(R.id.list_now);
+            Food1View = View.findViewById(R.id.list_food1);
+            Food2View = View.findViewById(R.id.list_food2);
+        }
+    }
+    }
+
 ## 2-5 기능 2 - 간식
 ### 2-5-1 간식 정보 입력 팝업창
 준 사람, 준 시간, 간식 종류, 간식 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
