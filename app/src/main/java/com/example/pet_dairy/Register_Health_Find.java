@@ -570,7 +570,7 @@ public class Register_Health_Find extends AppCompatActivity
 
         new NRPlaces.Builder()
                 .listener(Register_Health_Find.this)
-                .key("AIzaSyCRa8QSMhoE9PkQFir0A4CMnUgNob2t5W8")
+                .key("AIzaSyABkYDQviFC82LQ47_pbyJstj6h5e9eeAU")
                 .latlng(location.latitude, location.longitude)//현재 위치
                 .radius(2000) //2000 미터 내에서 검색
                 .type(PlaceType.HOSPITAL) //병원
