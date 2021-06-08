@@ -937,8 +937,7 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 준 사람, 준 시간, 간식 종류, 간식 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
 준 사람, 간식 종류은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록된 가족구성원을 선택 할 수 있다.
 
-  
-    public class Register_Snack extends AppCompatActivity {
+public class Register_Snack extends AppCompatActivity {
 
     private final ArrayList<Snack> listSnack = new ArrayList<>();
     private RecyclerView recyclerView2;
@@ -1205,10 +1204,7 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 ### 2-5-2 간식 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care-snack에저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
-
-
-   
-    public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_snack.ViewHolder> {
+public class RecyclerAdapyer_snack extends RecyclerView.Adapter<RecyclerAdapyer_snack.ViewHolder> {
     ArrayList<Snack> listSnack = new ArrayList<>();
     Context mContext;
 
@@ -1548,16 +1544,270 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 ### 2-6-2 산책 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- walk에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
+
+ 
+    public class RecyclerAdapter_run extends RecyclerView.Adapter<RecyclerAdapter_run.ViewHolder> {
+    ArrayList<Walk> listRun = new ArrayList<>();
+    Context mContext;
+
+    public RecyclerAdapter_run(ArrayList<Walk> bundle){
+        this.listRun = bundle;
+    } // 산책 정보 어댑터에 연결
+
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //리스트 출력 레이아웃 연결
+        Context mContext  = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.list_item_run, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // 연결된 레이아웃에 저장된 밥 정보 holder에 연결
+        Walk walk = listRun.get(position);
+
+        holder.TimeView.setText(walk.getTime());
+        holder.PlaceView.setText(walk.getPlace());
+        holder.PersonView.setText(walk.getPerson());
+        holder.NowView.setText(walk.getNow());
+    }
+
+    @Override
+    public int getItemCount() {
+        return listRun.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView TimeView;
+        TextView PlaceView;
+        TextView PersonView;
+        TextView NowView;
+
+        public ViewHolder(@NonNull View View) {
+            // 리스트를 출력하기 위해 레이아웃에 연결
+            super(View);
+            TimeView = View.findViewById(R.id.list_time);
+            PlaceView = View.findViewById(R.id.list_place);
+            PersonView = View.findViewById(R.id.list_person);
+            NowView = View.findViewById(R.id.list_now);
+        }
+    }
+}
 ***
 ### 2-6-3 산책 메이트
 산책 메이트 찾기 버튼을 누르면 산책 메이트 찾기 게시판이 뜨게 된다. 다른 사람이 등록한 정보를 보고 직접 메이트를 찾을 수 있으며 사용자가 게시판에 입력함으로써 메이트를 구할 수있다.
 ***
 #### #2-6-3-1 산책 메이트 정보 입력 팝업창
 산책장소, 예상시간, 강아지종, 카카오톡ID를 + 버튼 을 통해 입력하는 팝업창을 구현하였다. 예상 시간은 스피너 통해 선택 할 수 있다. 
+   
+    public class WalkingMate_Board extends AppCompatActivity {
+
+    private final ArrayList<Board> listBundle = new ArrayList<>();
+    private  RecyclerView recyclerView;
+    private RecyclerAdapter adapter;
+    private  RecyclerView.LayoutManager layoutManager;
+
+    private FloatingActionButton add, look;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.walkingmate_board);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        ((LinearLayoutManager) layoutManager).setReverseLayout(true);
+        ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
+
+        add = findViewById(R.id.floatingActionButton2);
+        look = findViewById(R.id.floatingActionButton);
+
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new RecyclerAdapter(listBundle);
+
+        recyclerView.setAdapter(adapter);
+
+        //파이어베이스 연결
+        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
+        DatabaseReference rootRef = firebaseDatabase.getReference();
+
+        //파이어베이스 데이터베이스 하위 항목 지정
+        DatabaseReference BoardRef = rootRef.child("WalkingBoards");
+
+        // + 버튼 클릭 시 입력 팝업 창 생성
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(WalkingMate_Board.this);
+                View view = LayoutInflater.from(WalkingMate_Board.this).inflate(R.layout.walkingmate_board_writing, null, false);
+                builder.setView(view);
+
+                final Button upload = view.findViewById(R.id.btnUp1);
+                final EditText Plice = view.findViewById(R.id.PliceText);
+                final Spinner Time = view.findViewById(R.id.Timetext1);
+                final EditText dog  =  view.findViewById(R.id.Dog_breedText);
+                final EditText id = view.findViewById(R.id.IDText1);
+                
+                ArrayAdapter timee = ArrayAdapter.createFromResource(WalkingMate_Board.this, R.array.time, android.R.layout.simple_spinner_dropdown_item);
+                timee.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                Time.setAdapter(timee);
+
+                Time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) { }
+                });
+
+                //위의 내용들을 가진 팝업 창 생성
+                final AlertDialog dialog = builder.create();
+
+                // 저장 버튼 클릭 시 파이어베이스에 데이터 저장
+                upload.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String strPlice = Plice.getText().toString();
+                        String strTime = Time.getSelectedItem().toString();
+                        String strDog = dog.getText().toString();
+                        String  strid = id.getText().toString();
+
+                        Board board = new Board(strPlice, strTime, strDog, strid);
+                        if(strPlice.length() == 0)return;
+
+                        BoardRef.push().setValue(board);
+
+                        BoardRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                StringBuffer buffer = new StringBuffer();
+                                listBundle.clear();
+                                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                    Board board = snapshot.getValue(Board.class);
+                                    String  strPlice = board.getPlace();
+                                    String strTime = board.getTime();
+                                    String strDog = board.getDog_breed();
+                                    String  strid = board.getID();
+                                    buffer.append(listBundle);
+
+                                    listBundle.add(board);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                        dialog.dismiss(); // 팝업 창 닫기
+                        Toast.makeText(getApplicationContext(),"저장되었습니다. ", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                dialog.show(); // 팝업 창 띄우기
+            }
+        });
+        
+        // 눈 버튼 클릭 시 파이어베이스에 저장된 정보들 보여주기
+        look.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                BoardRef.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        StringBuffer buffer = new StringBuffer();
+                        listBundle.clear();
+
+                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            Board board = snapshot.getValue(Board.class);
+                            String  strPlice = board.getPlace();
+                            String strTime = board.getTime();
+                            String strDog = board.getDog_breed();
+                            String  strid = board.getID();
+                            buffer.append(listBundle);
+
+                            listBundle.add(board);
+                        }
+
+                        adapter.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+            }
+        });
+    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void sampleMethod() {
+    }
+}
+ 
 ***
 ##### 2-6-3-2 산책 메이트 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 WalkingBoards에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
+ 
+    public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+    ArrayList<Board> listBundle = new ArrayList<>();
+    Context mContext;
+
+    public RecyclerAdapter(ArrayList<Board> bundle){
+        this.listBundle = bundle;
+    } // 산책 정보 어댑터에 연결
+    
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // 리스트 출력 레이아웃 연결
+        Context mContext  = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.walingmate_board_list_item, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // 연결된 레이아웃에 저장된 밥 정보 holder에 연결
+        Board  board = listBundle.get(position);
+
+        holder.PliceView.setText(board.getPlace());
+        holder.TimeView.setText(board.getTime());
+        holder.Dog_breedView.setText(board.getDog_breed());
+        holder.IDView.setText(board.getID());
+    }
+
+    @Override
+    public int getItemCount() {
+        return listBundle.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView PliceView;
+        TextView TimeView;
+        TextView Dog_breedView;
+        TextView IDView;
+
+        public ViewHolder(@NonNull View View) {
+            // 리스트를 출력하기 위해 레이아웃에 연결
+            super(View);
+            PliceView = View.findViewById(R.id.list_place);
+            TimeView = View.findViewById(R.id.list_time);
+            Dog_breedView = View.findViewById(R.id.list_Dog_breed);
+            IDView = View.findViewById(R.id.list_ID);
+        }
+    }
+}
 
 ### 2-6-4 근처 공원 찾기
 ‘google map’을 이용하여 사용자의 위치를 GPS를 통해 전송받아 위치를 나타내고, google  Place API 을 이용하여 사용자 주변의 가까운 공원들을 검색할 수있도록 하였다.
