@@ -1845,6 +1845,14 @@ RecyclerAdapter_snack.java
 ### 2-6-4 근처 공원 찾기
 ‘google map’을 이용하여 사용자의 위치를 GPS를 통해 전송받아 위치를 나타내고, google  Place API 을 이용하여 사용자 주변의 가까운 공원들을 검색할 수있도록 하였다.
 
+   - Google Maps Android API 발급 받기 (https://console.cloud.google.com/home/dashboard?folder=&organizationId=&project=double-venture-314915)
+    ![image](https://user-images.githubusercontent.com/79950380/121275825-754f8880-c908-11eb-894a-c47a993923c3.png)
+    새 프로젝트를 만들고 Maps SDK for Android 사용 클릭
+    
+    ![image](https://user-images.githubusercontent.com/79950380/121276121-ff97ec80-c908-11eb-9d10-9a0f647f1a04.png)
+    사용자 인증 정보에서 API키 생성 후 수정
+  
+
 WalingMate_map.java
 
     public class WalkingMate_map extends AppCompatActivity
