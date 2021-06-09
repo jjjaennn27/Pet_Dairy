@@ -1884,7 +1884,7 @@ RecyclerAdapter_snack.java
         }
     }
  
-![image](https://user-images.githubusercontent.com/79950380/121206463-73a7a580-c8b3-11eb-8d81-9df908f2a721.png)
+![image](https://user-images.githubusercontent.com/79950254/121297839-e2294980-c92d-11eb-9a40-c563b3db57e1.png)
 
 
 ### 2-6-4 근처 공원 찾기
