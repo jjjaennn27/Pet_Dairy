@@ -1847,11 +1847,13 @@ RecyclerAdapter_snack.java
 
    - Google Maps Android API 발급 받기 (https://console.cloud.google.com/home/dashboard?folder=&organizationId=&project=double-venture-314915)
    
-    ![image](https://user-images.githubusercontent.com/79950380/121275825-754f8880-c908-11eb-894a-c47a993923c3.png)
+    ![image](https://user-images.githubusercontent.com/79950380/121276575-ddeb3500-c909-11eb-98a1-3c9902e8ff9f.png)
+
     
     새 프로젝트를 만들고 Maps SDK for Android 사용 클릭
     
-    ![image](https://user-images.githubusercontent.com/79950380/121276121-ff97ec80-c908-11eb-9d10-9a0f647f1a04.png)
+    ![image](https://user-images.githubusercontent.com/79950380/121276552-d461cd00-c909-11eb-9278-4af908ac83bc.png)
+
     
     사용자 인증 정보에서 API키 생성 후 수정
   
