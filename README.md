@@ -2486,7 +2486,8 @@ Register_Health.java 생성
 
     }
 
-![image](https://user-images.githubusercontent.com/79950103/121304795-bf9c2e00-c937-11eb-99fd-d9f9e1f90007.png)
+![image](https://user-images.githubusercontent.com/79950380/121307707-3ab31380-c93b-11eb-91a5-a96b2163ee6c.png)
+
 
 하단 세개의 버튼 중 입력하기 버튼을 클릭하면 입력날짜 및 반려동물의 건강정보를 입력할 수 있다. 
 
@@ -2570,7 +2571,7 @@ Record.java 생성
     public void clickSave(View view) {
     }
 
-![image](https://user-images.githubusercontent.com/79950103/121305560-af388300-c938-11eb-84fe-4bf04b9078eb.png)
+![image](https://user-images.githubusercontent.com/79950380/121307722-3f77c780-c93b-11eb-93c0-7243cd6039b7.png)
 
 ### 2-7-3 근처 병원 찾기
 병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다.
