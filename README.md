@@ -71,10 +71,67 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
  
 [연동 방법] 
 1. 파이어 베이스에 프로젝트 생성
+
+![image](https://user-images.githubusercontent.com/51051548/121299262-17cf3200-c930-11eb-99a1-522dcbb29016.png)
+
+(구글 로그인이 필요하지 않으므로 SHA-1 은 생략해줘도 된다)
+
+
 2. google-service.json파일얻기
+
+![image](https://user-images.githubusercontent.com/51051548/121299267-1c93e600-c930-11eb-9f34-6a0fe58e9ed5.png)
+
+
+
 3. .json파일을 안드로이드스튜디오 프로젝트 안에 삽입 
-4. Firebase SDK추가
-5. 안드로이드와 파이어베이스 연결 확인
+
+![image](https://user-images.githubusercontent.com/51051548/121299352-40572c00-c930-11eb-8e4b-2fc3278e9d9b.png)
+
+4. Firebase 구성파일추가
+
+프로젝트로 들어간 후 존재하는 Gradle 파일(build.gradle)에서 Google 서비스 Gradle 플러그인을 포함하는 규칙을 추가합니다.
+  
+    buildscript {
+     repositories {
+    // Check that you have the following line (if not, add it):
+    google()  //추가
+    }
+      
+    dependencies {
+    // ...
+
+    // Add the following line:
+    classpath 'com.google.gms:google-services:4.3.8'  // 추가
+     }
+    }
+      allprojects {
+          // ...
+  
+    repositories {
+    // Check that you have the following line (if not, add it):
+    google()  // 추가
+    // ...
+       }
+    }
+
+   
+   
+
+
+ 
+ 
+  
+
+ 
+  
+ 
+
+![image](https://user-images.githubusercontent.com/51051548/121299989-29fda000-c931-11eb-911a-32bb8bb0d352.png)
+
+  
+
+5. Firebase SDK추가
+
 
 [연동방법- realtime database]
 1. TOOL에들어간후, 파이어베이스 클릭
@@ -2388,6 +2445,7 @@ WalingMate_map.java
 기존 공원 찿기 코드에서   .type(PlaceType.HOSPITAL) 병원으로 변경해주면 된다.  
 Register_Health_Find.java 생성
 
+    
     public void showPlaceInformation(LatLng location)
     {  
     mMap.clear();//지도 클리어
@@ -2402,9 +2460,8 @@ Register_Health_Find.java 생성
             .radius(2000) //2000 미터 내에서 검색
             .type(PlaceType.HOSPITAL) //병원
             .build()
-            .execute(); 
-            }
-            
+            .execute();
+}
 ![image](https://user-images.githubusercontent.com/79950380/121299080-d5a5f080-c92f-11eb-8402-ba1c30146acd.png)
 
 
