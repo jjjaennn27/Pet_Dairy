@@ -3,6 +3,9 @@
 ## 발표 영상 https://www.youtube.com/watch?v=y9lax-hXB1Q
 
 <201621453 김현승, 201921041 김민진, 201921067 신정은, 201921080 이소윤, 201921085 임재은, 201921093 진수현>
+
+![image](https://user-images.githubusercontent.com/79950380/121321832-6806be00-c949-11eb-95af-c190d464ad18.png)
+
 ***
 
 # 목차
