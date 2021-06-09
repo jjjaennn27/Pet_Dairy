@@ -18,7 +18,7 @@
         <DatePicker
             android:id="@+id/datePicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="387dp"
             android:layout_marginTop="15sp"
             android:fontFamily="@font/esamanru_medium"
             android:headerBackground="#FFE0B2"
@@ -39,12 +39,25 @@
             android:layout_width="match_parent"
             android:layout_height="198dp"
             android:background="#DDDDDD"
-            android:fontFamily="@font/esamanru_medium"
             android:ems="10"
-            android:gravity="start|center_vertical"
+            android:fontFamily="@font/esamanru_medium"
+            android:gravity="center|start|center_vertical"
             android:inputType="text|textMultiLine|textCapSentences"
             android:padding="7sp"
             android:text="" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="저장" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,10 +72,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:fontFamily="@font/esamanru_medium"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:text="입력하기" />
+            android:fontFamily="@font/esamanru_medium"
+            android:text="건강 입력" />
 
         <Button
             android:id="@+id/btnfind"
