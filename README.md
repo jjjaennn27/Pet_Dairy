@@ -2384,7 +2384,8 @@ WalingMate_map.java
 
 ### 2-7-3 근처 병원 찾기
 병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다.
-기존 공원 찿기 코드에서   .type(PlaceType.HOSPITAL) 병원으로 변경해주면 된다.
+기존 공원 찿기 코드에서   .type(PlaceType.HOSPITAL) 병원으로 변경해주면 된다.  
+Register_Health_Find.java 생성
 
   public void showPlaceInformation(LatLng location)
 {
