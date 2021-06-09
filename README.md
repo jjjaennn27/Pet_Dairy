@@ -2673,312 +2673,135 @@ Register_Health_Find.java 생성
  그리고 하단에 건강 입력, 병원 찾기, 알람 설정을 할 수 있는 3개의 버튼이 있다.
      
      
-    public class Record extends AppCompatActivity {
+    public class Register_Health extends AppCompatActivity {
 
-    TextView tv2;
-    EditText idText1;
-    EditText idText2;
-    EditText idText3;
-    EditText idText4;
-    EditText idText5;
-    Button savebutton;
+    Button btnSave, btndiary, btnfind, btnAlarm;
+    DatePicker datePicker;
+    EditText edtDiary;
+    String fileName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.record);
-
-        tv2 = findViewById(R.id.tv2);
-        idText1 = findViewById(R.id.idText1);
-        idText2 = findViewById(R.id.idText2);
-        idText3 = findViewById(R.id.idText3);
-        idText4 = findViewById(R.id.idText4);
-        idText5 = findViewById(R.id.idText5);
-        savebutton = findViewById(R.id.savebutton);
+        setContentView(R.layout.register__health);
+        setTitle("건강 다이어리");
 
 
-        savebutton.setOnClickListener(new View.OnClickListener() {
+        // 뷰에 있는 위젯들 리턴 받아두기
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
+        edtDiary = (EditText) findViewById(R.id.edtDiary);
+        btndiary = (Button) findViewById(R.id.btnRecord);
+        btnSave = (Button) findViewById(R.id.btnSave);
+        btnfind = (Button) findViewById(R.id.btnfind);
+        btnAlarm = (Button) findViewById(R.id.btnAlarm);
+
+        Calendar c = Calendar.getInstance();
+        int cYear = c.get(Calendar.YEAR);
+        int cMonth = c.get(Calendar.MONTH);
+        int cDay = c.get(Calendar.DAY_OF_MONTH);
+
+        // 첫 시작 시에는 오늘 날짜 일기 읽어주기
+        checkedDay(cYear, cMonth, cDay);
+
+        // datePick 기능 만들기
+        // datePicker.init(연도,달,일)
+        datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                // 이미 선택한 날짜에 일기가 있는지 없는지 체크해야할 시간이다
+                checkedDay(year, monthOfYear, dayOfMonth);
+            }
+        });
+        // 저장/수정 버튼 누르면 실행되는 리스너
+        btndiary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
-
-                String IdText1 = idText1.getText().toString();
-                String IdText2 = idText2.getText().toString();
-                String IdText3 = idText3.getText().toString();
-                String IdText4 = idText4.getText().toString();
-                String IdText5 = idText5.getText().toString();
-
-                Record_H record_h = new Record_H(IdText1, IdText2, IdText3, IdText4, IdText5);
-
-                DatabaseReference record_hRef = rootRef.child("Record_H");
-                record_hRef.push().setValue(record_h);
-
-                record_hRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                        StringBuffer buffer = new StringBuffer();
-
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                            Record_H record_h = snapshot.getValue(Record_H.class);
-                            String IdText1 = record_h.getIdText1();
-                            String IdText2 = record_h.getIdText2();
-                            String IdText3 = record_h.getIdText3();
-                            String IdText4 = record_h.getIdText4();
-                            String IdText5 = record_h.getIdText5();
-
-                            buffer.append("몸무게 : " + IdText1 + "\n" + "배변/구토 : " + IdText2 + "\n" + "투약기록 : " +
-                                    IdText3 + "\n" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
-                        }
-                        tv2.setText(buffer);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                saveDiary(fileName);
             }
         });
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                Intent myIntent = new Intent(Register_Health.this, Record.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+        btnfind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v2) {
+                Intent myIntent = new Intent(Register_Health.this, Register_Health_Find.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+        btnAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                Intent myIntent = new Intent(Register_Health.this, Alarm.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+
     }
 
-    public void clickSave(View view) {
+    // 일기 파일 읽기
+    private void checkedDay(int year, int monthOfYear, int dayOfMonth) {
+        // 파일 이름을 만들어준다. 파일 이름은 "20170318.txt" 이런식으로 나옴
+        fileName = year + "" + monthOfYear + "" + dayOfMonth + ".txt";
+
+        // 읽어봐서 읽어지면 일기 가져오고
+        // 없으면 catch 그냥 살아? 아주 위험한 생각같다..
+        FileInputStream fis = null;
+        try {
+            fis = openFileInput(fileName);
+
+            byte[] fileData = new byte[fis.available()];
+            fis.read(fileData);
+            fis.close();
+
+            String str = new String(fileData, "EUC-KR");
+            // 읽어서 토스트 메시지로 보여줌
+            Toast.makeText(getApplicationContext(), "일기 쓴 날", Toast.LENGTH_SHORT).show();
+            edtDiary.setText(str);
+            btndiary.setText("수정하기");
+        } catch (Exception e) { // UnsupportedEncodingException , FileNotFoundException , IOException
+            // 없어서 오류가 나면 일기가 없는 것 -> 일기를 쓰게 한다.
+            Toast.makeText(getApplicationContext(), "일기 없는 날", Toast.LENGTH_SHORT).show();
+            edtDiary.setText("");
+            btndiary.setText("새 일기 저장");
+            e.printStackTrace();
+        }
     }
+
+    // 일기 저장하는 메소드
+    @SuppressLint("WrongConstant")
+    private void saveDiary(String readDay) {
+
+        FileOutputStream fos = null;
+
+        try {
+            fos = openFileOutput(readDay, MODE_NO_LOCALIZED_COLLATORS); //MODE_WORLD_WRITEABLE
+            String content = edtDiary.getText().toString();
+            // String.getBytes() = 스트링을 배열형으로 변환?
+            fos.write(content.getBytes());
+            //fos.flush();
+            fos.close();
+            // getApplicationContext() = 현재 클래스.this ?
+            Toast.makeText(getApplicationContext(), "일기 저장됨", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) { // Exception - 에러 종류 제일 상위 // FileNotFoundException , IOException
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "일기가 저장되지않았습니다.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
-      
-     
- ![image](https://user-images.githubusercontent.com/79950380/121312114-03933100-c940-11eb-9730-b2e35b13b030.png)
 
-
- #### 2-7-5  알림설정
-알림 설정 버튼을 클릭하면 원하는 날짜와 시간을 입력받고, 지정된 시간이 되면 알림을 메세지로 알려준다.
-
-어플 사용 시 알람이 울리면 어플 내에서 보여주고 어플 사용하지 않은 상태에서 알림이 울리면 휴대폰 상단바에서 보여준다.  
-
-Alarm.java 생성 
-
-    public class Alarm extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.alarm);
-        final TimePicker picker=(TimePicker)findViewById(R.id.timePicker);
-        picker.setIs24HourView(true);
-        CalendarView calendarView=(CalendarView)findViewById(R.id.cView);
-        SharedPreferences sharedPreferences = getSharedPreferences("daily alarm", MODE_PRIVATE);
-        long millis = sharedPreferences.getLong("nextNotifyTime", Calendar.getInstance().getTimeInMillis());
-
-        Calendar nextNotifyTime = new GregorianCalendar();
-        nextNotifyTime.setTimeInMillis(millis);
-
-        Date nextDate = nextNotifyTime.getTime();
-        //String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(nextDate);
-        //Toast.makeText(getApplicationContext(),"[처음 실행시] 다음 알람은 " + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
-
-        // 이전 설정값으로 TimePicker 초기화
-        Date currentTime = nextNotifyTime.getTime();
-        SimpleDateFormat HourFormat = new SimpleDateFormat("kk", Locale.getDefault());
-        SimpleDateFormat MinuteFormat = new SimpleDateFormat("mm", Locale.getDefault());
-        /*SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE",Locale.getDefault());
-        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy",Locale.getDefault());
-        SimpleDateFormat monthFormat = new SimpleDateFormat("MM",Locale.getDefault());
-        SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());*/
-
-        /*String weekday = weekdayFormat.format(currentTime);
-        String year = yearFormat.format(currentTime);
-        String month = monthFormat.format(currentTime);
-        String day = dayFormat.format(currentTime);*/
-        int pre_hour = Integer.parseInt(HourFormat.format(currentTime));
-        int pre_minute = Integer.parseInt(MinuteFormat.format(currentTime));
-
-        if (Build.VERSION.SDK_INT >= 23 ){
-            picker.setHour(pre_hour);
-            picker.setMinute(pre_minute);
-        }
-        else{
-            picker.setCurrentHour(pre_hour);
-            picker.setCurrentMinute(pre_minute);
-        }
-        Button button = (Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "날짜를 먼저 선택하세요", Toast.LENGTH_LONG).show();
-            }
-        });
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @SuppressLint("DefaultLocale")
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
-
-                String ymd_text = String.format("%d년 %d월 %d일",year,month+1,dayOfMonth);
-                switch (calendarView.getId())
-                {
-                    case R.id.cView:
-
-                        button.setOnClickListener(new View.OnClickListener()
-
-                        {
-                            @Override
-                            public void onClick (View arg0){
-                                int hour, hour_24, minute;
-                                String am_pm;
-                                if (Build.VERSION.SDK_INT >= 23) {
-                                    hour_24 = picker.getHour();
-                                    minute = picker.getMinute();
-                                } else {
-                                    hour_24 = picker.getCurrentHour();
-                                    minute = picker.getCurrentMinute();
-                                }
-                                if (hour_24 > 12) {
-                                    am_pm = "PM";
-                                    hour = hour_24 - 12;
-                                } else {
-                                    hour = hour_24;
-                                    am_pm = "AM";
-                                }
-                                // 현재 지정된 시간으로 알람 시간 설정
-                                Calendar calendar = Calendar.getInstance();
-                                Date date = new Date(calendarView.getDate());
-                                calendar.setTime(date);
-                                calendar.setTimeInMillis(System.currentTimeMillis());
-                                calendar.set(Calendar.HOUR_OF_DAY, hour_24);
-                                calendar.set(Calendar.MINUTE, minute);
-                                calendar.set(Calendar.SECOND, 0);
-                                calendar.set(Calendar.YEAR, year);
-                                calendar.set(Calendar.MONTH, month);
-                                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
-                                // 이미 지난 시간을 지정했다면 다음날 같은 시간으로 설정
-                /*if (calendar.before(Calendar.getInstance())) {
-                    calendar.add(Calendar.DATE, 1);
-                }*/
-
-                                Date currentDateTime = calendar.getTime();
-                                String date_text = new SimpleDateFormat(" a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
-                                Toast.makeText(getApplicationContext(), ymd_text + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_LONG).show();
-
-                                //  Preference에 설정한 값 저장
-                                SharedPreferences.Editor editor = getSharedPreferences("daily alarm", MODE_PRIVATE).edit();
-                                editor.putLong("nextNotifyTime", (long) calendar.getTimeInMillis());
-                                editor.apply();
-
-
-                                diaryNotification(calendar);
-                            }
-                        });
-                        break;
-                }
-            }
-        });
-
-
-    }
-
-    void diaryNotification(Calendar calendar)
-    {
-    // PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-    //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-    // Boolean dailyNotify = sharedPref.getBoolean(SettingsActivity.KEY_PREF_DAILY_NOTIFICATION, true);
-        Boolean dailyNotify = true; // 무조건 알람을 사용
-
-        PackageManager pm = this.getPackageManager();
-        ComponentName receiver = new ComponentName(this, DeviceBootReceiver.class);
-        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-
-        // 사용자가 매일 알람을 허용했다면
-        if (dailyNotify) {
-
-
-            if (alarmManager != null) {
-
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                        AlarmManager.INTERVAL_DAY, pendingIntent);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-                }
-            }
-
-            // 부팅 후 실행되는 리시버 사용가능하게 설정
-            pm.setComponentEnabledSetting(receiver,
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                    PackageManager.DONT_KILL_APP);
-
-        }
-    }
-    }
-AlarmReceiver.java 생성
-
-    public class AlarmReceiver extends BroadcastReceiver {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent notificationIntent = new Intent(context, Alarm.class);
-
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-        PendingIntent pendingI = PendingIntent.getActivity(context, 0,
-                notificationIntent, 0);
-
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "default");
-
-
-        //OREO API 26 이상에서는 채널 필요
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-
-            builder.setSmallIcon(R.drawable.ic_launcher_foreground); //mipmap 사용시 Oreo 이상에서 시스템 UI 에러남
-
-
-            String channelName ="매일 알람 채널";
-            String description = "매일 정해진 시간에 알람합니다.";
-            int importance = NotificationManager.IMPORTANCE_HIGH; //소리와 알림메시지를 같이 보여줌
-
-            NotificationChannel channel = new NotificationChannel("default", channelName, importance);
-            channel.setDescription(description);
-
-            if (notificationManager != null) {
-                // 노티피케이션 채널을 시스템에 등록
-                notificationManager.createNotificationChannel(channel);
-            }
-        }else builder.setSmallIcon(R.mipmap.ic_launcher); // Oreo 이하에서 mipmap 사용하지 않으면 Couldn't create icon: StatusBarIcon 에러남
-        builder.setAutoCancel(true)
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setWhen(System.currentTimeMillis())
-
-                .setTicker("{Time to watch some cool stuff!}")
-                .setContentTitle("부탁해, 집사")
-                .setContentText("알람을 확인하세요")
-                .setContentInfo("INFO")
-                .setContentIntent(pendingI);
-
-        if (notificationManager != null) {
-
-            // 노티피케이션 동작시킴
-            notificationManager.notify(1234, builder.build());
-
-            Calendar nextNotifyTime = Calendar.getInstance();
-
-            // 내일 같은 시간으로 알람시간 결정
-            /*nextNotifyTime.add(Calendar.DATE, 1);
-            //  Preference에 설정한 값 저장
-            SharedPreferences.Editor editor = context.getSharedPreferences("daily alarm", MODE_PRIVATE).edit();
-            editor.putLong("nextNotifyTime", nextNotifyTime.getTimeInMillis());
-            editor.apply();
-            Date currentDateTime = nextNotifyTime.getTime();*/
-            //String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
-            //Toast.makeText(context.getApplicationContext(),"다음 알람은 " + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
-        }
-    }
-    }
 ![image](https://user-images.githubusercontent.com/79950380/121308062-954c6f80-c93b-11eb-8e45-baa8a657e302.png)
 
 ***
