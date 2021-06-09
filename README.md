@@ -2822,7 +2822,7 @@ AlarmReceiver.java 생성
         }
     }
     }
-![image](https://user-images.githubusercontent.com/79950254/121306809-3f2afc80-c93a-11eb-9323-b0ff892d474d.png)
+![image](https://user-images.githubusercontent.com/79950380/121307336-d8f2a980-c93a-11eb-8faf-e9fb03aa99a4.png)
 
 ***
 ## 2-8 기능 네비게이션
