@@ -2383,7 +2383,27 @@ WalingMate_map.java
 
 
 ### 2-7-3 근처 병원 찾기
-병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다. 
+병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다.
+기존 공원 찿기 코드에서   .type(PlaceType.HOSPITAL) 병원으로 변경해주면 된다.
+
+  public void showPlaceInformation(LatLng location)
+{
+    mMap.clear();//지도 클리어
+
+    if (previous_marker != null)
+        previous_marker.clear();//지역정보 마커 클리어
+
+    new NRPlaces.Builder()
+            .listener(WalkingMate_map.this)
+            .key("AIzaSyDgXkkVZxZ2u8nOAhtGNjVGFlFkX46zs4M")
+            .latlng(location.latitude, location.longitude)//현재 위치
+            .radius(2000) //2000 미터 내에서 검색
+            .type(PlaceType.HOSPITAL) //병원
+            .build()
+            .execute();
+}
+![image](https://user-images.githubusercontent.com/79950254/121298430-d0947180-c92e-11eb-8bfa-91c83d71e825.png)
+
 ### 2-7-4 다이어리
  다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다. 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다.
 ### 2-7-5  알림설정
