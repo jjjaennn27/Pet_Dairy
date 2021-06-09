@@ -117,8 +117,11 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
        }
     }
     
-5. Firebase SDK 추가
 
+![image](https://user-images.githubusercontent.com/51051548/121299989-29fda000-c931-11eb-911a-32bb8bb0d352.png)
+
+
+5. Firebase SDK추가
 
         dependencies {
         // ...
@@ -136,27 +139,10 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
         implementation 'com.google.firebase:firebase-auth'
         implementation 'com.google.firebase:firebase-firestore'
         }
-   
+       
+ ![image](https://user-images.githubusercontent.com/51051548/121322080-9d131080-c949-11eb-8ade-783f7704ea55.png)
+![image](https://user-images.githubusercontent.com/51051548/121322090-a00e0100-c949-11eb-9e46-b17f7a9c9922.png)
 
-
-
- 
-   
-
-
- 
- 
-  
-
- 
-  
- 
-
-![image](https://user-images.githubusercontent.com/51051548/121299989-29fda000-c931-11eb-911a-32bb8bb0d352.png)
-
-  
-
-5. Firebase SDK추가
 
 
 [연동방법- realtime database]
