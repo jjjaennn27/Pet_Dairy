@@ -1,5 +1,9 @@
 package com.example.pet_dairy;
 
+
+// 음식 등록 파이어베이스 연결
+
+
 public class Food {
 
     String person, now, food1, food2;

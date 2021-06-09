@@ -1,5 +1,7 @@
 package com.example.pet_dairy;
 
+// 회원가입 파이어베이스 연결
+
 public class UserAccount
 {
     private String idToken; // Firebase Uid( 고유토큰정보)

@@ -1,5 +1,6 @@
 package com.example.pet_dairy;
 
+// 간식 등록 파이어베이스 연결
 
 public class Snack {
     String Give;

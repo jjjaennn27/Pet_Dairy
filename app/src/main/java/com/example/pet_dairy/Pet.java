@@ -1,5 +1,7 @@
 package com.example.pet_dairy;
 
+// 동물 등록 파이어베이스 연결
+
 public class Pet {
 
     String name;

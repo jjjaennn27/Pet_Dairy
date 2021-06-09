@@ -1,5 +1,7 @@
 package com.example.pet_dairy;
 
+// 산책 메이트 파이어베이스 연결
+
 public class Board {
     String Place;
     String Time;

@@ -73,6 +73,7 @@ public class Record extends AppCompatActivity {
                             String IdText4 = record_h.getIdText4();
                             String IdText5 = record_h.getIdText5();
 
+                            // 저장된 데이터 불러오기
                             buffer.append("몸무게 : " + IdText1 + "\n" + "배변/구토 : " + IdText2 + "\n" + "투약기록 : " +
                                     IdText3 + "\n" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
                         }
