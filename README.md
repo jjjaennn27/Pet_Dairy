@@ -2388,7 +2388,6 @@ WalingMate_map.java
 기존 공원 찿기 코드에서   .type(PlaceType.HOSPITAL) 병원으로 변경해주면 된다.  
 Register_Health_Find.java 생성
 
-    
     public void showPlaceInformation(LatLng location)
     {  
     mMap.clear();//지도 클리어
