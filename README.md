@@ -2429,16 +2429,148 @@ WalingMate_map.java
 
 ***
 ## 2-7 기능 4 - 건강
-### 2-7-1 건강 정보 입력 팝업창
+### 2-7-1 건강 정보 입력창   
+Register_Health.java 생성
 
+    public class Register_Health extends AppCompatActivity {
 
- 하단 두개의 버튼 중 건강정보 버튼을 클릭하면 입력날짜 및 반려동물의 건강정보를 입력할수있다.
+    DatePicker datePicker;
+    EditText edtDiary;
+    Button btnSave, btnfind, btnAlarm;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.register__health);
+        setTitle("건강 다이어리");
+
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
+        edtDiary = (EditText) findViewById(R.id.edtDiary);
+        btnSave = (Button) findViewById(R.id.btnSave);
+        btnfind = (Button) findViewById(R.id.btnfind);
+        btnAlarm = (Button) findViewById(R.id.btnAlarm);
+
+        // 캘린더 표시
+        datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), (view, year, month, day) -> {
+        });
+        
+        // 입력하기 버튼 클릭 시 반려동물 건강 정보 입력 창 이동
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                Intent myIntent = new Intent(Register_Health.this, Record.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+        // 병원찾기 버튼 클릭 시 지도 화면으로 이동
+        btnfind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v2) {
+                Intent myIntent = new Intent(Register_Health.this, Register_Health_Find.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+        // 알람 버튼 클릭 시 알람을 설정할 수 있는 화면으로 이동
+        btnAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                Intent myIntent = new Intent(Register_Health.this, Alarm.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+    }
+
+![image](https://user-images.githubusercontent.com/79950103/121304795-bf9c2e00-c937-11eb-99fd-d9f9e1f90007.png)
+
+하단 세개의 버튼 중 입력하기 버튼을 클릭하면 입력날짜 및 반려동물의 건강정보를 입력할 수 있다. 
 
 ### 2-7-2 건강 정보 저장 및 리스트 출력
-팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- health에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다. 또, 눈 버튼을 클릭을 통해서 저장된 리스트들을 확인할 수 있다.
+팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- health에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다. 또, 눈 버튼을 클릭을 통해서 저장된 리스트들을 확인할 수 있다.   
+Record.java 생성
 
-![image](https://user-images.githubusercontent.com/79950254/121298852-7ea01b80-c92f-11eb-874c-2a0fd625d076.png)
+    public class Record extends AppCompatActivity {
+
+    TextView tv2;
+    EditText idText1;
+    EditText idText2;
+    EditText idText3;
+    EditText idText4;
+    EditText idText5;
+    Button savebutton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.record);
+
+        tv2 = findViewById(R.id.tv2);
+        idText1 = findViewById(R.id.idText1);
+        idText2 = findViewById(R.id.idText2);
+        idText3 = findViewById(R.id.idText3);
+        idText4 = findViewById(R.id.idText4);
+        idText5 = findViewById(R.id.idText5);
+        savebutton = findViewById(R.id.savebutton);
+
+        // 저장 버튼 클릭 시 파이어베이스에 데이터 저장
+        savebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // 파이어베이스 연결
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+
+                String IdText1 = idText1.getText().toString();
+                String IdText2 = idText2.getText().toString();
+                String IdText3 = idText3.getText().toString();
+                String IdText4 = idText4.getText().toString();
+                String IdText5 = idText5.getText().toString();
+
+                Record_H record_h = new Record_H(IdText1, IdText2, IdText3, IdText4, IdText5);
+
+                DatabaseReference record_hRef = rootRef.child("Record_H");
+                record_hRef.push().setValue(record_h);
+
+                record_hRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        StringBuffer buffer = new StringBuffer();
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                            Record_H record_h = snapshot.getValue(Record_H.class);
+                            String IdText1 = record_h.getIdText1();
+                            String IdText2 = record_h.getIdText2();
+                            String IdText3 = record_h.getIdText3();
+                            String IdText4 = record_h.getIdText4();
+                            String IdText5 = record_h.getIdText5();
+
+                            buffer.append("몸무게 : " + IdText1 + "\n" + "배변/구토 : " + IdText2 + "\n" + "투약기록 : " +
+                                    IdText3 + "\n +" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
+                        }
+                        tv2.setText(buffer);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public void clickSave(View view) {
+    }
+
+![image](https://user-images.githubusercontent.com/79950103/121305560-af388300-c938-11eb-84fe-4bf04b9078eb.png)
 
 ### 2-7-3 근처 병원 찾기
 병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다.
@@ -2469,7 +2601,6 @@ Register_Health_Find.java 생성
  다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다. 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다.
 ### 2-7-5  알림설정
 알림 설정 버튼을 클릭하면 원하는 날짜와 시간을 입력받고, 지정된 시간이 되면 알림을 메세지로 알려준다. 어플 사용 시 알람이 울리면 어플 내에서 보여주고 어플 사용하지 않은 상태에서 알림이 울리면 상단바에서 보여준다.
-![image](https://user-images.githubusercontent.com/79950254/121306167-7947ce80-c939-11eb-8c33-ac9d487c4051.png)
 
 ***
 ## 2-8 기능 네비게이션
