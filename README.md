@@ -1,21 +1,69 @@
-# 반려동물 앱 "부탁해, 집사 !" 🐕 🐈
+# 반려동물 앱 "부탁해, 집사 !" 🐕 🐈 
+
+## 발표 영상 및 AVD 실행 영상 https://www.youtube.com/watch?v=y9lax-hXB1Q
 
 <201621453 김현승, 201921041 김민진, 201921067 신정은, 201921080 이소윤, 201921085 임재은, 201921093 진수현>
+
+![image](https://user-images.githubusercontent.com/79950380/121321832-6806be00-c949-11eb-95af-c190d464ad18.png)
+
 ***
 
+# 목차
+## 1. 소개
+>  ### 1-1 개발배경
+>  ### 1-2 사용한 기능
+>  ### 1-3 기존 어플과의 차이
+>  ### 1-4 기대효과
+
+## 2. 기능 구현
+> ### 2-1 사용자 생성
+> > ### 2-1-1 Firebase와 Android Studio 연동
+> > ### 2-1-2 회원가입
+> > ### 2-1-3 로그인
+>
+> ### 2-2 가족 연동
+> > ### 2-2-1 가족 연동
+> > ### 2-2-2 가족 프로필
+>
+> ### 2-3 동물 등록 
+> > ### 2-3-1 동물 사진 등록 및 메인 화면에 불러오기
+> > ### 2-3-2 동물 정보 저장
+>
+> ### 2-4 기능 1 -  밥
+> > ### 2-4-1 밥 정보 입력 팝업창
+> > ### 2-4-2 밥 정보 저장 및 리스트 출력
+> ### 2-5 기능 2 - 간식
+> > ### 2-5-1 간식 정보 입력 팝업창
+> > ### 2-5-2 간식 정보 저장 및 리스트 출력
+> ### 2-6 기능 3 - 산책
+> > ### 2-6-1 산책 정보 입력 팝업창
+> > ### 2-6-2 산책 정보 저장 및 리스트 출력
+> > ### 2-6-3 산책 메이트
+> > ### 2-6-4 산책 메이트 정보 입력 팝업창
+> > ### 2-6-5 산책 메이트 정보 저장 및 리스트 출력
+> > ### 2-6-6 근처 공원 찾기
+> ### 2-7 기능 4 - 건강
+> > ### 2-7-1 건강 정보 입력 팝업창
+> > ### 2-7-2 건강 정보 저장 및 리스트 출력
+> > ### 2-7-3 근처 병원 찾기
+> > ### 2-7-4 다이어리
+> > ### 2-7-5  알림설정
+> ### 2-8 기능 네비게이션
+
+***
 
 ## 1.소개
 ### 1-1 개발배경
-간식으로 인한 비만 또는 산책을 안함으로써 생기는 배변 장애는 반려동물에게 흔히 나타나는 건강문제이다. 이를 해결하기 위해서는 가족의 의사소통과 무한한 관심이 중요하다. 그러나, 반려동물을 키우는 입장에서 혼자가 아닌 가족 구성원과 함께 관심을 가지고 모두가 케어해야 한다고 생각한다. 이러한 문제점을 토대로 기존 어플을 조사해보니 반려동물에 대한 어플 중 아직까지 가족들과 함께 공유할 수 있는 앱이 존재하지 않은 것을 확인하였다. 그 후 반려동물에 관한 앱을 개발함으로써 많은 집사들에게 활용적이게 사용할 수 있는 앱이 될 것 같아 주제를 선정하였다.
+간식으로 인한 비만 또는 산책을 안함으로써 생기는 배변 장애는 반려동물에게 흔히 나타나는 건강문제이다. 이를 해결하기 위해서는 가족의 의사소통과 무한한 관심이 중요하다. 그러나, 반려동물을 키우는 입장에서 혼자가 아닌 가족 구성원과 함께 관심을 가지고 모두가 케어해야 한다고 생각한다. 이러한 문제점을 토대로 기존 어플을 조사해보니 반려동물에 대한 어플 중 아직까지 가족들과 함께 공유할 수 있는 앱이 존재하지 않은 것을 확인하였다. 그 후 반려동물에 관한 앱을 개발함으로써 많은 집사들에게 활용적이게 사용할 수 있는 앱이 될 것 같아 주제를 선정하게되었다.
 
 ### 1-2 사용한 기능
-부탁해 집사! 서비스 애플리케이션은 모든 가족 구성원끼리 반려동물을 케어 할 수 있게 가족연동을 통하여 반려동물들의 밥, 간식, 건강, 산책 등의 정보를 실시간으로 공유할 수 있다. 또한 google map과 연동을 통하여 내 주변에 공원 위치와 병원 위치를 알 수 있게 함으로서 모든 집사들이 책임감을 가지고 반려동물을 편리하게 서비스를 제공 하는 것을 목표로 구성하였다.
-Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 기능들을 구현하고 Google Map API 연동을 통해 실시간 위치와 Place API을 이용하여 공원 위치와 병원 위치를 찾을 수 있도록 한다.
+'부탁해 집사!' 서비스 애플리케이션은 모든 가족 구성원끼리 반려동물을 케어 할 수 있게 가족연동을 통하여 반려동물들의 밥, 간식, 건강, 산책 등의 정보를 실시간으로 공유할 수 있다. Firebase를 Android Studio와 연결하여 데이터 저장을 통하여 여러 기능들을 구현하였으며 google map과 연동을 통하여 내 주변에 공원 위치와 병원 위치를 알 수 있게 함으로서 모든 집사들이 책임감을 가지고 반려동물을 편리하게 서비스를 제공 하는 것을 목표로 구성하였다. 또한 Google Map API 연동을 통해 실시간 위치와 Place API을 이용하여 공원 위치와 병원 위치를 찾을 수 있도록 한다.
 
 ### 1-3 기존 어플과의 차이
+저의 어플의 가장 큰 차이점은 가족연동 기능이다. 기존에 다른 반려동물 관리 어플은 구현되어 있는것이 있지만 저희 어플처럼 가족연동으로 구현된 어플은 없었다. 집에서 키우는 반려동물인 만큼 가족 구성원이 다같이 돌보고 있지만 그만큼 서로 소통하는것에 번거로움이 발생할 수 있기 때문에 '부탁해, 집사' 어플을 통해 기록으로 남김으로써 언제든지 가족 구성원이 체크를 할 수 있으면 사용자 또한 손쉽게 클릭으로 기록을 바로 바로 할 수 있어 번거로움도 최소화 시킬 수 있을 것이다. 또 그밖의 병원 찾기 기능이나 산책메이트 찾기와 같이 효율성을 증가시킬 수 있는 기능들을 추가하여 관리의 편리함을 증가시켰다는 것을 차이점으로 볼 수 있다.
 
 ### 1-4 기대효과
-많은 가구에서 반려동물을 키우고 있어 반려동물 관리에 많은 관심이 쏟아지고 있는 요즘, 다양하게 반려동물에 대한 용품이나 그밖의 여러가지 관리를 위한것들이 나타나고 있다. 이에 걸맞게 많은 가구에서 유용하게 쓰여질 수 있는 반려동물 관리 어플을 만듬으로써 직접적으로 소통을 하지 않고도 정보 입력을 통해 서로 내용들을 공유하고 번거로움을 줄일 수 있으며 검색을 하지 않고도 주변 병원 또한 찾아볼 수 있어  가족 구성원이 좀 더 효율적으로 동물들을 보살필수 있을것이다. 그뿐만아니라 가족구성원이 각자 사진을 올리고 글을 작성하면서 가족간의 소통의 기회 또한 늘어나게 해줄것이라 기대한다.
+많은 가구에서 반려동물을 키우고 있어 반려동물 관리에 많은 관심이 쏟아지고 있는 요즘, 다양하게 반려동물에 대한 용품이나 그밖의 여러가지 관리를 위한것들이 나타나고 있다. 이에 걸맞게 많은 가구에서 유용하게 쓰여질 수 있는 반려동물 관리 어플을 만듬으로써 직접적으로 소통을 하지 않고도 정보 입력을 통해 서로 내용들을 공유하고 번거로움을 줄일 수 있으며 검색을 하지 않고도 주변 병원 또한 찾아볼 수 있어  가족 구성원이 좀 더 효율적으로 동물들을 보살필수 있을 것이다. 그뿐만아니라 가족구성원이 각자 사진을 올리고 글을 작성하면서 가족간의 소통의 기회 또한 늘어나게 해줄 것이라 기대한다.
 
 
 ***
@@ -26,10 +74,76 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
  
 [연동 방법] 
 1. 파이어 베이스에 프로젝트 생성
+
+![image](https://user-images.githubusercontent.com/51051548/121299262-17cf3200-c930-11eb-99a1-522dcbb29016.png)
+
+(구글 로그인이 필요하지 않으므로 SHA-1 은 생략해줘도 된다)
+
+
 2. google-service.json파일얻기
+
+![image](https://user-images.githubusercontent.com/51051548/121299267-1c93e600-c930-11eb-9f34-6a0fe58e9ed5.png)
+
+
+
 3. .json파일을 안드로이드스튜디오 프로젝트 안에 삽입 
-4. Firebase SDK추가
-5. 안드로이드와 파이어베이스 연결 확인
+
+![image](https://user-images.githubusercontent.com/51051548/121299352-40572c00-c930-11eb-8e4b-2fc3278e9d9b.png)
+
+4. Firebase 구성파일추가
+
+프로젝트로 들어간 후 존재하는 Gradle 파일(build.gradle)에서 Google 서비스 Gradle 플러그인을 포함하는 규칙을 추가합니다.
+  
+    buildscript {
+     repositories {
+    // Check that you have the following line (if not, add it):
+    google()  //추가
+    }
+      
+    dependencies {
+    // ...
+
+    // Add the following line:
+    classpath 'com.google.gms:google-services:4.3.8'  // 추가
+     }
+    }
+      allprojects {
+          // ...
+  
+    repositories {
+    // Check that you have the following line (if not, add it):
+    google()  // 추가
+    // ...
+       }
+    }
+    
+
+![image](https://user-images.githubusercontent.com/51051548/121299989-29fda000-c931-11eb-911a-32bb8bb0d352.png)
+
+
+5. Firebase SDK추가
+
+        dependencies {
+        // ...
+
+        // Import the Firebase BoM
+        implementation platform('com.google.firebase:firebase-bom:28.0.1')
+
+        // When using the BoM, you don't specify versions in Firebase library dependencies
+
+        // Declare the dependency for the Firebase SDK for Google Analytics
+        implementation 'com.google.firebase:firebase-analytics'
+
+        // Declare the dependencies for any other desired Firebase products
+        // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.firebase:firebase-firestore'
+        }
+       
+ ![image](https://user-images.githubusercontent.com/51051548/121322080-9d131080-c949-11eb-8ade-783f7704ea55.png)
+![image](https://user-images.githubusercontent.com/51051548/121322090-a00e0100-c949-11eb-9e46-b17f7a9c9922.png)
+
+
 
 [연동방법- realtime database]
 1. TOOL에들어간후, 파이어베이스 클릭
@@ -38,7 +152,9 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
 4. add to realtime database to your app 을 클릭하여 자동으로 build.gradle에 코드가 추가되게 만들어줌
 
 #### 2-1-2 회원가입
-이메일로 회원가입을 진행할 수 있도록 하였다. 사용자의 이메일, 비밀번호를 입력하여 저장하여, 파이어베이스에 정보가 올라갈 수 있고도록 만들었다.   
+
+사용자의 이메일, 비밀번호를 입력하여 저장하여, 파이어베이스에 정보가 올라가 회원가입을 할 수 있도록 만들었다.   
+
 Register.java 생성
 
     public class Register extends AppCompatActivity {
@@ -131,7 +247,13 @@ Register.java 생성
 ![image](https://user-images.githubusercontent.com/79950380/121208194-d9e0f800-c8b4-11eb-8dac-a9cd04eda8e3.png)
 
 #### 2-1-3 로그인
- 회원가입을 완료 되었다면 로그인을 할 수 있다. 파이어베이스에 있는 정보와 입력된 정보를 비교하여 등록되어있다면 로그인 성공 메시지가 뜨고 메인화면으로들어간다. 아이디나 비밀번호가 일치하지 않거나 등록되지 않은 아이디라면 로그인 실패 메시지가 뜨면서 화면이 넘어가지 않는다.   
+
+ 회원가입을 완료 되었다면 로그인을 할 수 있다.
+ 
+ 파이어베이스에 있는 정보와 입력된 정보를 비교하여 등록되어있다면 로그인 성공 메시지가 뜨고 가족 등록 화면으로 넘어간다.
+ 
+ 아이디나 비밀번호가 일치하지 않거나 등록되지 않은 아이디라면 로그인 실패  메시지가 뜨면서 화면이 넘어가지 않는다.   
+ 
  Login.java
 
     public class Login extends AppCompatActivity{
@@ -189,10 +311,16 @@ Register.java 생성
 
 
 ***
-## 2-2 가족 연동
-### 2-2-1 가족 구성원 프로필 입력 및 출력
-한 아이디를 통해 가족들이 로그인을 하고 가족 구성원을 등록한다. 가족 구성원에 등록되면 스피너에 연결되어 밥 , 산책, 간식 팝업창에서 등록된 가족들을 선택하여 정보를 저장 할 수 있다.
-등록이 되면 가족 구성원 프로필 리스트로 출력된다.   
+### 2-2 가족 연동
+
+#### 2-2-1 가족 구성원 프로필 입력 및 출력
+
+한 아이디를 통해 가족들이 로그인을 하고 가족 구성원을 등록한다.
+
+가족 구성원에 등록되면 스피너에 연결되어 밥 , 산책, 간식 팝업창에서 등록된 가족들을 선택하여 정보를 저장 할 수 있다. 
+
+등록이 되면 가족 구성원 프로필 리스트로 하단에 출력된다.   
+
 Family_Register.java - 가족 프로필 등록
 
     public class Family_Register extends AppCompatActivity  {
@@ -320,8 +448,10 @@ Person.java - 가족 정보를 저장할 class 생성
     }
     }
 
-### 2-2-2 가족 연동
+#### 2-2-2 가족 연동
+
 가족 구성원을 등록하면 밥, 간식, 산책에 가족들을 스피너로 연결하여 가족 연동을 구현하였다.   
+
 Pet_Database.java
 
     public class Pet_Database { //데이터베이스에 저장된 가족 이름 연결
@@ -356,12 +486,13 @@ Register_Food.java,  Register_Run.java, Register_Snack.java 파일에 넣어준�
     setNameSpinner(Person); //스피너에 저장된 스피너값 연결
 ![image](https://user-images.githubusercontent.com/79950380/121206758-b0739c80-c8b3-11eb-87c1-fd9659803f17.png)
 ***
-## 2-3 동물 등록 
-### 2-3-1 동물 사진 등록 및 메인 화면에 불러오기, 데이터 저장
-동물의 사진을 갤러리를 통해 직접 가져오거나 사진 촬영을 통해 등록할 수 있다.
-그밖의 성별과 이름, 품종, 생년월일을 입력하여 등록을 완성한다. 저장이 완료 되었다면 등록된 사진이 메인화면에 출력된다. 
-동물 정보 저장 완료후 메인으로 왔을때 등록한 동물의 이미지가 뜬다면 동물 등록에 성공하였다.
-동물의 이미지와 함께 아래에는 동물의 건강, 밥, 산책, 간식의 정보를 등록할 수 있는 버튼이 뜨고 이를 통해 정보를 작성할 수 있는 페이지로 이동할 수 있다.
+### 2-3 동물 등록 
+
+#### 2-3-1 동물 사진 등록 및 메인 화면에 불러오기, 데이터 저장
+
+동물의 사진을 갤러리를 통해 직접 가져오거나 사진 촬영을 통해 등록할 수 있으며 그밖의 성별과 이름, 품종, 생년월일을 입력하여 동물 등록을 한다.
+
+저장이 완료 되었다면 메인 화면에 등록된 동물의 이미지와 함께 아래에는 동물의 건강, 밥, 산책, 간식의 정보를 등록할 수 있는 버튼이 뜨고 이를 통해 정보를 작성할 수 있는 각 페이지로 이동할 수 있다.
 
 Pet_Register.java 
 
@@ -557,11 +688,15 @@ PetStorage 함수 - 동물 사진 파이어베이스 저장
     }
  ![image](https://user-images.githubusercontent.com/51051548/121143591-2e19b700-c878-11eb-83d7-002afeb12888.png)
  ***
-## 2-4 기능 1 -  밥
-### 2-4-1 밥 정보 입력 팝업창
+### 2-4 기능 1 -  밥
+#### 2-4-1 밥 정보 입력 팝업창
 
 준 사람, 준 시간, 사료 종류, 사료 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
-준 사람, 사료 종류, 사료 양은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록 된 가족구성원을 선택 할 수 있다.
+
+준 사람, 사료 종류, 사료 양은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다.
+
+준 사람 스피너는 앞에서 가족 등록을 통하여 등록 된 가족구성원을 선택 할 수 있다.
+
 권장량 버튼을 클릭 시 알맞은 사료의 양을 볼 수 있다.   
 
 Register_Food.java
@@ -878,12 +1013,18 @@ Register_Food.java
     public void sampleMethod() {
     }
 
+![image](https://user-images.githubusercontent.com/79950380/121332494-e320a200-c952-11eb-817b-98b6e76f0126.png)
 
-}
 
-### 2-4-2 밥 정보 저장 및 리스트 출력
-팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- food에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
-눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.   
+
+#### 2-4-2 밥 정보 저장 및 리스트 출력
+
+정보 입력 후 '등록 버튼'을 누르면 데이터 베이스(pat care-food)에 정보가 저장되며 
+
+리사이클러뷰를 이용하여 실시간으로 저장된 리스트를 볼 수 있다.
+
+
+
 RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
   
     public class RecyclerAdapter_food extends RecyclerView.Adapter<RecyclerAdapter_food.ViewHolder> {
@@ -941,10 +1082,17 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 ![image](https://user-images.githubusercontent.com/51051548/121146422-de88ba80-c87a-11eb-88fe-07e1bc571b62.png)
 
 ***
-## 2-5 기능 2 - 간식
-### 2-5-1 간식 정보 입력 팝업창
-준 사람, 준 시간, 간식 종류, 간식 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
-준 사람, 간식 종류은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록된 가족구성원을 선택 할 수 있다.
+### 2-5 기능 2 - 간식
+
+#### 2-5-1 간식 정보 입력 팝업창
+
+준 사람, 준 시간, 간식 종류, 간식 양을 '+ 버튼'을 통해 입력 할 수 있는 팝업창을 구현하였다. 
+
+준 사람, 간식 종류은 스피너로 등록하여 선택 할 수 있게 하였으며 준 사람은 앞에서 등록한 가족구성원이 스피너로 나타나며 가족 구성원들 중에 선택을 할 수 있다.
+
+준 시간은 Now 버튼을 클릭하면 실시간 날짜와 시간을 표시된다.
+
+정보 입력후 '등록 버튼'을 누르면 데이터 베이스에 정보가 저장되며 실시간으로 저장된 리스트를 볼 수 있다.
 
 Register_Snack.java
 
@@ -1213,9 +1361,10 @@ Register_Snack.java
     }
 
 
-### 2-5-2 간식 정보 저장 및 리스트 출력
-팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care-snack에저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
-눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
+#### 2-5-2 간식 정보 저장 및 리스트 출력
+정보 입력 후 '등록 버튼'을 누르면 데이터 베이스(pat care-snack)에 정보가 저장되며 
+
+리사이클러뷰를 이용하여 실시간으로 저장된 리스트를 볼 수 있다.
 
 RecyclerAdapter_snack.java
 
@@ -1280,9 +1429,17 @@ RecyclerAdapter_snack.java
 (now 버튼을 클릭하여 현재시간을 입력받을수 있는 기능도 넣었다.)
  
 ***
-## 2-6 기능 3 - 산책
-### 2-6-1 산책 정보 입력 팝업창
-산책을 시킨 사람, 시킨 시간, 산책시간, 산책장소를 입력할 수있는 팝업팡을 구현하였다. 또 스피너 기능을 통하여 산책 시킨 사람을 등록한 별명을 통해 선택 입력할 수 있도록 구현을 하였고 시킨 시간은 NOW버튼을 통해 실시간 시간과 날짜를 입력 받을 수 있도록 하였다.   
+### 2-6 기능 3 - 산책
+#### 2-6-1 산책 정보 입력 팝업창
+
+
+시킨 사람, 시킨 시간, 산책 시간, 산책 장소를 '+ 버튼'을 통해 입력 할 수 있는 팝업창을 구현하였다. 
+
+시킨 사람, 산책 시간은 스피너로 등록하여 선택 할 수 있게 하였으며 시킨 사람은 앞에서 등록한 가족구성원이 스피너로 나타나며 가족 구성원들 중에 선택을 할 수 있다.
+
+시킨 시간은 Now 버튼을 클릭하면 실시간 날짜와 시간을 표시된다.
+
+정보 입력후 '등록 버튼'을 누르면 데이터 베이스에 정보가 저장되며 실시간으로 저장된 리스트를 볼 수 있다.
 
  
    
@@ -1563,9 +1720,10 @@ RecyclerAdapter_snack.java
     }
 
 
-### 2-6-2 산책 정보 저장 및 리스트 출력
-팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- walk에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
-눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
+#### 2-6-2 산책 정보 저장 및 리스트 출력
+정보 입력 후 '등록 버튼'을 누르면 데이터 베이스(pat care-walk)에 정보가 저장되며 
+
+리사이클러뷰를 이용하여 실시간으로 저장된 리스트를 볼 수 있다.
  
    RecyclerAdapter.java
     
@@ -1620,17 +1778,16 @@ RecyclerAdapter_snack.java
             NowView = View.findViewById(R.id.list_now);
         }
     }
-
+![image](https://user-images.githubusercontent.com/79950254/121297839-e2294980-c92d-11eb-9a40-c563b3db57e1.png)
    
-   
 
-### 2-6-3 산책 메이트
+#### 2-6-3 산책 메이트
 산책 메이트 찾기 버튼을 누르면 산책 메이트 찾기 게시판이 뜨게 된다. 다른 사람이 등록한 정보를 보고 직접 메이트를 찾을 수 있으며 사용자가 게시판에 입력함으로써 메이트를 구할 수있다.
 
 ![image](https://user-images.githubusercontent.com/79950380/121206310-51ae2300-c8b3-11eb-96d2-66fa86687c5d.png)
 
 
-#### #2-6-3-1 산책 메이트 정보 입력 팝업창
+##### #2-6-3-1 산책 메이트 정보 입력 팝업창
 산책장소, 예상시간, 강아지종, 카카오톡ID를 + 버튼 을 통해 입력하는 팝업창을 구현하였다. 예상 시간은 스피너 통해 선택 할 수 있다. 
    
  WalingMate_Board.java
@@ -1782,7 +1939,10 @@ RecyclerAdapter_snack.java
 
 
 ##### 2-6-3-2 산책 메이트 정보 저장 및 리스트 출력
-팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 WalkingBoards에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
+팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 WalkingBoards에 저장한다.
+
+리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
+
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.   
  
  RecyclerAdapter_run.java 
@@ -1839,11 +1999,43 @@ RecyclerAdapter_snack.java
         }
     }
  
-![image](https://user-images.githubusercontent.com/79950380/121206463-73a7a580-c8b3-11eb-8d81-9df908f2a721.png)
+![image](https://user-images.githubusercontent.com/79950254/121298017-287ea880-c92e-11eb-8683-68e95bd72196.png)
 
 
-### 2-6-4 근처 공원 찾기
+#### 2-6-4 근처 공원 찾기
 ‘google map’을 이용하여 사용자의 위치를 GPS를 통해 전송받아 위치를 나타내고, google  Place API 을 이용하여 사용자 주변의 가까운 공원들을 검색할 수있도록 하였다.
+
+##### https://console.cloud.google.com/home/dashboard?folder=&organizationId=&project=double-venture-314915
+
+##### Google Maps Android API 발급 받기
+
+ ![image](https://user-images.githubusercontent.com/79950380/121276575-ddeb3500-c909-11eb-98a1-3c9902e8ff9f.png)
+ 
+1. 새 프로젝트를 만들고 Maps SDK for Android 사용 클릭
+ 
+![image](https://user-images.githubusercontent.com/79950380/121276921-8bf6df00-c90a-11eb-98d8-185bd8e50e84.png)
+
+2. 사용자 인증 정보에서 API키 생성 후 수정
+
+![image](https://user-images.githubusercontent.com/79950380/121277344-5bfc0b80-c90b-11eb-88c2-73998f633b35.png)
+
+3. Android앱을 선택하고 패키지 이름과 SHA-1 입력
+
+![image](https://user-images.githubusercontent.com/79950380/121277517-bac18500-c90b-11eb-8a6a-5b40bdca6431.png)
+
+4. google_maps_api.xml "google_maps_key" 부분에 입력
+
+##### Place API 발급 받기
+
+![image](https://user-images.githubusercontent.com/79950380/121277768-463b1600-c90c-11eb-990d-a4a47bc192f7.png)
+
+1. 위의 과정에서 Google Maps Android API 대신 Place API 선택 / 3번 과정 생략
+
+![image](https://user-images.githubusercontent.com/79950380/121278148-ff015500-c90c-11eb-8193-c0c2f3e52d51.png)
+
+2. Register_Health_Find.java와 WalkingMate_map.java key() 부분에 입력
+
+  
 
 WalingMate_map.java
 
@@ -2295,27 +2487,578 @@ WalingMate_map.java
 ![image](https://user-images.githubusercontent.com/79950380/121206662-9fc32680-c8b3-11eb-9539-08fce46b8a73.png)
 
 ***
-## 2-7 기능 4 - 건강
-### 2-7-1 건강 정보 입력 팝업창
+### 2-7 기능 4 - 건강
+#### 2-7-1 건강 정보 입력창   
+Register_Health.java 생성
+
+    public class Register_Health extends AppCompatActivity {
+
+    DatePicker datePicker;
+    EditText edtDiary;
+    Button btnSave, btnfind, btnAlarm;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.register__health);
+        setTitle("건강 다이어리");
+
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
+        edtDiary = (EditText) findViewById(R.id.edtDiary);
+        btnSave = (Button) findViewById(R.id.btnSave);
+        btnfind = (Button) findViewById(R.id.btnfind);
+        btnAlarm = (Button) findViewById(R.id.btnAlarm);
+
+        // 캘린더 표시
+        datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), (view, year, month, day) -> {
+        });
+        
+        // 입력하기 버튼 클릭 시 반려동물 건강 정보 입력 창 이동
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                Intent myIntent = new Intent(Register_Health.this, Record.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+        // 병원찾기 버튼 클릭 시 지도 화면으로 이동
+        btnfind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v2) {
+                Intent myIntent = new Intent(Register_Health.this, Register_Health_Find.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+        // 알람 버튼 클릭 시 알람을 설정할 수 있는 화면으로 이동
+        btnAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                Intent myIntent = new Intent(Register_Health.this, Alarm.class);
+                startActivity(myIntent);
+                finish();
+            }
+        });
+
+    }
+
+![image](https://user-images.githubusercontent.com/79950380/121313210-207c3400-c941-11eb-8caa-2e78393fee60.png)
+
+하단 세개의 버튼 중 건강 입력 버튼을 클릭하면 입력날짜 및 반려동물의 건강정보를 입력할 수 있다. 
+
+#### 2-7-2 건강 정보 저장 및 리스트 출력
+팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- health에 저장한다.
+
+리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다. 또, 눈 버튼을 클릭을 통해서 저장된 리스트들을 확인할 수 있다.   
+
+Record.java 생성
+
+    public class Record extends AppCompatActivity {
+
+    TextView tv2;
+    EditText idText1;
+    EditText idText2;
+    EditText idText3;
+    EditText idText4;
+    EditText idText5;
+    Button savebutton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.record);
+
+        tv2 = findViewById(R.id.tv2);
+        idText1 = findViewById(R.id.idText1);
+        idText2 = findViewById(R.id.idText2);
+        idText3 = findViewById(R.id.idText3);
+        idText4 = findViewById(R.id.idText4);
+        idText5 = findViewById(R.id.idText5);
+        savebutton = findViewById(R.id.savebutton);
+
+        // 저장 버튼 클릭 시 파이어베이스에 데이터 저장
+        savebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // 파이어베이스 연결
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+
+                String IdText1 = idText1.getText().toString();
+                String IdText2 = idText2.getText().toString();
+                String IdText3 = idText3.getText().toString();
+                String IdText4 = idText4.getText().toString();
+                String IdText5 = idText5.getText().toString();
+
+                Record_H record_h = new Record_H(IdText1, IdText2, IdText3, IdText4, IdText5);
+
+                DatabaseReference record_hRef = rootRef.child("Record_H");
+                record_hRef.push().setValue(record_h);
+
+                record_hRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        StringBuffer buffer = new StringBuffer();
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                            Record_H record_h = snapshot.getValue(Record_H.class);
+                            String IdText1 = record_h.getIdText1();
+                            String IdText2 = record_h.getIdText2();
+                            String IdText3 = record_h.getIdText3();
+                            String IdText4 = record_h.getIdText4();
+                            String IdText5 = record_h.getIdText5();
+
+                            buffer.append("몸무게 : " + IdText1 + "\n" + "배변/구토 : " + IdText2 + "\n" + "투약기록 : " +
+                                    IdText3 + "\n +" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
+                        }
+                        tv2.setText(buffer);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public void clickSave(View view) {
+    }
+
+![image](https://user-images.githubusercontent.com/79950103/121305560-af388300-c938-11eb-84fe-4bf04b9078eb.png)
+
+#### 2-7-3 근처 병원 찾기
+병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다.
+
+기존 공원 찿기 코드에서  .type(PlaceType.PARK)를 .type(PlaceType.HOSPITAL)로 변경해주면 된다.  
+
+Register_Health_Find.java 생성
+
+    
+    public void showPlaceInformation(LatLng location)
+    {  
+    mMap.clear();//지도 클리어
+
+    if (previous_marker != null)
+        previous_marker.clear();//지역정보 마커 클리어
+
+    new NRPlaces.Builder()
+            .listener(WalkingMate_map.this)
+            .key("AIzaSyDgXkkVZxZ2u8nOAhtGNjVGFlFkX46zs4M")
+            .latlng(location.latitude, location.longitude)//현재 위치
+            .radius(2000) //2000 미터 내에서 검색
+            .type(PlaceType.HOSPITAL) //병원
+            .build()
+            .execute();
+            }
+            
+            
+![image](https://user-images.githubusercontent.com/79950380/121299080-d5a5f080-c92f-11eb-8402-ba1c30146acd.png)
 
 
- 하단 두개의 버튼 중 건강정보 버튼을 클릭하면 입력날짜 및 반려동물의 건강정보를 입력할수있다.
+#### 2-7-4 다이어리
+ 다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다.
+ 
+ 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다.
+ 
+ 일기가 작성되지 않은 날짜를 클릭하면 '일기 없는 날'이라고 토스트 메시지가 뜨고 작성된 날짜를 클릭하면 '일기 쓴 날' 이라고 토스트 메시지가 뜨며 작성된 일기가 보인다.
+ 
+ 그리고 하단에 건강 입력, 병원 찾기, 알람 설정을 할 수 있는 3개의 버튼이 있다.
+     
+     
+    public class Record extends AppCompatActivity {
+
+    TextView tv2;
+    EditText idText1;
+    EditText idText2;
+    EditText idText3;
+    EditText idText4;
+    EditText idText5;
+    Button savebutton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.record);
+
+        tv2 = findViewById(R.id.tv2);
+        idText1 = findViewById(R.id.idText1);
+        idText2 = findViewById(R.id.idText2);
+        idText3 = findViewById(R.id.idText3);
+        idText4 = findViewById(R.id.idText4);
+        idText5 = findViewById(R.id.idText5);
+        savebutton = findViewById(R.id.savebutton);
 
 
-### 2-7-2 건강 정보 저장 및 리스트 출력
-팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- health에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다. 또, 눈 버튼을 클릭을 통해서 저장된 리스트들을 확인할 수 있다.
+        savebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+
+                String IdText1 = idText1.getText().toString();
+                String IdText2 = idText2.getText().toString();
+                String IdText3 = idText3.getText().toString();
+                String IdText4 = idText4.getText().toString();
+                String IdText5 = idText5.getText().toString();
+
+                Record_H record_h = new Record_H(IdText1, IdText2, IdText3, IdText4, IdText5);
+
+                DatabaseReference record_hRef = rootRef.child("Record_H");
+                record_hRef.push().setValue(record_h);
+
+                record_hRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        StringBuffer buffer = new StringBuffer();
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                            Record_H record_h = snapshot.getValue(Record_H.class);
+                            String IdText1 = record_h.getIdText1();
+                            String IdText2 = record_h.getIdText2();
+                            String IdText3 = record_h.getIdText3();
+                            String IdText4 = record_h.getIdText4();
+                            String IdText5 = record_h.getIdText5();
+
+                            buffer.append("몸무게 : " + IdText1 + "\n" + "배변/구토 : " + IdText2 + "\n" + "투약기록 : " +
+                                    IdText3 + "\n" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
+                        }
+                        tv2.setText(buffer);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public void clickSave(View view) {
+    }
+}
+      
+     
+ ![image](https://user-images.githubusercontent.com/79950380/121312114-03933100-c940-11eb-9730-b2e35b13b030.png)
 
 
-### 2-7-3 근처 병원 찾기
-병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다. 
-### 2-7-4 다이어리
- 다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다. 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다.
-### 2-7-5  알림설정
-알림 설정 버튼을 클릭하면 원하는 날짜와 시간을 입력받고, 지정된 시간이 되면 알림을 메세지로 알려준다. 어플 사용 시 알람이 울리면 어플 내에서 보여주고 어플 사용하지 않은 상태에서 알림이 울리면 상단바에서 보여준다.
+ #### 2-7-5  알림설정
+알림 설정 버튼을 클릭하면 원하는 날짜와 시간을 입력받고, 지정된 시간이 되면 알림을 메세지로 알려준다.
+
+어플 사용 시 알람이 울리면 어플 내에서 보여주고 어플 사용하지 않은 상태에서 알림이 울리면 휴대폰 상단바에서 보여준다.  
+
+Alarm.java 생성 
+
+    public class Alarm extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.alarm);
+        final TimePicker picker=(TimePicker)findViewById(R.id.timePicker);
+        picker.setIs24HourView(true);
+        CalendarView calendarView=(CalendarView)findViewById(R.id.cView);
+        SharedPreferences sharedPreferences = getSharedPreferences("daily alarm", MODE_PRIVATE);
+        long millis = sharedPreferences.getLong("nextNotifyTime", Calendar.getInstance().getTimeInMillis());
+
+        Calendar nextNotifyTime = new GregorianCalendar();
+        nextNotifyTime.setTimeInMillis(millis);
+
+        Date nextDate = nextNotifyTime.getTime();
+        //String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(nextDate);
+        //Toast.makeText(getApplicationContext(),"[처음 실행시] 다음 알람은 " + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
+
+        // 이전 설정값으로 TimePicker 초기화
+        Date currentTime = nextNotifyTime.getTime();
+        SimpleDateFormat HourFormat = new SimpleDateFormat("kk", Locale.getDefault());
+        SimpleDateFormat MinuteFormat = new SimpleDateFormat("mm", Locale.getDefault());
+        /*SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE",Locale.getDefault());
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy",Locale.getDefault());
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MM",Locale.getDefault());
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());*/
+
+        /*String weekday = weekdayFormat.format(currentTime);
+        String year = yearFormat.format(currentTime);
+        String month = monthFormat.format(currentTime);
+        String day = dayFormat.format(currentTime);*/
+        int pre_hour = Integer.parseInt(HourFormat.format(currentTime));
+        int pre_minute = Integer.parseInt(MinuteFormat.format(currentTime));
+
+        if (Build.VERSION.SDK_INT >= 23 ){
+            picker.setHour(pre_hour);
+            picker.setMinute(pre_minute);
+        }
+        else{
+            picker.setCurrentHour(pre_hour);
+            picker.setCurrentMinute(pre_minute);
+        }
+        Button button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "날짜를 먼저 선택하세요", Toast.LENGTH_LONG).show();
+            }
+        });
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
+
+                String ymd_text = String.format("%d년 %d월 %d일",year,month+1,dayOfMonth);
+                switch (calendarView.getId())
+                {
+                    case R.id.cView:
+
+                        button.setOnClickListener(new View.OnClickListener()
+
+                        {
+                            @Override
+                            public void onClick (View arg0){
+                                int hour, hour_24, minute;
+                                String am_pm;
+                                if (Build.VERSION.SDK_INT >= 23) {
+                                    hour_24 = picker.getHour();
+                                    minute = picker.getMinute();
+                                } else {
+                                    hour_24 = picker.getCurrentHour();
+                                    minute = picker.getCurrentMinute();
+                                }
+                                if (hour_24 > 12) {
+                                    am_pm = "PM";
+                                    hour = hour_24 - 12;
+                                } else {
+                                    hour = hour_24;
+                                    am_pm = "AM";
+                                }
+                                // 현재 지정된 시간으로 알람 시간 설정
+                                Calendar calendar = Calendar.getInstance();
+                                Date date = new Date(calendarView.getDate());
+                                calendar.setTime(date);
+                                calendar.setTimeInMillis(System.currentTimeMillis());
+                                calendar.set(Calendar.HOUR_OF_DAY, hour_24);
+                                calendar.set(Calendar.MINUTE, minute);
+                                calendar.set(Calendar.SECOND, 0);
+                                calendar.set(Calendar.YEAR, year);
+                                calendar.set(Calendar.MONTH, month);
+                                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                                // 이미 지난 시간을 지정했다면 다음날 같은 시간으로 설정
+                /*if (calendar.before(Calendar.getInstance())) {
+                    calendar.add(Calendar.DATE, 1);
+                }*/
+
+                                Date currentDateTime = calendar.getTime();
+                                String date_text = new SimpleDateFormat(" a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
+                                Toast.makeText(getApplicationContext(), ymd_text + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_LONG).show();
+
+                                //  Preference에 설정한 값 저장
+                                SharedPreferences.Editor editor = getSharedPreferences("daily alarm", MODE_PRIVATE).edit();
+                                editor.putLong("nextNotifyTime", (long) calendar.getTimeInMillis());
+                                editor.apply();
+
+
+                                diaryNotification(calendar);
+                            }
+                        });
+                        break;
+                }
+            }
+        });
+
+
+    }
+
+    void diaryNotification(Calendar calendar)
+    {
+    // PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+    //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+    // Boolean dailyNotify = sharedPref.getBoolean(SettingsActivity.KEY_PREF_DAILY_NOTIFICATION, true);
+        Boolean dailyNotify = true; // 무조건 알람을 사용
+
+        PackageManager pm = this.getPackageManager();
+        ComponentName receiver = new ComponentName(this, DeviceBootReceiver.class);
+        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+
+        // 사용자가 매일 알람을 허용했다면
+        if (dailyNotify) {
+
+
+            if (alarmManager != null) {
+
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                        AlarmManager.INTERVAL_DAY, pendingIntent);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+                }
+            }
+
+            // 부팅 후 실행되는 리시버 사용가능하게 설정
+            pm.setComponentEnabledSetting(receiver,
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    PackageManager.DONT_KILL_APP);
+
+        }
+    }
+    }
+AlarmReceiver.java 생성
+
+    public class AlarmReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent notificationIntent = new Intent(context, Alarm.class);
+
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent pendingI = PendingIntent.getActivity(context, 0,
+                notificationIntent, 0);
+
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "default");
+
+
+        //OREO API 26 이상에서는 채널 필요
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            builder.setSmallIcon(R.drawable.ic_launcher_foreground); //mipmap 사용시 Oreo 이상에서 시스템 UI 에러남
+
+
+            String channelName ="매일 알람 채널";
+            String description = "매일 정해진 시간에 알람합니다.";
+            int importance = NotificationManager.IMPORTANCE_HIGH; //소리와 알림메시지를 같이 보여줌
+
+            NotificationChannel channel = new NotificationChannel("default", channelName, importance);
+            channel.setDescription(description);
+
+            if (notificationManager != null) {
+                // 노티피케이션 채널을 시스템에 등록
+                notificationManager.createNotificationChannel(channel);
+            }
+        }else builder.setSmallIcon(R.mipmap.ic_launcher); // Oreo 이하에서 mipmap 사용하지 않으면 Couldn't create icon: StatusBarIcon 에러남
+        builder.setAutoCancel(true)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+
+                .setTicker("{Time to watch some cool stuff!}")
+                .setContentTitle("부탁해, 집사")
+                .setContentText("알람을 확인하세요")
+                .setContentInfo("INFO")
+                .setContentIntent(pendingI);
+
+        if (notificationManager != null) {
+
+            // 노티피케이션 동작시킴
+            notificationManager.notify(1234, builder.build());
+
+            Calendar nextNotifyTime = Calendar.getInstance();
+
+            // 내일 같은 시간으로 알람시간 결정
+            /*nextNotifyTime.add(Calendar.DATE, 1);
+            //  Preference에 설정한 값 저장
+            SharedPreferences.Editor editor = context.getSharedPreferences("daily alarm", MODE_PRIVATE).edit();
+            editor.putLong("nextNotifyTime", nextNotifyTime.getTimeInMillis());
+            editor.apply();
+            Date currentDateTime = nextNotifyTime.getTime();*/
+            //String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
+            //Toast.makeText(context.getApplicationContext(),"다음 알람은 " + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    }
+![image](https://user-images.githubusercontent.com/79950380/121308062-954c6f80-c93b-11eb-8e45-baa8a657e302.png)
 
 ***
-## 2-8 기능 네비게이션
-메뉴 보기 버튼을 클릭하면 다른 화면으로 이동 할 수 있는 기능이다.’각 버튼에 맞는 액티비티를 연결하여 구현하였다.
+### 2-8 기능 네비게이션
+메뉴 보기 버튼을 클릭하면 다른 화면으로 더 편리하게 이동 할 수 있는 기능이다.
+
+각 버튼에 맞는 액티비티를 연결하여 구현하였다.
+
+Register_Food.java, Register_Snack.java, Register_Health.java 내부에 코드 삽입
+        
+        //Register_Food.java 내부
+        //onCreate 내부
+        //Btn1,2,3,4는 각각 네비게이션에서 밥,간식,건강,산책버튼
+        Button Btn1 = (Button)findViewById(R.id.Btn1);
+        Btn1.setOnClickListener(new View.OnClickListener() {//밥->밥
+            @Override
+            public void onClick(View view) {
+                Intent intent_f =new Intent(Register_Food.this,Register_Food.class);
+                //Register_Snack.java, Register_Health.java에서는 Btn1,2,3,4 리스너 안에 Register_Food.this 부분을 Register_Snack.this, Register_Health.this로 바꾸면 됨 
+                startActivity(intent_f);
+            }
+        });
+        Button Btn2 = (Button)findViewById(R.id.Btn2);
+        Btn2.setOnClickListener(new View.OnClickListener() {//밥->간식
+            @Override
+            public void onClick(View view) {
+                Intent intent_s =new Intent(Register_Food.this,Register_Snack.class);
+                startActivity(intent_s);
+            }
+        });
+        Button Btn3 = (Button)findViewById(R.id.Btn3);
+        Btn3.setOnClickListener(new View.OnClickListener() {//밥->건강
+            @Override
+            public void onClick(View view) {
+                Intent intent_h =new Intent(Register_Food.this,Register_Health.class);
+                startActivity(intent_h);
+            }
+        });
+        Button Btn4 = (Button)findViewById(R.id.Btn4);
+        Btn4.setOnClickListener(new View.OnClickListener() {//밥->산책
+            @Override
+            public void onClick(View view) {
+                Intent intent_r =new Intent(Register_Food.this,Register_Run.class);
+                startActivity(intent_r);
+            }
+        });
+
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_close.setOnClickListener(new View.OnClickListener() {//네비게이션바 닫기
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        //Public class 내부 onCreate 외부
+        DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerStateChanged(int newState) {
+        }
+    };
+![image](https://user-images.githubusercontent.com/79950380/121308322-e197af80-c93b-11eb-8c5f-6376f3f55068.png)
+
 
 
 
