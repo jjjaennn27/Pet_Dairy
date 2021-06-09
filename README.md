@@ -2912,7 +2912,76 @@ AlarmReceiver.java 생성
 ***
 ### 2-8 기능 네비게이션
 메뉴 보기 버튼을 클릭하면 다른 화면으로 이동 할 수 있는 기능이다.’각 버튼에 맞는 액티비티를 연결하여 구현하였다.
+Register_Food.java, Register_Snack.java, Register_Health.java 내부에 코드 삽입
+        
+        //Register_Food.java 내부
+        //onCreate 내부
+        //Btn1,2,3,4는 각각 네비게이션에서 밥,간식,건강,산책버튼
+        Button Btn1 = (Button)findViewById(R.id.Btn1);
+        Btn1.setOnClickListener(new View.OnClickListener() {//밥->밥
+            @Override
+            public void onClick(View view) {
+                Intent intent_f =new Intent(Register_Food.this,Register_Food.class);
+                //Register_Snack.java, Register_Health.java에서는 Btn1,2,3,4 리스너 안에 Register_Food.this 부분을 Register_Snack.this, Register_Health.this로 바꾸면 된다
+                startActivity(intent_f);
+            }
+        });
+        Button Btn2 = (Button)findViewById(R.id.Btn2);
+        Btn2.setOnClickListener(new View.OnClickListener() {//밥->간식
+            @Override
+            public void onClick(View view) {
+                Intent intent_s =new Intent(Register_Food.this,Register_Snack.class);
+                startActivity(intent_s);
+            }
+        });
+        Button Btn3 = (Button)findViewById(R.id.Btn3);
+        Btn3.setOnClickListener(new View.OnClickListener() {//밥->건강
+            @Override
+            public void onClick(View view) {
+                Intent intent_h =new Intent(Register_Food.this,Register_Health.class);
+                startActivity(intent_h);
+            }
+        });
+        Button Btn4 = (Button)findViewById(R.id.Btn4);
+        Btn4.setOnClickListener(new View.OnClickListener() {//밥->산책
+            @Override
+            public void onClick(View view) {
+                Intent intent_r =new Intent(Register_Food.this,Register_Run.class);
+                startActivity(intent_r);
+            }
+        });
 
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_close.setOnClickListener(new View.OnClickListener() {//네비게이션바 닫기
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        //Public class 내부 onCreate 외부
+        DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerStateChanged(int newState) {
+        }
+    };
 ![image](https://user-images.githubusercontent.com/79950380/121308322-e197af80-c93b-11eb-8c5f-6376f3f55068.png)
 
 
