@@ -2828,7 +2828,7 @@ AlarmReceiver.java 생성
 ## 2-8 기능 네비게이션
 메뉴 보기 버튼을 클릭하면 다른 화면으로 이동 할 수 있는 기능이다.’각 버튼에 맞는 액티비티를 연결하여 구현하였다.
 
-![image](https://user-images.githubusercontent.com/79950103/121307984-84036300-c93b-11eb-9d13-45061e2ebf3e.png)
+![image](https://user-images.githubusercontent.com/79950380/121308322-e197af80-c93b-11eb-8c5f-6376f3f55068.png)
 
 
 
