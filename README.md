@@ -113,8 +113,31 @@ Firebase을 Android Studio와 연결하여 테이터 저장을 통하여 여러 
     // ...
        }
     }
+    
+5. Firebase SDK 추가
 
+
+        dependencies {
+        // ...
+
+        // Import the Firebase BoM
+        implementation platform('com.google.firebase:firebase-bom:28.0.1')
+
+        // When using the BoM, you don't specify versions in Firebase library dependencies
+
+        // Declare the dependency for the Firebase SDK for Google Analytics
+        implementation 'com.google.firebase:firebase-analytics'
+
+        // Declare the dependencies for any other desired Firebase products
+        // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.firebase:firebase-firestore'
+        }
    
+
+
+
+ 
    
 
 
