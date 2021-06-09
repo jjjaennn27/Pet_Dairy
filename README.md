@@ -980,8 +980,8 @@ Register_Food.java
     public void sampleMethod() {
     }
 
+![image](https://user-images.githubusercontent.com/79950103/121307646-2b33ca80-c93b-11eb-8c01-4d6449ec1742.png)
 
-}
 
 ### 2-4-2 밥 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- food에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
@@ -2486,8 +2486,7 @@ Register_Health.java 생성
 
     }
 
-![image](https://user-images.githubusercontent.com/79950380/121307941-7a79fb00-c93b-11eb-8c7a-a9400e671535.png)
-
+![image](https://user-images.githubusercontent.com/79950103/121304795-bf9c2e00-c937-11eb-99fd-d9f9e1f90007.png)
 
 하단 세개의 버튼 중 입력하기 버튼을 클릭하면 입력날짜 및 반려동물의 건강정보를 입력할 수 있다. 
 
@@ -2571,7 +2570,7 @@ Record.java 생성
     public void clickSave(View view) {
     }
 
-![image](https://user-images.githubusercontent.com/79950380/121307722-3f77c780-c93b-11eb-93c0-7243cd6039b7.png)
+![image](https://user-images.githubusercontent.com/79950103/121305560-af388300-c938-11eb-84fe-4bf04b9078eb.png)
 
 ### 2-7-3 근처 병원 찾기
 병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다.
@@ -2828,6 +2827,9 @@ AlarmReceiver.java 생성
 ***
 ## 2-8 기능 네비게이션
 메뉴 보기 버튼을 클릭하면 다른 화면으로 이동 할 수 있는 기능이다.’각 버튼에 맞는 액티비티를 연결하여 구현하였다.
+
+![image](https://user-images.githubusercontent.com/79950103/121307984-84036300-c93b-11eb-9d13-45061e2ebf3e.png)
+
 
 
 
