@@ -2593,12 +2593,97 @@ Register_Health_Find.java 생성
             .type(PlaceType.HOSPITAL) //병원
             .build()
             .execute();
-}
+            }
+            
+            
 ![image](https://user-images.githubusercontent.com/79950380/121299080-d5a5f080-c92f-11eb-8402-ba1c30146acd.png)
 
 
 ### 2-7-4 다이어리
- 다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다. 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다.
+ 다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다. 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다. 
+ 그리고 하단에 건강 입력, 병원 찾기, 알람 설정을 할 수 있는 3개의 버튼이 있다.
+     
+     
+    public class Record extends AppCompatActivity {
+
+    TextView tv2;
+    EditText idText1;
+    EditText idText2;
+    EditText idText3;
+    EditText idText4;
+    EditText idText5;
+    Button savebutton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.record);
+
+        tv2 = findViewById(R.id.tv2);
+        idText1 = findViewById(R.id.idText1);
+        idText2 = findViewById(R.id.idText2);
+        idText3 = findViewById(R.id.idText3);
+        idText4 = findViewById(R.id.idText4);
+        idText5 = findViewById(R.id.idText5);
+        savebutton = findViewById(R.id.savebutton);
+
+
+        savebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
+
+                String IdText1 = idText1.getText().toString();
+                String IdText2 = idText2.getText().toString();
+                String IdText3 = idText3.getText().toString();
+                String IdText4 = idText4.getText().toString();
+                String IdText5 = idText5.getText().toString();
+
+                Record_H record_h = new Record_H(IdText1, IdText2, IdText3, IdText4, IdText5);
+
+                DatabaseReference record_hRef = rootRef.child("Record_H");
+                record_hRef.push().setValue(record_h);
+
+                record_hRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        StringBuffer buffer = new StringBuffer();
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                            Record_H record_h = snapshot.getValue(Record_H.class);
+                            String IdText1 = record_h.getIdText1();
+                            String IdText2 = record_h.getIdText2();
+                            String IdText3 = record_h.getIdText3();
+                            String IdText4 = record_h.getIdText4();
+                            String IdText5 = record_h.getIdText5();
+
+                            buffer.append("몸무게 : " + IdText1 + "\n" + "배변/구토 : " + IdText2 + "\n" + "투약기록 : " +
+                                    IdText3 + "\n" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
+                        }
+                        tv2.setText(buffer);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public void clickSave(View view) {
+    }
+}
+      
+     
+ ![image](https://user-images.githubusercontent.com/79950380/121312114-03933100-c940-11eb-9730-b2e35b13b030.png)
+
+ 
 ### 2-7-5  알림설정
 알림 설정 버튼을 클릭하면 원하는 날짜와 시간을 입력받고, 지정된 시간이 되면 알림을 메세지로 알려준다. 어플 사용 시 알람이 울리면 어플 내에서 보여주고 어플 사용하지 않은 상태에서 알림이 울리면 상단바에서 보여준다.   
 Alarm.java 생성 
