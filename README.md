@@ -1855,12 +1855,14 @@ RecyclerAdapter_snack.java
 
 ![image](https://user-images.githubusercontent.com/79950380/121277344-5bfc0b80-c90b-11eb-88c2-73998f633b35.png)
  3. Android앱을 선택하고 패키지 이름과 SHA-1 입력
+
 ![image](https://user-images.githubusercontent.com/79950380/121277517-bac18500-c90b-11eb-8a6a-5b40bdca6431.png)
  4. google_maps_api.xml "google_maps_key" 부분에 입력
 
 ##### Place API 발급 받기
 ![image](https://user-images.githubusercontent.com/79950380/121277768-463b1600-c90c-11eb-990d-a4a47bc192f7.png)
  1. 위의 과정에서 Google Maps Android API 대신 Place API 선택 / 3번 과정 생략
+
 ![image](https://user-images.githubusercontent.com/79950380/121278148-ff015500-c90c-11eb-8193-c0c2f3e52d51.png)
  2. Register_Health_Find.java와 WalkingMate_map.java key() 부분에 입력
 
