@@ -6,7 +6,7 @@
 ***
 
 # 목차
-## 1. 소개
+ ## 1. 소개
 >  ### 1-1 개발배경
 >  ### 1-2 사용한 기능
 >  ### 1-3 기존 어플과의 차이
@@ -291,8 +291,8 @@ Register.java 생성
 
 
 ***
-### 2-2 가족 연동
-#### 2-2-1 가족 구성원 프로필 입력 및 출력
+## 2-2 가족 연동
+### 2-2-1 가족 구성원 프로필 입력 및 출력
 한 아이디를 통해 가족들이 로그인을 하고 가족 구성원을 등록한다. 가족 구성원에 등록되면 스피너에 연결되어 밥 , 산책, 간식 팝업창에서 등록된 가족들을 선택하여 정보를 저장 할 수 있다.
 등록이 되면 가족 구성원 프로필 리스트로 출력된다.   
 Family_Register.java - 가족 프로필 등록
@@ -422,7 +422,7 @@ Person.java - 가족 정보를 저장할 class 생성
     }
     }
 
-#### 2-2-2 가족 연동
+### 2-2-2 가족 연동
 가족 구성원을 등록하면 밥, 간식, 산책에 가족들을 스피너로 연결하여 가족 연동을 구현하였다.   
 Pet_Database.java
 
@@ -458,8 +458,8 @@ Register_Food.java,  Register_Run.java, Register_Snack.java 파일에 넣어준�
     setNameSpinner(Person); //스피너에 저장된 스피너값 연결
 ![image](https://user-images.githubusercontent.com/79950380/121206758-b0739c80-c8b3-11eb-87c1-fd9659803f17.png)
 ***
-### 2-3 동물 등록 
-#### 2-3-1 동물 사진 등록 및 메인 화면에 불러오기, 데이터 저장
+## 2-3 동물 등록 
+### 2-3-1 동물 사진 등록 및 메인 화면에 불러오기, 데이터 저장
 동물의 사진을 갤러리를 통해 직접 가져오거나 사진 촬영을 통해 등록할 수 있다.
 그밖의 성별과 이름, 품종, 생년월일을 입력하여 등록을 완성한다. 저장이 완료 되었다면 등록된 사진이 메인화면에 출력된다. 
 동물 정보 저장 완료후 메인으로 왔을때 등록한 동물의 이미지가 뜬다면 동물 등록에 성공하였다.
@@ -659,8 +659,8 @@ PetStorage 함수 - 동물 사진 파이어베이스 저장
     }
  ![image](https://user-images.githubusercontent.com/51051548/121143591-2e19b700-c878-11eb-83d7-002afeb12888.png)
  ***
-### 2-4 기능 1 -  밥
-#### 2-4-1 밥 정보 입력 팝업창
+## 2-4 기능 1 -  밥
+### 2-4-1 밥 정보 입력 팝업창
 
 준 사람, 준 시간, 사료 종류, 사료 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
 준 사람, 사료 종류, 사료 양은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록 된 가족구성원을 선택 할 수 있다.
@@ -983,7 +983,7 @@ Register_Food.java
 ![image](https://user-images.githubusercontent.com/79950103/121307646-2b33ca80-c93b-11eb-8c01-4d6449ec1742.png)
 
 
-#### 2-4-2 밥 정보 저장 및 리스트 출력
+### 2-4-2 밥 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- food에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.   
 RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
@@ -1043,8 +1043,8 @@ RecyclerAdapter_food - 리사이클러뷰를 출력하기 위한 어댑터
 ![image](https://user-images.githubusercontent.com/51051548/121146422-de88ba80-c87a-11eb-88fe-07e1bc571b62.png)
 
 ***
-### 2-5 기능 2 - 간식
-#### 2-5-1 간식 정보 입력 팝업창
+## 2-5 기능 2 - 간식
+### 2-5-1 간식 정보 입력 팝업창
 준 사람, 준 시간, 간식 종류, 간식 양을 + 버튼을 통해 입력 할 수 있는 팝업창을 구현하였다.
 준 사람, 간식 종류은 스피너로 등록하여 선택 할 수 있게 하였고, 준 시간은 Now 버튼을 클릭 하면 실시간 날짜와 시간을 입력 받을 수 있다. 준 사람 스피너는 앞에서 가족 등록을 통하여 등록된 가족구성원을 선택 할 수 있다.
 
@@ -1315,7 +1315,7 @@ Register_Snack.java
     }
 
 
-#### 2-5-2 간식 정보 저장 및 리스트 출력
+### 2-5-2 간식 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care-snack에저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
 
@@ -1382,8 +1382,8 @@ RecyclerAdapter_snack.java
 (now 버튼을 클릭하여 현재시간을 입력받을수 있는 기능도 넣었다.)
  
 ***
-### 2-6 기능 3 - 산책
-#### 2-6-1 산책 정보 입력 팝업창
+## 2-6 기능 3 - 산책
+### 2-6-1 산책 정보 입력 팝업창
 산책을 시킨 사람, 시킨 시간, 산책시간, 산책장소를 입력할 수있는 팝업팡을 구현하였다. 또 스피너 기능을 통하여 산책 시킨 사람을 등록한 별명을 통해 선택 입력할 수 있도록 구현을 하였고 시킨 시간은 NOW버튼을 통해 실시간 시간과 날짜를 입력 받을 수 있도록 하였다.   
 
  
@@ -1665,7 +1665,7 @@ RecyclerAdapter_snack.java
     }
 
 
-#### 2-6-2 산책 정보 저장 및 리스트 출력
+### 2-6-2 산책 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- walk에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다.
 눈 버튼을 클릭하면 저장된 리스트들을 볼 수 있다.
  
@@ -1725,13 +1725,13 @@ RecyclerAdapter_snack.java
 ![image](https://user-images.githubusercontent.com/79950254/121297839-e2294980-c92d-11eb-9a40-c563b3db57e1.png)
    
 
-#### 2-6-3 산책 메이트
+### 2-6-3 산책 메이트
 산책 메이트 찾기 버튼을 누르면 산책 메이트 찾기 게시판이 뜨게 된다. 다른 사람이 등록한 정보를 보고 직접 메이트를 찾을 수 있으며 사용자가 게시판에 입력함으로써 메이트를 구할 수있다.
 
 ![image](https://user-images.githubusercontent.com/79950380/121206310-51ae2300-c8b3-11eb-96d2-66fa86687c5d.png)
 
 
-##### #2-6-3-1 산책 메이트 정보 입력 팝업창
+#### #2-6-3-1 산책 메이트 정보 입력 팝업창
 산책장소, 예상시간, 강아지종, 카카오톡ID를 + 버튼 을 통해 입력하는 팝업창을 구현하였다. 예상 시간은 스피너 통해 선택 할 수 있다. 
    
  WalingMate_Board.java
@@ -1943,12 +1943,12 @@ RecyclerAdapter_snack.java
 ![image](https://user-images.githubusercontent.com/79950254/121298017-287ea880-c92e-11eb-8683-68e95bd72196.png)
 
 
-#### 2-6-4 근처 공원 찾기
+### 2-6-4 근처 공원 찾기
 ‘google map’을 이용하여 사용자의 위치를 GPS를 통해 전송받아 위치를 나타내고, google  Place API 을 이용하여 사용자 주변의 가까운 공원들을 검색할 수있도록 하였다.
 
-##### https://console.cloud.google.com/home/dashboard?folder=&organizationId=&project=double-venture-314915
+#### https://console.cloud.google.com/home/dashboard?folder=&organizationId=&project=double-venture-314915
 
-##### Google Maps Android API 발급 받기
+#### Google Maps Android API 발급 받기
 
  ![image](https://user-images.githubusercontent.com/79950380/121276575-ddeb3500-c909-11eb-98a1-3c9902e8ff9f.png)
  
@@ -1966,7 +1966,7 @@ RecyclerAdapter_snack.java
 
 4. google_maps_api.xml "google_maps_key" 부분에 입력
 
-##### Place API 발급 받기
+#### Place API 발급 받기
 
 ![image](https://user-images.githubusercontent.com/79950380/121277768-463b1600-c90c-11eb-990d-a4a47bc192f7.png)
 
@@ -2428,8 +2428,8 @@ WalingMate_map.java
 ![image](https://user-images.githubusercontent.com/79950380/121206662-9fc32680-c8b3-11eb-9539-08fce46b8a73.png)
 
 ***
-### 2-7 기능 4 - 건강
-#### 2-7-1 건강 정보 입력창   
+## 2-7 기능 4 - 건강
+### 2-7-1 건강 정보 입력창   
 Register_Health.java 생성
 
     public class Register_Health extends AppCompatActivity {
@@ -2490,7 +2490,7 @@ Register_Health.java 생성
 
 하단 세개의 버튼 중 입력하기 버튼을 클릭하면 입력날짜 및 반려동물의 건강정보를 입력할 수 있다. 
 
-#### 2-7-2 건강 정보 저장 및 리스트 출력
+### 2-7-2 건강 정보 저장 및 리스트 출력
 팝업창에 정보를 입력한 후 등록 버튼을 클릭하면 데이터들을 파이어베이스 pat care- health에 저장한다. 리사이클러뷰를 이용하여 저장된 정보를들을 불러와 리스트 형식으로 출력하였다. 또, 눈 버튼을 클릭을 통해서 저장된 리스트들을 확인할 수 있다.   
 Record.java 생성
 
@@ -2572,7 +2572,7 @@ Record.java 생성
 
 ![image](https://user-images.githubusercontent.com/79950103/121305560-af388300-c938-11eb-84fe-4bf04b9078eb.png)
 
-#### 2-7-3 근처 병원 찾기
+### 2-7-3 근처 병원 찾기
 병원찾기 버튼을 클릭 google  Place API 을 이용근처 병원을 찾을 수 있도록 만들었다.
 기존 공원 찿기 코드에서   .type(PlaceType.HOSPITAL) 병원으로 변경해주면 된다.  
 Register_Health_Find.java 생성
@@ -2593,98 +2593,13 @@ Register_Health_Find.java 생성
             .type(PlaceType.HOSPITAL) //병원
             .build()
             .execute();
-            }
-            
-            
+}
 ![image](https://user-images.githubusercontent.com/79950380/121299080-d5a5f080-c92f-11eb-8402-ba1c30146acd.png)
 
 
-#### 2-7-4 다이어리
- 다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다. 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다. 
- 그리고 하단에 건강 입력, 병원 찾기, 알람 설정을 할 수 있는 3개의 버튼이 있다.
-     
-     
-    public class Record extends AppCompatActivity {
-
-    TextView tv2;
-    EditText idText1;
-    EditText idText2;
-    EditText idText3;
-    EditText idText4;
-    EditText idText5;
-    Button savebutton;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.record);
-
-        tv2 = findViewById(R.id.tv2);
-        idText1 = findViewById(R.id.idText1);
-        idText2 = findViewById(R.id.idText2);
-        idText3 = findViewById(R.id.idText3);
-        idText4 = findViewById(R.id.idText4);
-        idText5 = findViewById(R.id.idText5);
-        savebutton = findViewById(R.id.savebutton);
-
-
-        savebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference rootRef = firebaseDatabase.getReference("Family Pet");
-
-                String IdText1 = idText1.getText().toString();
-                String IdText2 = idText2.getText().toString();
-                String IdText3 = idText3.getText().toString();
-                String IdText4 = idText4.getText().toString();
-                String IdText5 = idText5.getText().toString();
-
-                Record_H record_h = new Record_H(IdText1, IdText2, IdText3, IdText4, IdText5);
-
-                DatabaseReference record_hRef = rootRef.child("Record_H");
-                record_hRef.push().setValue(record_h);
-
-                record_hRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                        StringBuffer buffer = new StringBuffer();
-
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                            Record_H record_h = snapshot.getValue(Record_H.class);
-                            String IdText1 = record_h.getIdText1();
-                            String IdText2 = record_h.getIdText2();
-                            String IdText3 = record_h.getIdText3();
-                            String IdText4 = record_h.getIdText4();
-                            String IdText5 = record_h.getIdText5();
-
-                            buffer.append("몸무게 : " + IdText1 + "\n" + "배변/구토 : " + IdText2 + "\n" + "투약기록 : " +
-                                    IdText3 + "\n" + "접종일정 : " + IdText4 + "\n" + "입력날짜 : " + IdText5 + "\n\n");
-                        }
-                        tv2.setText(buffer);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
-    }
-
-    public void clickSave(View view) {
-    }
-}
-      
-     
- ![image](https://user-images.githubusercontent.com/79950380/121312114-03933100-c940-11eb-9730-b2e35b13b030.png)
-
-
- #### 2-7-5  알림설정
+### 2-7-4 다이어리
+ 다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다. 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다.
+### 2-7-5  알림설정
 알림 설정 버튼을 클릭하면 원하는 날짜와 시간을 입력받고, 지정된 시간이 되면 알림을 메세지로 알려준다. 어플 사용 시 알람이 울리면 어플 내에서 보여주고 어플 사용하지 않은 상태에서 알림이 울리면 상단바에서 보여준다.   
 Alarm.java 생성 
 
@@ -2910,9 +2825,72 @@ AlarmReceiver.java 생성
 ![image](https://user-images.githubusercontent.com/79950380/121308062-954c6f80-c93b-11eb-8e45-baa8a657e302.png)
 
 ***
-### 2-8 기능 네비게이션
-메뉴 보기 버튼을 클릭하면 다른 화면으로 이동 할 수 있는 기능이다.’각 버튼에 맞는 액티비티를 연결하여 구현하였다.
-
+## 2-8 기능 네비게이션
+메뉴 보기 버튼을 클릭하면 다른 화면으로 이동 할 수 있는 기능이다.각 버튼에 맞는 액티비티를 연결하여 구현하였다.
+Register_Food.java, Register_Snack.java, Register_Run.java 내부에 추가
+onCreate 내부에 
+Button Btn1 = (Button)findViewById(R.id.Btn1);
+        Btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_f =new Intent(Register_Snack.this,Register_Food.class);//Register_Snack 화면에서 네비게이션을 열고 밥 버튼을 누르면Register_Food 화면으로 이동
+                //Register_Food.java랑 Register_Health.java에서는 Btn1,2,3,4 리스너안에 Register_Snack.this 부분을 각각 Register_Food.this, Register_Health.this로 바꾸면 
+                startActivity(intent_f);//
+            }
+        });
+        Button Btn2 = (Button)findViewById(R.id.Btn2);
+        Btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_s =new Intent(Register_Snack.this,Register_Snack.class);
+                startActivity(intent_s);
+            }
+        });
+        Button Btn3 = (Button)findViewById(R.id.Btn3);
+        Btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_h =new Intent(Register_Snack.this,Register_Health.class);
+                startActivity(intent_h);
+            }
+        });
+        Button Btn4 = (Button)findViewById(R.id.Btn4);
+        Btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_r =new Intent(Register_Snack.this,Register_Run.class);
+                startActivity(intent_r);
+            }
+        });
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_close.setOnClickListener(new View.OnClickListener() {//메뉴닫기 버튼 클릭시 네비게이션 닫힘
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+onCreate 외부에 추가
+        DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        }
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+        }
+        @Override
+        public void onDrawerStateChanged(int newState) {
+        }
+    };
 ![image](https://user-images.githubusercontent.com/79950380/121308322-e197af80-c93b-11eb-8c5f-6376f3f55068.png)
 
 
