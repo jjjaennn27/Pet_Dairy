@@ -2403,8 +2403,9 @@ Register_Health_Find.java 생성
             .radius(2000) //2000 미터 내에서 검색
             .type(PlaceType.HOSPITAL) //병원
             .build()
-            .execute();
-}
+            .execute(); 
+            }
+            
 ![image](https://user-images.githubusercontent.com/79950380/121299080-d5a5f080-c92f-11eb-8402-ba1c30146acd.png)
 
 
