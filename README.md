@@ -2486,7 +2486,7 @@ Register_Health.java 생성
 
     }
 
-![image](https://user-images.githubusercontent.com/79950380/121307707-3ab31380-c93b-11eb-91a5-a96b2163ee6c.png)
+![image](https://user-images.githubusercontent.com/79950380/121307941-7a79fb00-c93b-11eb-8c7a-a9400e671535.png)
 
 
 하단 세개의 버튼 중 입력하기 버튼을 클릭하면 입력날짜 및 반려동물의 건강정보를 입력할 수 있다. 
