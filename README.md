@@ -1847,7 +1847,7 @@ RecyclerAdapter_snack.java
 
 #### https://console.cloud.google.com/home/dashboard?folder=&organizationId=&project=double-venture-314915
 
-##### Google Maps Android API 발급 받기
+#### Google Maps Android API 발급 받기
 
  ![image](https://user-images.githubusercontent.com/79950380/121276575-ddeb3500-c909-11eb-98a1-3c9902e8ff9f.png)
  
@@ -1865,7 +1865,7 @@ RecyclerAdapter_snack.java
 
 4. google_maps_api.xml "google_maps_key" 부분에 입력
 
-##### Place API 발급 받기
+#### Place API 발급 받기
 
 ![image](https://user-images.githubusercontent.com/79950380/121277768-463b1600-c90c-11eb-990d-a4a47bc192f7.png)
 
