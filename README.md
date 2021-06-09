@@ -2404,7 +2404,8 @@ Register_Health_Find.java 생성
             .build()
             .execute();
 }
-![image](https://user-images.githubusercontent.com/79950254/121298430-d0947180-c92e-11eb-8bfa-91c83d71e825.png)
+![image](https://user-images.githubusercontent.com/79950380/121299080-d5a5f080-c92f-11eb-8402-ba1c30146acd.png)
+
 
 ### 2-7-4 다이어리
  다이어리 페이지에 들어가면 가장 먼저 달력을 볼 수있다. 이 달력에서 원하는 날짜를 선택하면 아래에 간단하게 작성할 수있는 칸이 있다.
