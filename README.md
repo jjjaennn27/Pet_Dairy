@@ -2922,7 +2922,7 @@ Register_Food.java, Register_Snack.java, Register_Health.java 내부에 코드 �
             @Override
             public void onClick(View view) {
                 Intent intent_f =new Intent(Register_Food.this,Register_Food.class);
-                //Register_Snack.java, Register_Health.java에서는 Btn1,2,3,4 리스너 안에 Register_Food.this 부분을 Register_Snack.this, Register_Health.this로 바꾸면 
+                //Register_Snack.java, Register_Health.java에서는 Btn1,2,3,4 리스너 안에 Register_Food.this 부분을 Register_Snack.this, Register_Health.this로 바꾸면 됨 
                 startActivity(intent_f);
             }
         });
